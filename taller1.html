@@ -31,10 +31,92 @@
     </header>
 
     <main class="taller">
-        <h1>Variables e impresiones</h1>
-        <section>
+        <h1 class="titulo-taller">Variables e impresiones</h1>
+        <section class="taller-item"></section>
+        <ol>
+            <li class="exercise">Realizar un programa el cual solicite su nombre y apellidos.
+                <h3>Códigos de la solución</h3>
+                <div class="codigos">
+                    <div class="acordeon">
+                        <a href="#">
+                            <p>Pseint</p>
+                            <img src="img/pseint.png">  
+                            <i class="fa-solid fa-circle-chevron-down"></i>   
+                        </a>
+                        <pre>
+    Proceso punto_1
+        Definir nombre Como Caracter;
+        Definir apellidos Como Caracter;
+                            
+        Escribir "¿Cuál es su nombre?";
+        Leer nombre;
+        Escribir "¿Cuales son tus apellidos?";
+        Leer apellidos;
+                                    
+        Escribir nombre, " ", apellidos;
+                                    
+    FinProceso
+                        </pre>
+                    </div>
 
-        </section>
+                    <div class="acordeon">
+                        <a href="#">
+                            <p>Java</p>
+                            <i class="fa-brands fa-java"></i>  
+                            <i class="fa-solid fa-circle-chevron-down"></i>   
+                        </a>
+                        <pre>
+                            import java.util.Scanner;
+    public class Main {
+        public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        Persona persona = new Persona();
+        // imprimir mensaje solicitando el nombre de la persona.
+        System.out.println("Ingrese su(s) nombre(s):");
+        //Linea de código para asignar información al atributo nombre del objeto persona.
+        persona.setNombre(input.nextLine());
+        // imprimir mensaje solicitando el apellido de la persona.
+        System.out.println("Ingrese su(s) apellido(s):");
+        //Linea de código para asignar información al atributo apellido del objeto persona.
+        persona.setApellido(input.nextLine());
+        //Linea de código para imprimir los nombres y apellidos de la persona.
+        System.out.println(persona.toString());
+    }
+    }
+
+    public class Persona {
+        private String nombre;
+        private String apellido;
+    
+        public String getNombre() {
+            return nombre;
+        }
+    
+        public String getApellido() {
+            return apellido;
+        }
+    
+        public void setNombre(String nombre) {
+            this.nombre = nombre;
+        }
+    
+        public void setApellido(String apellido) {
+            this.apellido = apellido;
+        }
+    
+        @Override
+        public String toString() {
+            return  "nombres ='" + nombre + '\'' +
+                    ", apellidos='" + apellido + '\'';
+        }
+    }
+                        </pre>
+                    </div>
+                    
+                <div>            
+            </li>
+
+        </ol>
     </main>
     <script src="js/colores.js"></script>
 

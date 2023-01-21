@@ -1,4 +1,62 @@
 main.taller{
-    margin-top: 0% auto;
+    padding: 6rem 3rem;
+    width: 100%;
+    display: block;
+    align-items: center;
     justify-content: center;
+}
+.titulo-taller{
+    width: 100%;
+    text-align: center;
+}
+.taller-item{
+    align-items: left;
+    justify-content: left;
+}
+li.exercise{
+    display: list-item;
+    width: 90%;
+    list-style-type: decimal;
+    text-align: left;
+}
+li h3{
+    font-size: 1.6rem;
+    text-align: center;
+}
+li a{
+    text-align: center;
+    font-size: 3rem;
+    width: 100%;
+    text-decoration: none;
+    color: aliceblue;
+    transition: 0.5s;
+}
+li a:hover{
+    background-color: #34282C;
+    border-radius: 32px;
+}
+.fa-solid .fa-sort-down{
+ padding: 0px 30px;   
+}
+.codigos{
+    margin-top: 0 auto;
+    display: block;
+    background-color: #2B1B17;
+}
+.acordeon{
+    margin-top: 0% auto;
+    width: 100%;
+    text-align: center;
+    display: block;
+}
+a img{
+    height: 50px;
+    width: 50px;
+}
+.acordeon pre{
+    text-align: left;
+    text-justify: ;
+    font-size: 1rem;
+    background-color: #2C3539;
+    border: 2px solid white;
 }
