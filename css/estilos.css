@@ -169,3 +169,35 @@ button.cv{
 button.cv:hover{
     background-color: aqua;
 }
+.projects{
+    margin: 0px auto;
+    text-align: center;
+}
+.projects-panel{
+    
+    display: block;
+}
+.titulo-projects{
+margin-top: 0%;
+ font-size: 1.5em;
+ display: block;
+ margin-inline-start: 0px;
+ margin-inline-end: 0px;
+}
+
+.CN1projects{
+    display: flex;
+    justify-content: space-between;
+}
+
+.work{
+    margin: 20px 20px;
+    padding: 20px 30px;
+    background-color: #8D38C9;
+    color:white;
+    text-decoration: none;
+}
+.work:hover{
+    background-color: wheat;
+    color: #493D26;
+}

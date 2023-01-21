@@ -17,4 +17,7 @@ switchColor.addEventListener("change", cambiarColor, false);
 if(localStorage.getItem("night-mode") === "true"){
     body.classList.add("dark");
     switchColor.checked =true;
+}else{
+    body.classList.remove("dark");
+    switchColor.checked =false;    
 }

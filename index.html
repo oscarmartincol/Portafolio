@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Oscar David Martinez Benavides - Portafolio</title>
     <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/estilosForm.css">
+    <script src="https://kit.fontawesome.com/208cd36c2e.js" crossorigin="anonymous"></script>
 </head>
 <body id="body">
     <header class="header">
@@ -20,7 +22,7 @@
                         <a class="link" href="#contact">Contacto <span></span></a>
                     </li>
                 </ul>
-                <a href="#" class="fondo"></a>
+                
 
             </div>
             <div class="tema">
@@ -49,9 +51,63 @@
             </div>
         </section>
 
-        
+        <!--Sección proyectos-->
+
+        <section class="projects" id="projects">
+            <div class="projects-panel">
+                <div class="panel">
+                    <h1 class="Titulo-primario">Proyectos de canteras nivel 1</h1>
+                    <nav class="CN1projects">
+                        <a href="taller1.html" class="work"><span>
+                            <i class="fa-solid fa-square-root-variable"></i>
+                            <i class="fa-solid fa-print"></i>
+                            <p>Variables e impresión</p>
+                        </span></a>
+                        
+                        <a class="work"><span>
+                            <i class="fa-regular fa-circle-question"></i>
+                            <i class="fa-regular fa-circle-check"></i>
+                            <p>Condicionales</p>
+                        </span></a>
+
+                        <a class="work"><span>
+                            <i class="fa-solid fa-arrows-spin"></i>
+                            <i class="fa-solid fa-rotate-right"></i>
+                            <p>Ciclos</p>
+                        </span></a>
+
+                        <a class="work"><span>
+                            <i class="fa-solid fa-table-list"></i>
+                            <i class="fa-solid fa-table-cells"></i>
+                            <p>Arreglos</p>
+                        </span></a>
+                    
+                    </nav>
+                </div>
+            </div>    
+        </section>
+        <!--Sección contacto-->
+
+        <section class="contact" id="contact">
+            <form id="form" class="form">
+                <h2 class="title">Formulario de contacto</h2>
+                <label for="name">Nombre completo <span>*</span></label>
+                <input name="name" required type="text" id="name">
+                <label for="email">Correo electronico <span>*</span></label>
+                <input name="email" required type="text" id="email">
+                <label for="issue">Asunto<span>*</span></label>
+                <input name="issue" required type="text" id="issue">
+                <label for="messaje">Mensaje <span>*</span></label>
+                <textarea name="messaje" required type="text" id="messaje" cols="30" rows="10"></textarea>
+                <span class="buttons">
+                    <button type="submit" class="btn" action>Enviar</button> 
+                    <button type="reset" class="btn">Limpiar</button>
+                </span>
+            
+        </section>
     </main>
 
     <script src="js/colores.js"></script>
+    <script src="js/capturaDatos.js"></script>
 </body>
 </html>
