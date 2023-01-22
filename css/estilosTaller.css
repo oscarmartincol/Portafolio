@@ -76,3 +76,10 @@ iframe{
     height: 500px;
     
 }
+.array{
+    margin: 0% auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+}
