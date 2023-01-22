@@ -23,20 +23,20 @@ li h3{
     font-size: 1.6rem;
     text-align: center;
 }
-li a{
+.link{
     text-align: center;
     font-size: 3rem;
     width: 100%;
     text-decoration: none;
-    color: aliceblue;
     transition: 0.5s;
 }
-li a:hover{
+.link:hover{
     background-color: #34282C;
     border-radius: 32px;
 }
 .fa-solid .fa-sort-down{
- padding: 0px 30px;   
+ padding: 0px 30px;
+ margin-bottom: 30px;   
 }
 .codigos{
     margin-top: 0 auto;
@@ -48,15 +48,30 @@ li a:hover{
     width: 100%;
     text-align: center;
     display: block;
+    transition: 0.4s ease;
+}
+.size{
+    height: 140px;
+    overflow: hidden;
+
+}
+.rotate{
+    transform: rotate(180deg);
 }
 a img{
     height: 50px;
     width: 50px;
 }
 .acordeon pre{
+    margin: 40px auto;
     text-align: left;
-    text-justify: ;
     font-size: 1rem;
     background-color: #2C3539;
     border: 2px solid white;
+}
+iframe{
+    margin-left: 100px;
+    width: 80%;
+    height: 500px;
+    
 }
