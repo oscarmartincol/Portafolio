@@ -46,6 +46,19 @@
                                 <img src="img/pseint.png">  
                                 <i class="fa-solid fa-circle-chevron-up"></i>   
                             </a>
+                            <pre>
+    Proceso punto_1
+        Definir edad Como Entero;
+        Escribir "Cuál es su edad";
+        Leer edad;
+        
+        Si edad >= 18 Entonces
+            Escribir "Usted es mayor de edad";
+        SiNo
+            Escribir "Usted es menor de edad";
+        FinSi
+    FinProceso
+                            </pre>
                         </div>
 
                         <div class="acordeon"  id="1-java">
@@ -54,6 +67,39 @@
                                 <i class="fa-brands fa-java"></i>  
                                 <i class="fa-solid fa-circle-chevron-up"></i>   
                             </a>
+                            <pre>
+    import java.util.Scanner;
+
+    public class Main {
+        public static void main(String[] args) {
+            Scanner input = new Scanner(System.in);
+            Persona persona = new Persona();
+            System.out.print("Ingrese su edad: ");
+            persona.setEdad(input.nextInt());
+            System.out.println(persona.validarMayoriaDeEdad());
+        }
+    }
+
+    public class Persona {
+        private int edad;
+    // Función para obtener la edad
+        public int getEdad() {
+            return edad;
+        }
+    // Función para asignar la edad
+        public void setEdad(int edad) {
+            this.edad = edad;
+        }
+    
+        public String validarMayoriaDeEdad(){
+            if(this.edad >= 18) {
+                return "Usted es mayor de edad";
+            }else {
+                return "Usted es menor de edad";
+            }
+        }
+    }
+                            </pre>
                         </div>
                     </div>
                 </li>
@@ -70,6 +116,19 @@
                                 <img src="img/pseint.png">  
                                 <i class="fa-solid fa-circle-chevron-up"></i>   
                             </a>
+                            <pre>
+    Proceso punto_2
+        Definir edad Como Entero;
+        Escribir "Cuál es su edad";
+        Leer edad;
+        
+        Si edad < 18 Entonces
+            Escribir "Usted aun es un niño(a)";
+        SiNo
+            Escribir "Usted es ya una persona adulta";
+        FinSi
+    FinProceso
+                            </pre>
                         </div>
 
                         <div class="acordeon"  id="2-java">
@@ -78,9 +137,50 @@
                                 <i class="fa-brands fa-java"></i>  
                                 <i class="fa-solid fa-circle-chevron-up"></i>   
                             </a>
+                            <pre>
+    import java.util.Scanner;
+
+    public class Main {
+        public static void main(String[] args) {
+
+            Scanner input = new Scanner(System.in);
+            Persona persona = new Persona();
+            System.out.print("Ingrese su edad: ");
+            persona.setEdad(input.nextInt());
+            System.out.println(imprimirMensaje(persona.validacionEdad()));
+        }
+        public static String imprimirMensaje(boolean edad){
+            if (!edad)
+                    return "Usted aún es un(a) niño(a)";
+            else
+                return "Usted ya no es un(a) niño(a)";
+        }
+    }
+
+    public class Persona {
+        private int edad;
+    
+        public int getEdad() {
+            return edad;
+        }
+    
+        public void setEdad(int edad) {
+            this.edad = edad;
+        }
+    
+        public boolean validacionEdad(){
+            if (this.edad >= 18){
+                return true;
+            }else {
+                return false;
+            }
+        }
+    }
+                            </pre>
                         </div>
                     </div>
                 </li>
+
                 <!--punto 3-->
                 <li class="exercise">
                     Realizar un programa en el cual se solicite el nombre, apellidos y edad de la persona. Si la persona es mayor o igual a 18 años,
@@ -95,6 +195,27 @@
                                 <img src="img/pseint.png">  
                                 <i class="fa-solid fa-circle-chevron-up"></i>   
                             </a>
+                            <pre>
+    Proceso punto_3
+        Definir nombre Como Caracter;
+        Definir apellidos Como Caracter;
+        Definir edad Como Entero;
+        Escribir "¿Cuál es su nombre?";
+        Leer nombre;
+        Escribir "¿Cuales son sus apellidos?";
+        Leer apellidos;
+        Escribir "Cuál es su edad";
+        Leer edad;
+        
+        Si edad >= 18 Entonces
+            Escribir nombre, " ", apellidos, " usted es mayor de edad, por lo tanto, 
+            puede entrar a la fiesta.";
+        SiNo
+            Escribir nombre, " ", apellidos, " usted es menor de edad, por lo tanto, 
+            no puede entrar a la fiesta, por favor devuélvase a su casa.";
+        FinSi
+    FinProceso
+                            </pre>
                         </div>
 
                         <div class="acordeon"  id="3-java">
@@ -103,6 +224,64 @@
                                 <i class="fa-brands fa-java"></i>  
                                 <i class="fa-solid fa-circle-chevron-up"></i>   
                             </a>
+                            <pre>
+    import java.util.Scanner;
+
+    public class Main {
+        public static void main(String[] args) {
+
+            Scanner input = new Scanner(System.in);
+            Persona persona = new Persona();
+            System.out.print("Ingrese su(s) nombre(S): ");
+            persona.setNombre(input.nextLine());
+            System.out.print("Ingrese su(s) apellido(S): ");
+            persona.setApellido(input.nextLine());
+            System.out.print("Ingrese su edad: ");
+            persona.setEdad(input.nextInt());
+            System.out.println(confirmarAcceso(persona));
+        }
+        public static String confirmarAcceso(Persona persona){
+            if (persona.validacionEdad())
+                return persona.getNombre() + " " + persona.getApellido()
+                        + " usted es mayor de edad, por lo tanto puede entrar" +
+                        " a la fiesta";
+            else
+                return persona.getNombre() + " " + persona.getApellido()
+                        + " usted es menor de edad, por lo tanto, no puede entrar" +
+                        " a la fiesta, por favor devuélvase a su casa.";
+        }
+    }
+
+    public class Persona {
+        private int edad;
+        private String nombre;
+        private String apellido;
+
+        public void setEdad(int edad) {
+            this.edad = edad;
+        }
+
+        public String getNombre() {
+            return nombre;
+        }
+
+        public void setNombre(String nombre) {
+            this.nombre = nombre;
+        }
+
+        public String getApellido() {
+            return apellido;
+        }
+
+        public void setApellido(String apellido) {
+            this.apellido = apellido;
+        }
+
+        public boolean validacionEdad(){
+            return this.edad >= 18;
+        }
+    }
+                            </pre>
                         </div>
                     </div>
                 </li>
@@ -121,6 +300,136 @@
                                 <img src="img/pseint.png">  
                                 <i class="fa-solid fa-circle-chevron-up"></i>   
                             </a>
+                            <pre>
+    Proceso punto_4
+        Definir nombre Como Caracter;
+        Definir opcion Como Entero;
+        Definir opc Como Entero;
+        Definir edad Como Entero;
+        Definir copiasESA Como Entero;
+        Definir copiasEH Como Entero;
+        Definir copiasT Como Entero;
+        Definir copiasBvsS Como Entero;
+        Definir copiasAv Como Entero;
+        Definir numeroPeliculas Como Entero;
+        Definir observaciones Como Caracter;
+        copiasESA <- 2;
+        copiasEH <- 3;
+        copiasT <- 0;
+        copiasBvsS <- 1;
+        copiasAv <- 3;
+        numeroPeliculas <- 0;
+        
+        Escribir "Digite su nombre completo";
+        Leer nombre;
+        Escribir "********** Video Tienda El Porvenir **********";
+        Escribir "Bienvenido ", nombre;
+        opcion <- 0;
+        
+        Mientras opcion <> 4 Hacer
+            Escribir "Seleccione el número de la operación que desea realizar hoy, 
+            de las que se encuentran a continuación: ";
+            Escribir "1. Alquilar una película";
+            Escribir "2. Consultar películas disponibles.";
+            Escribir "3. Recibir película en la videotienda.";
+            Escribir "4. Salir";
+            Leer opcion;
+            Segun opcion Hacer
+                1:
+                    Escribir "¿Qué película desea alquilar?";
+                    Escribir "1. El señor de los anillos: La comunidad del anillo";
+                    Escribir "2. El Hobbit: La desolación de Smaug";
+                    Escribir "3. Transformers: El lado oscuro de la luna";
+                    Escribir "4. Batman VS Superman";
+                    Escribir "5. Avengers: Endgame";
+                    Leer opc;
+                    Escribir "Recuerde que todas nuestras películas son reconmendadas para personas 
+                    mayores de 12 años";
+                    Escribir "¿Cual es su edad?";
+                    Leer edad;
+                    Si edad > 12 Entonces
+                        Segun opc Hacer
+                            1:
+                                Si copiasESA > 0 Entonces
+                                    Escribir "El señor de los anillos: la comunidad del anillo, 
+                                    ha sido agregado a la cesta";
+                                    numeroPeliculas <- numeroPeliculas + 1;
+                                    copiasESA <- copiasESA - 1;
+                                SiNo
+                                    Escribir "No hay copias disponibles de la película seleccionada";
+                                FinSi
+                            2:
+                                Si copiasEH > 0 Entonces
+                                    Escribir "El Hobbit: La desolación de Smaug, ha sido agregado a la cesta";
+                                    numeroPeliculas <- numeroPeliculas + 1;
+                                    copiasEH <- copiasEH - 1;
+                                SiNo
+                                    Escribir "No hay copias disponibles de la película seleccionada";
+                                FinSi
+                            3:
+                                Si copiasT > 0 Entonces
+                                    Escribir "Transformers: El lado oscuro de la luna, ha sido agregado a la cesta";
+                                    numeroPeliculas <- numeroPeliculas + 1;
+                                    copiasT <- copiasT - 1;
+                                SiNo
+                                    Escribir "No hay copias disponibles de la película seleccionada";
+                                FinSi
+                            4:
+                                Si copiasBvsS > 0 Entonces
+                                    Escribir "Batman VS Superman, ha sido agregado a la cesta";
+                                    numeroPeliculas <- numeroPeliculas + 1;
+                                    copiasBvsS <- copiasBvsS - 1;
+                                SiNo
+                                    Escribir "No hay copias disponibles de la película seleccionada";
+                                FinSi
+                            5:
+                                Si copiasAv > 0 Entonces
+                                    Escribir "Avengers: Endgame, ha sido agregado a la cesta";
+                                    numeroPeliculas <- numeroPeliculas + 1;
+                                    copiasAV <- copiasAV - 1;
+                                SiNo
+                                    Escribir "No hay copias disponibles de la película seleccionada";
+                                FinSi
+                            De Otro Modo:
+                                Escribir "Elección no válida";
+                        FinSegun
+                    FinSi
+                2:
+                    Escribir "nombre de película                                copias disponibles";
+                    Escribir "El señor de los anillos: La comunidad del anillo        ", copiasESA;
+                    Escribir "El Hobbit: La desolación de Smaug                       ", copiasEH;
+                    Escribir "Transformers: El lado oscuro de la luna                 ", copiasT;
+                    Escribir "Batman VS Superman                                      ", copiasBvsS;
+                    Escribir "Avengers: Endgame                                       ", copiasAV;
+                    Escribir "Oprima una tecla para volver al menú inicial";
+                    Esperar Tecla;
+                3:
+                    Escribir "Sus películas estan listas, esperamos que disfrute un buen rato de entretenimiento.";
+                    Escribir "oprima 1 si desea hacer observaciones";
+                    Escribir "oprima cualquier otra tecla para continuar";
+                    Leer opc;
+                    Si opc = 1 Entonces
+                        Escribir "Digite sus observaciones a continuación: ";
+                        Leer observaciones;
+                    FinSi
+                4: 
+                    Escribir "Generando ticket de la operación";
+                De Otro Modo:
+                    Escribir "La opción seleccionada no es válida";
+            FinSegun
+            
+            Limpiar Pantalla;
+        FinMientras
+        
+        Escribir "********** Video Tienda El Porvenir **********";
+        Escribir "Nombre del cliente: ", nombre;
+        Escribir "Numero de películas alquiladas: ", numeroPeliculas;
+        Escribir "Valor a pagar $", numeroPeliculas*3000;
+        Escribir "Observaciones: ", observaciones;
+        Escribir "        Gracias por su visita. ";
+        
+    FinProceso
+                            </pre>
                         </div>
 
                         <div class="acordeon"  id="4-java">
@@ -129,6 +438,233 @@
                                 <i class="fa-brands fa-java"></i>  
                                 <i class="fa-solid fa-circle-chevron-up"></i>   
                             </a>
+                            <pre>
+    import java.util.Scanner;
+
+    public class Main {
+
+        public static void main(String[] args) {
+
+            Operacion operacion = new Operacion();
+            String nombre;
+            Scanner input = new Scanner(System.in);
+            int opcion, confirmacion;
+            confirmacion = 0;
+            System.out.print("Ingrese su nombre completo: ");
+            nombre = input.nextLine();
+            System.out.println("Bienvenido " + nombre);
+            System.out.println("Seleccione el número de la operación que desea realizar hoy, 
+            de las que se encuentran a continuación: ");
+            System.out.println("1. Alquilar una película.");
+            System.out.println("2. Consultar películas disponibles.");
+            System.out.println("3. Recibir película en la videotienda.");
+            opcion = input.nextInt();
+            switch (opcion){
+                case 1:// Caso para alquilar película.
+                    operacion.imprimirmenu();
+                    opcion = input.nextInt();
+                    confirmacion = operacion.alquilarPelicula(opcion);
+                    operacion.imprimirRecibo(nombre, confirmacion);
+                    break;
+                case 2:// caso para consultar películas disponibles.
+                    operacion.verDisponibles();
+                    break;
+                case 3: // caso para recibir pelicula con opción de hacer observaciones.
+                    operacion.imprimirmenu();
+                    opcion = input.nextInt();
+                    operacion.recibirPelicula(opcion, nombre);
+                    break;
+                default:
+                    System.out.println("La opción seleccionada no es válida.");
+                    break;
+            }
+        }
+    }
+
+    public class Operacion {
+        private final double valorAlquiler = 3000.0;
+        private String observaciones;
+        // Definición de peliculas disponibles y el número de copias.
+        Pelicula pelicula1 = new Pelicula("El señor de los anillos: La " +
+                "comunidad del anillo", 1);
+        Pelicula pelicula2 = new Pelicula("El Hobbit: La desolación de Smaug", 3);
+        Pelicula pelicula3 = new Pelicula("Transformars: El lado oscuro de la luna", 1);
+        Pelicula pelicula4 = new Pelicula("Batman vs Superman", 1);
+        Pelicula pelicula5 = new Pelicula("Avengers: Endgame", 3);
+
+    // Método para imprimir menú para seleccionar película que se quiere alquilar
+        public void imprimirmenu(){
+            System.out.println("Seleccione la película");
+            System.out.println("1. " + pelicula1.getNombre());
+            System.out.println("2. " + pelicula2.getNombre());
+            System.out.println("3. " + pelicula3.getNombre());
+            System.out.println("4. " + pelicula4.getNombre());
+            System.out.println("5. " + pelicula5.getNombre());
+        }
+        //Función para la opción de alquilar pelicula.
+        public int alquilarPelicula(int opc){
+            /*Según la opción escogida, va a imprimir un mensaje de la película alquilada 
+            y actualiza la cantidad de copias disponibles.
+            Si no hay copias disponibles de la película seleccionada imprime mensaje de no disponibilidad.
+            */
+            switch (opc){
+            case 1:
+                if (pelicula1.getNumeroCopias() > 0){
+                    System.out.println(pelicula1.getNombre() + " ha sido agregado.");
+                    pelicula1.setNumeroCopias(pelicula1.getNumeroCopias()-1);
+                    return 1;
+                }else {
+                    System.out.println("no hay copias disponibles de " + pelicula1.getNombre());
+                    return 0;
+                }
+            case 2:
+                if (pelicula2.getNumeroCopias() > 0){
+                    System.out.println(pelicula2.getNombre() + " ha sido agregado.");
+                    pelicula2.setNumeroCopias(pelicula2.getNumeroCopias()-1);
+                    return 2;
+                }else{
+                    System.out.println("no hay copias disponibles de " + pelicula2.getNombre());
+                    return 0;
+                }
+            case 3:
+                if (pelicula3.getNumeroCopias() > 0){
+                    System.out.println(pelicula3.getNombre() + " ha sido agregado.");
+                    pelicula3.setNumeroCopias(pelicula3.getNumeroCopias()-1);
+                    return 3;
+                }else{
+                    System.out.println("no hay copias disponibles de " + pelicula3.getNombre());
+                    return 0;
+                }
+            case 4:
+                if (pelicula4.getNumeroCopias() > 0){
+                    System.out.println(pelicula4.getNombre() + " ha sido agregado.");
+                    pelicula4.setNumeroCopias(pelicula4.getNumeroCopias()-1);
+                    return 4;
+                }else{
+                    System.out.println("no hay copias disponibles de " + pelicula4.getNombre());
+                    return 0;
+                }
+            case 5:
+                if (pelicula5.getNumeroCopias() > 0){
+                    System.out.println(pelicula5.getNombre() + " ha sido agregado.");
+                    pelicula5.setNumeroCopias(pelicula5.getNumeroCopias()-1);
+                    return 5;
+                }else{
+                    System.out.println("no hay copias disponibles de " + pelicula5.getNombre());
+                    return 0;
+                }
+            default:
+                return 0;
+        }
+        }
+        //Metodo para imprimir recibo con los datoa de la pelicula alquilada.
+        public void imprimirRecibo(String nombre, int confirmacion){
+            //Condicional va a imprimir el recibo solo si la película seleccinada esta disponible.
+            if (confirmacion != 0){
+                System.out.println("          Recibo de alquiler");
+                System.out.println("********** Video Tienda El Porvenir **********");
+                System.out.println("Nombre del cliente: " + nombre);
+                switch (confirmacion){
+                    case 1:
+                        System.out.println("Película alquilada: " + pelicula1.getNombre());
+                        break;
+                    case 2:
+                        System.out.println("Película alquilada: " + pelicula2.getNombre());
+                        break;
+                    case 3:
+                        System.out.println("Película alquilada: " + pelicula3.getNombre());
+                        break;
+                    case 4:
+                        System.out.println("Película alquilada: " + pelicula4.getNombre());
+                        break;
+                    case 5:
+                        System.out.println("Película alquilada: " + pelicula5.getNombre());
+                        break;
+                }
+                System.out.println("Valor del alquiler: $" + valorAlquiler);
+                System.out.println("        Gracias por su visita. ");
+
+            }
+        }
+        // Método para imprimir las películas que hay disponibles.
+        public void verDisponibles(){
+            System.out.println("nombre de película                                
+            copias disponibles");
+            System.out.println(pelicula1.getNombre() + "        " 
+            + pelicula1.getNumeroCopias());
+            System.out.println(pelicula2.getNombre() + "                       " 
+            + pelicula2.getNumeroCopias());
+            System.out.println(pelicula3.getNombre() + "                 " 
+            + pelicula3.getNumeroCopias());
+            System.out.println(pelicula4.getNombre() + "                                      " + 
+            pelicula4.getNumeroCopias());
+            System.out.println(pelicula5.getNombre() + "                                       " 
+            + pelicula5.getNumeroCopias());
+        }
+        // Método para recibir película
+        public void recibirPelicula(int opcion, String nombre){
+            int opc;
+            Scanner input = new Scanner(System.in);
+            Scanner input2 = new Scanner(System.in);
+            System.out.println("¿Tiene alguna observación?");
+            System.out.println("1. Si");
+            System.out.println("2. No");
+            opc = input.nextInt();
+            if(opc == 1){
+                System.out.println("Digite sus observaciones a continuación: ");
+                observaciones = input2.nextLine();
+            }else{
+                observaciones = "Ninguna";
+            }
+            System.out.println("          Comprobante de recepción de película");
+            System.out.println("********** Video Tienda El Porvenir **********");
+            System.out.println("Nombre del cliente: " + nombre);
+            switch (opcion){
+                case 1:
+                    System.out.println("Película alquilada: " + pelicula1.getNombre());
+                    break;
+                case 2:
+                    System.out.println("Película alquilada: " + pelicula2.getNombre());
+                    break;
+                case 3:
+                    System.out.println("Película alquilada: " + pelicula3.getNombre());
+                    break;
+                case 4:
+                    System.out.println("Película alquilada: " + pelicula4.getNombre());
+                    break;
+                case 5:
+                    System.out.println("Película alquilada: " + pelicula5.getNombre());
+                    break;
+            }
+            System.out.println("Observaciones: " + observaciones);
+
+        }
+    }
+
+    public class Pelicula {
+        private final String nombre;
+        private int numeroCopias;
+    
+        public Pelicula(String nombre, int numeroCopias){
+            this.nombre = nombre;
+            this.numeroCopias = numeroCopias;
+        }
+    
+        public String getNombre() {
+            return nombre;
+        }
+    
+        public int getNumeroCopias() {
+    
+            return numeroCopias;
+        }
+    
+        public void setNumeroCopias(int numeroCopias) {
+    
+            this.numeroCopias = numeroCopias;
+        }
+    }
+                            </pre>
                         </div>
                     </div>
                 </li>
@@ -142,20 +678,456 @@
 
                     <h3>Códigos de la solución</h3>
                     <div class="codigos">
-                        <div class="acordeon" id="4-pseint">
-                            <a href="#4-pseint" class="link">
+                        <div class="acordeon" id="5-pseint">
+                            <a href="#5-pseint" class="link">
                                 <p>Pseint</p>
                                 <img src="img/pseint.png">  
                                 <i class="fa-solid fa-circle-chevron-up"></i>   
                             </a>
+                            <pre>
+    Proceso punto_5
+        Definir opc Como Entero;
+        Definir opcProduct Como Entero;
+        Definir unidades Como Entero;
+        Definir valorItemSh Como Real;
+        Definir valorItemCd Como Real;
+        Definir valorItemJt Como Real;
+        Definir valorItemBe Como Real;
+        Definir valorItemAg Como Real;
+        Definir total Como Real;
+        Definir nombre Como Caracter;
+        Definir valorTicket Como Real;
+        Definir observaciones Como Caracter;
+        Escribir "Bienvenido a la droguería Mi Salud";
+        Escribir "¿Cuál es su nombre?";
+        Leer nombre;
+        opc <- 0;
+        valorItemSh <- 0;
+        valorItemCd <- 0;
+        valorItemJt <- 0;
+        valorItemBe <- 0;
+        valorItemAg <- 0;
+        Mientras opc <> 4 Hacer
+            Si opc=0 Entonces
+                Escribir "Seleccione la operación que desea realizar de las que se encuentran a continuación: ";
+                Escribir "1.Comprar productos.";
+                Escribir "2.Consultar precios.";
+                Escribir "3.Devoluciones.";
+                Leer opc;
+            SiNo
+                Segun opc Hacer
+                    1:
+                        Escribir "Digite la opción del producto que desea comprar: ";
+                        Escribir "1.Champú anticaspa.";
+                        Escribir "2.Crema de dientes.";
+                        Escribir "3.Jarabe para la tos.";
+                        Escribir "4.Bebida energizante.";
+                        Escribir "5.Botella de agua 600 ml.";
+                        Leer opcProduct;
+                        Escribir "Digite las unidades que desea comprar del producto";
+                        Leer unidades;
+                        Segun opcProduct Hacer
+                            1:
+                                valorItemSh <- (unidades * 10000) + valorItemSh;
+                                Escribir unidades," unidades de champú se han agregado a la cesta.";
+                                Escribir "Elija una opción a continuación: ";
+                                Escribir "0.Volver al menú principal.";
+                                Escribir "1.Agregar más productos a la cesta.";
+                                Escribir "2.Terminar compra.";
+                                Leer opc;
+                                si opc=2 Entonces
+                                    opc <- 4;
+                                FinSi
+                            2:
+                                valorItemCd <- (unidades * 3200.85) + valorItemCd;
+                                Escribir unidades," unidades de crema dental se han agregado a la cesta.";
+                                Escribir "Elija una opción a continuación: ";
+                                Escribir "0.Volver al menú principal.";
+                                Escribir "1.Agregar más productos a la cesta.";
+                                Escribir "2.Terminar compra.";
+                                Leer opc;
+                                si opc=2 Entonces
+                                    opc <- 4;
+                                FinSi
+                            3:
+                                valorItemJt <- (unidades * 5854.25) + valorItemJt;
+                                Escribir unidades," unidades de jarabe para la tos se han agregado a la cesta.";
+                                Escribir "Elija una opción a continuación: ";
+                                Escribir "0.Volver al menú principal.";
+                                Escribir "1.Agregar más productos a la cesta.";
+                                Escribir "2.Terminar compra.";
+                                Leer opc;
+                                si opc=2 Entonces
+                                    opc <- 4;
+                                FinSi
+                            4:
+                                valorItemBe <- (unidades * 9740.34) + valorItemBe;
+                                Escribir unidades," unidades de bebida energizante se han agregado a la cesta";
+                                Escribir "Elija una opción a continuación: ";
+                                Escribir "0.Volver al menú principal.";
+                                Escribir "1.Agregar más productos a la cesta.";
+                                Escribir "2.Terminar compra.";
+                                Leer opc;
+                                si opc=2 Entonces
+                                    opc <- 4;
+                                FinSi
+                            5:
+                                valorItemAg <- (unidades * 1200) + valorItemAg;
+                                Escribir unidades," unidades de agua se han agregado a la cesta";
+                                Escribir "Elija una opción a continuación: ";
+                                Escribir "0.Volver al menú principal.";
+                                Escribir "1.Agregar más productos a la cesta.";
+                                Escribir "2.Terminar compra.";
+                                Leer opc;
+                                si opc=2 Entonces
+                                    opc <- 4;
+                                FinSi
+                            De Otro Modo:
+                                Escribir "No existe un producto con la opción escogida";
+                                opc <- 1;
+                                Limpiar Pantalla;
+                        FinSegun
+                    2:
+                        Escribir " Producto                              valor unitario";
+                        Escribir "1.Champú anticaspa       *************    $ 10000";
+                        Escribir "2.Crema de dientes       *************    $ 3200.85";
+                        Escribir "3.Jarabe para la tos     *************    $ 5854.25";
+                        Escribir "4.Bebida energizante     *************    $ 9740.34";
+                        Escribir "5.Botella de agua 600 ml *************    $ 1200";
+                        Escribir "Elija una opción a continuación: ";
+                        Escribir "0.Volver al menú principal.";
+                        Escribir "1.Comprar productos.";
+                        Escribir "2.Terminar consulta.";
+                        Leer opc;
+                        si opc=2 Entonces
+                            opc <- 4;
+                        FinSi
+                    3:
+                        Escribir "Seleccione la opción del producto que desea cambiar 
+                        (recuerde que puede cambiar solo un tipo de producto a la vez): ";
+                        Escribir "1.Champú anticaspa.";
+                        Escribir "2.Crema de dientes.";
+                        Escribir "3.Jarabe para la tos.";
+                        Escribir "4.Bebida energizante.";
+                        Escribir "5.Botella de agua 600 ml.";
+                        Leer opcProduct;
+                        Escribir "Digite las unidades del producto que necesitan cambio";
+                        Leer unidades;
+                        Escribir "Escriba a continuación los motivos del cambio: ";
+                        Leer observaciones;
+                        Segun opcProduct Hacer
+                            1:
+                                valorTicket <- (unidades * 10000);
+                            2:
+                                valorTicket <- (unidades * 3200.85) ;
+                                
+                            3:
+                                valorTicket <- (unidades * 5854.25);
+                                
+                            4:
+                                valorTicket <- (unidades * 9740.34);
+                                
+                            5:
+                                valorTicket <- (unidades * 1200);
+                            De Otro Modo:
+                                Escribir "No existe un producto con la opción seleccionada.";
+                                opc <- 3;
+                                Limpiar Pantalla;
+                        FinSegun
+                        Limpiar Pantalla;
+                        Escribir "************* Droguería Mi Salud *************";
+                        Escribir "************* Ticket de cambio *************";
+                        Escribir "Nombre del cliente: ", nombre;
+                        Escribir "Valor del Ticket: ", valorTicket;
+                        Escribir "Observaciones: ", observaciones;
+                        Escribir "El presente ticket puede ser redimido en su próxima compra mayor o 
+                        igual al valor descrito.";
+                        opc <- 4;
+                    De Otro Modo:
+                        Escribir "La opción escogida no es válida.";
+                FinSegun
+            FinSi
+        FinMientras
+        total <- valorItemAg + valorItemBe + valorItemCd + valorItemJt + valorItemSh;
+        Si total > 0 Entonces
+            Limpiar Pantalla;
+            Escribir "************* Droguería Mi Salud *************";
+            Escribir "************* Factura de venta *************";
+            Escribir "Nombre del cliente: ", nombre;
+            Escribir "Producto         Cantidad           Valor ";
+            Si valorItemAg > 0 Entonces
+                Escribir "Agua 600ml          ",valorItemAg/1200, "               $",valorItemAg;
+            FinSi
+            Si valorItemBe > 0 Entonces
+                Escribir "Bebida energizante  ",valorItemBe/9740.34, "               $",valorItemBe;
+            FinSi
+            Si valorItemCd > 0 Entonces
+                Escribir "Crema de dientes    ",valorItemCd/3200.85, "               $",valorItemCd;
+            FinSi
+            Si valorItemJt > 0 Entonces
+                Escribir "Jarabe para la tos  ",valorItemJt/5854.25, "               $",valorItemJt;
+            FinSi
+            Si valorItemSh > 0 Entonces
+                Escribir "Champú              ",valorItemSh/10000, "               $",valorItemSh;
+            FinSi
+            Escribir "Total                               $",total;
+        FinSi
+        Escribir "******** Gracias por su visita. ********";
+    FinProceso
+                            </pre>
                         </div>
 
-                        <div class="acordeon"  id="4-java">
-                            <a href="#4-Java" class="link">
+                        <div class="acordeon"  id="5-java">
+                            <a href="#5-Java" class="link">
                                 <p>Java</p>
                                 <i class="fa-brands fa-java"></i>  
                                 <i class="fa-solid fa-circle-chevron-up"></i>   
                             </a>
+                            <pre>
+    import java.util.Scanner;
+
+    public class Main {
+
+        //Inicialización de atributos de cada producto de la drogueria
+        static Producto champu = new Producto("Champú anticaspa.", 0, 10000.0);
+        static Producto crema = new Producto("Crema de dientes.", 0, 3200.85);
+        static Producto jarabe = new Producto("Jarabe para la tos.", 0, 5854.25);
+        static Producto bebida = new Producto("Bebida energizante.", 0, 9740.34);
+        static Producto agua = new Producto("Botella de agua 600 ml.", 0, 1200.0);
+        public static void main(String[] args) {
+            int opcion, opcionProducto, cantidad;
+            String nombre, observaciones;
+            Scanner input = new Scanner(System.in);
+            Scanner inputString = new Scanner(System.in);
+            double totalCompra;
+            totalCompra = 0;
+            System.out.println("Bienvenido a la droguería Mi Salud");
+            System.out.println("¿Cuál es su nombre?");
+            nombre = inputString.nextLine();
+            //Impresión del menú para escoger la operación a realizar.
+            System.out.println("Seleccione la operación que desea realizar de las que se 
+            encuentran a continuación: ");
+            System.out.println("1. Comprar productos.");
+            System.out.println("2. Consultar Precios.");
+            System.out.println("3. Hacer devolucion de productos.");
+            opcion = input.nextInt();
+            switch (opcion){
+                case 1: // Caso para la opción de comprar productos.
+                    //Ciclo que finaliza cuando el usuario indique que ya escogio todos los productos 
+                    //que va a comprar.
+                    do {
+                        System.out.println("Digite la opción del producto que desea comprar: ");
+                        imprimirMenuProductos();
+                        opcionProducto = input.nextInt();
+                        if (opcionProducto < 6 && opcionProducto > 0){
+                        totalCompra = totalCompra + comprarProductos(input, opcionProducto);
+                        }else{
+                            System.out.println("Seleccione una opción válida.");
+                        }
+                        System.out.println("Elija una opción a continuación: ");
+                        System.out.println("1.Agregar más productos a la cesta.");
+                        System.out.println("2.Terminar compra.");
+                        opcion = input.nextInt();
+                    }while (opcion != 2);
+                    // Se imprime el recibo de compra si hay productos en la cesta.
+                    if(totalCompra > 0){
+                        imprimirRecibo(nombre, totalCompra);
+                    }else {
+                        System.out.println("Operación finalizada.");
+                    }
+                    break;
+                case 2: // Caso para la opción de consultar precios.
+                    mostrarPrecios();
+                    break;
+                case 3: // Caso para hacer devoluciones
+                    System.out.println("Digite la opción del producto que desea cambiar: ");
+                    imprimirMenuProductos();
+                    opcionProducto = input.nextInt();
+                    System.out.println("Digite las unidades del producto que necesitan cambio");
+                    cantidad = input.nextInt();
+                    System.out.println("Escriba a continuación los motivos del cambio: ");
+                    observaciones = inputString.nextLine();
+                    // Generar ticket de cambio.
+                    generarTicket(nombre, observaciones, cantidad, opcionProducto);
+                    break;
+                default:
+                    break;
+            }
+
+        }
+        //Método para imprimir menú con los productos de la droguería.
+        public static void imprimirMenuProductos(){
+            System.out.println("1. " + champu.getNombre());
+            System.out.println("2. " + crema.getNombre());
+            System.out.println("3. " + jarabe.getNombre());
+            System.out.println("4. " + bebida.getNombre());
+            System.out.println("5. " + agua.getNombre());
+        }
+        // Método para calcular el valor del producto seleccionado.
+        public static double comprarProductos(Scanner input, int opcion){
+            int unidades;
+            double totalProducto;
+            totalProducto = 0.0;
+                System.out.println("¿Cuántas unidades desea comprar del producto?");
+                unidades = input.nextInt();
+                switch (opcion){
+                    case 1:
+                        champu.setUnidadesCompradas(unidades + champu.getUnidadesCompradas());
+                        champu.setValorCompra((champu.getUnidadesCompradas() * champu.getPrecio()));
+                        System.out.println(unidades + " unidades de " + champu.getNombre() + " 
+                        se han agregado a la cesta.");
+                        totalProducto = unidades * champu.getPrecio();
+                        break;
+                    case 2:
+                        crema.setUnidadesCompradas(unidades + crema.getUnidadesCompradas());
+                        crema.setValorCompra(crema.getUnidadesCompradas() * crema.getPrecio());
+                        System.out.println(unidades + " unidades de " + crema.getNombre() + " 
+                        se han agregado a la cesta.");
+                        totalProducto = unidades * crema.getPrecio();
+                        break;
+                    case 3:
+                        jarabe.setUnidadesCompradas(unidades + jarabe.getUnidadesCompradas());
+                        jarabe.setValorCompra(jarabe.getUnidadesCompradas() * jarabe.getPrecio());
+                        System.out.println(unidades + " unidades de " + jarabe.getNombre() + " 
+                        se han agregado a la cesta.");
+                        totalProducto = unidades * jarabe.getPrecio();
+                        break;
+                    case 4:
+                        bebida.setUnidadesCompradas(unidades + bebida.getUnidadesCompradas());
+                        bebida.setValorCompra(bebida.getUnidadesCompradas() * bebida.getPrecio());
+                        System.out.println(unidades + " unidades de " + bebida.getNombre() + " 
+                        se han agregado a la cesta.");
+                        totalProducto = unidades * bebida.getPrecio();
+                        break;
+                    case 5:
+                        agua.setUnidadesCompradas(unidades + agua.getUnidadesCompradas());
+                        agua.setValorCompra(agua.getUnidadesCompradas() * agua.getPrecio());
+                        System.out.println(unidades + " unidades de " + agua.getNombre() + " 
+                        se han agregado a la cesta.");
+                        totalProducto = unidades * agua.getPrecio();
+                        break;
+                }
+                return totalProducto;
+            }
+            // Método para imprimir el recibo con los productos comprados.
+            public static void imprimirRecibo(String nombre, double total){
+                System.out.println("************* Droguería Mi Salud *************");
+                System.out.println("************* Factura de venta *************");
+                System.out.println("Nombre del cliente: " + nombre);
+                System.out.println("Producto                  Cantidad           Valor ");
+                if (agua.getValorCompra() > 0){
+                    System.out.println(agua.getNombre() + "     " + agua.getUnidadesCompradas()
+                            + "              $" + agua.getValorCompra());
+                }
+                if (bebida.getValorCompra() > 0){
+                    System.out.println(bebida.getNombre() + "         " + bebida.getUnidadesCompradas()
+                            + "              $" + bebida.getValorCompra());
+                }
+                if (champu.getValorCompra() > 0){
+                    System.out.println(champu.getNombre() + "           " + champu.getUnidadesCompradas()
+                            + "              $" + champu.getValorCompra());
+                }
+                if (crema.getValorCompra() > 0){
+                    System.out.println(crema.getNombre() + "           " + crema.getUnidadesCompradas()
+                            + "              $" + crema.getValorCompra());
+                }
+                if (jarabe.getValorCompra() > 0){
+                    System.out.println(jarabe.getNombre() + "         " + jarabe.getUnidadesCompradas()
+                            + "              $" + jarabe.getValorCompra());
+                }
+                System.out.println("Total                                      $" + total);
+                System.out.println("******** Gracias por su visita. ********");
+            }
+        // Método para imprimir los productos de la droguería con sus respectivos precios.
+            public static void mostrarPrecios(){
+                System.out.println(" Producto                              valor unitario");
+                System.out.println(champu.getNombre() + "       *************    $ " + champu.getPrecio());
+                System.out.println(crema.getNombre() + "       *************    $ " + crema.getPrecio());
+                System.out.println(jarabe.getNombre() + "     *************    $ " + jarabe.getPrecio());
+                System.out.println(bebida.getNombre() + "     *************    $ " + bebida.getPrecio());
+                System.out.println(agua.getNombre() + " *************    $ " + agua.getPrecio());
+            }
+            public static void generarTicket(String nombre, String observaciones, int cantidad, int opcion){
+                System.out.println("************* Droguería Mi Salud *************");
+                System.out.println("************* Ticket de cambio *************");
+                System.out.println("Nombre del cliente: " + nombre);
+                switch (opcion){
+                    case 1:
+                        System.out.println("Producto cambiado: " + champu.getNombre());
+                        System.out.println("Unidades cambiadas: " + cantidad);
+                        System.out.println("Valor del ticket: $ " + (champu.getPrecio() * cantidad));
+                        break;
+                    case 2:
+                        System.out.println("Producto cambiado: " + crema.getNombre());
+                        System.out.println("Unidades cambiadas: " + cantidad);
+                        System.out.println("Valor del ticket: $ " + (crema.getPrecio() * cantidad));
+                        break;
+                    case 3:
+                        System.out.println("Producto cambiado: " + jarabe.getNombre());
+                        System.out.println("Unidades cambiadas: " + cantidad);
+                        System.out.println("Valor del ticket: $ " + (jarabe.getPrecio() * cantidad));
+                        break;
+                    case 4:
+                        System.out.println("Producto cambiado: " + bebida.getNombre());
+                        System.out.println("Unidades cambiadas: " + cantidad);
+                        System.out.println("Valor del ticket: $ " + (bebida.getPrecio() * cantidad));
+                        break;
+                    case 5:
+                        System.out.println("Producto cambiado: " + agua.getNombre());
+                        System.out.println("Unidades cambiadas: " + cantidad);
+                        System.out.println("Valor del ticket: $ " + (agua.getPrecio() * cantidad));
+                        break;
+                    default:
+                        System.out.println("La opción seleccionada no corresponde a ningún producto de nuestro catalogo");
+                        break;
+                }
+                System.out.println("Observaciones: " + observaciones);
+                System.out.println("El presente ticket puede ser redimido en su próxima compra mayor o igual al valor descrito.");
+            }
+        }
+
+        public class Producto {
+            // Clase producto permite crear objetos con sus atributos nombre, precio y cantidad.
+        
+            //Atributos:
+            private final double precio;
+            private double valorCompra;
+            private int unidadesCompradas;
+            private final String nombre;
+            //Constructor para inicializar valores de los atributos
+            public Producto(String nombre, int unidades, double precio){
+                this.nombre = nombre;
+                this.unidadesCompradas = unidades;
+                this.precio = precio;
+            }
+        
+        
+            public void setUnidadesCompradas(int unidadesCompradas) {
+                this.unidadesCompradas = unidadesCompradas;
+            }
+        
+            public double getPrecio() {
+                return precio;
+            }
+        
+            public int getUnidadesCompradas() {
+                return unidadesCompradas;
+            }
+        
+            public String getNombre() {
+                return nombre;
+            }
+        
+            public double getValorCompra() {
+                return valorCompra;
+            }
+        
+            public void setValorCompra(double valorCompra) {
+                this.valorCompra = valorCompra;
+            }
+        }
+
+                            </pre>
                         </div>
                     </div>
                 </li>
@@ -169,20 +1141,179 @@
                     entregarla.
                     <h3>Códigos de la solución</h3>
                     <div class="codigos">
-                        <div class="acordeon" id="4-pseint">
-                            <a href="#4-pseint" class="link">
+                        <div class="acordeon" id="6-pseint">
+                            <a href="#6-pseint" class="link">
                                 <p>Pseint</p>
                                 <img src="img/pseint.png">  
                                 <i class="fa-solid fa-circle-chevron-up"></i>   
                             </a>
+                            <pre>
+    Proceso punto_6
+        Definir nombre Como Caracter;
+        Definir marca Como Caracter;
+        Definir cilindraje Como Caracter;
+        Definir modelo Como Caracter;
+        Definir observaciones Como Caracter;
+        Definir opc Como Entero;
+        Escribir "          El Maquinista";
+        Escribir "Ingrese el nombre del cliente: ";
+        Leer nombre;
+        Escribir "Seleccione la opción de la operación que desea realizar: ";
+        Escribir "1. Registrar ingreso de motocicleta";
+        Escribir "2. Registrar novedades de motocicleta";
+        Escribir "3. Registrar reparaciones de motocicleta";
+        Leer opc;
+        Segun opc Hacer
+            1:
+                Escribir "Marca de motocicleta: ";
+                Leer marca;
+                Escribir "Cilindraje:";
+                Leer cilindraje;
+                Escribir "Modelo: ";
+                Leer modelo;
+                Escribir "Observaciones del cliente: ";
+                Leer observaciones;
+            2:
+                Escribir "Marca de motocicleta: ";
+                Leer marca;
+                Escribir "Cilindraje:";
+                Leer cilindraje;
+                Escribir "Modelo: ";
+                Leer modelo;
+                Escribir "Novedades sobre la motocicleta: ";
+                Leer observaciones;
+            3:
+                Escribir "Marca de motocicleta: ";
+                Leer marca;
+                Escribir "Cilindraje:";
+                Leer cilindraje;
+                Escribir "Modelo: ";
+                Leer modelo;
+                Escribir "Reparaciones realizadas: ";
+                Leer observaciones;
+            De Otro Modo:
+                Escribir "Opción no válida";
+        FinSegun
+        Segun opc Hacer
+            1:
+                Escribir "          El Maquinista";
+                Escribir "Motoclicleta ingresada con exito";
+                Escribir "Nombre del cliente: ", nombre;
+                Escribir "Marca de motocicleta: ", marca;
+                Escribir "Cilindraje: ", cilindraje;
+                Escribir "Modelo: ", modelo;
+                Escribir "Observaciones del cliente: ", observaciones;
+            2:
+                Escribir "          El Maquinista";
+                Escribir "Novedades de motocicleta";
+                Escribir "Nombre del cliente: ", nombre;
+                Escribir "Marca de motocicleta: ", marca;
+                Escribir "Cilindraje: ", cilindraje;
+                Escribir "Modelo: ", modelo;
+                Escribir "Novedades de salida: ", observaciones;
+            3:
+                Escribir "          El Maquinista";
+                Escribir "Salida de motocicleta";
+                Escribir "Nombre del cliente: ", nombre;
+                Escribir "Marca de motocicleta: ", marca;
+                Escribir "Cilindraje: ", cilindraje;
+                Escribir "Modelo: ", modelo;
+                Escribir "Reparaciones: ", observaciones;
+        FinSegun
+    FinProceso
+                            </pre>
                         </div>
 
-                        <div class="acordeon"  id="4-java">
-                            <a href="#4-Java" class="link">
+                        <div class="acordeon"  id="6-java">
+                            <a href="#6-Java" class="link">
                                 <p>Java</p>
                                 <i class="fa-brands fa-java"></i>  
                                 <i class="fa-solid fa-circle-chevron-up"></i>   
                             </a>
+                            <pre>
+    import java.util.Scanner;
+
+    public class Main {
+        public static void main(String[] args) {
+
+            Scanner input = new Scanner(System.in);
+            Scanner inputInt = new Scanner(System.in);
+            int opcion;
+            String observaciones, nombre;
+            Motocicleta moto = new Motocicleta();
+            System.out.println("          El Maquinista");
+            System.out.print("Ingrese el nombre del cliente: ");
+            nombre = input.nextLine();
+            //Imprimir menú para seleccionar la operación a realizar.
+            System.out.println("Seleccione la opción de la operación que desea realizar: ");
+            System.out.println("1. Registrar ingreso de motocicleta");
+            System.out.println("2. Registrar novedades de motocicleta");
+            System.out.println("3. Registrar reparaciones de motocicleta");
+            opcion = inputInt.nextInt();
+            if (opcion > 0 && opcion < 4){
+                System.out.println("Ingrese los datos de la motocicleta");
+                System.out.print("Marca: ");
+                moto.setMarca(input.nextLine());
+                System.out.print("Cilindraje: ");
+                moto.setCilindraje(input.nextLine());
+                System.out.print("Modelo: ");
+                moto.setModelo(input.nextLine());
+                switch (opcion) {
+                    case 1 -> System.out.println("Observaciones del cliente: ");
+                    case 2 -> System.out.println("Novedades sobre la motocicleta: ");
+                    case 3 -> System.out.println("Reparaciones realizadas: ");
+                }
+                observaciones = input.nextLine();
+                imprimirDatos(opcion, nombre, observaciones, moto);
+            }else {
+                System.out.println("Opción no válida.");
+            }
+        }
+        //Método para imprimir los datos de la operación
+        public static void imprimirDatos(int opcion, String nombre, String observaciones, Motocicleta motocicleta){
+            System.out.println("          El Maquinista");
+            System.out.println("Nombre del cliente: " + nombre);
+            System.out.println("Marca de motocicleta: " + motocicleta.getMarca());
+            System.out.println("Cilindaje: " + motocicleta.getCilindraje());
+            System.out.println("Modelo: " + motocicleta.getModelo());
+            switch (opcion) {
+                case 1 -> System.out.println("Observaciones del cliente: " + observaciones);
+                case 2 -> System.out.println("Novedades de salida: " + observaciones);
+                case 3 -> System.out.println("Reparaciones: " + observaciones);
+            }
+        }
+    }
+
+    public class Motocicleta {
+        private String marca;
+        private String cilindraje;
+        private String modelo;
+    
+        public String getMarca() {
+            return marca;
+        }
+    
+        public void setMarca(String marca) {
+            this.marca = marca;
+        }
+    
+        public String getCilindraje() {
+            return cilindraje;
+        }
+    
+        public void setCilindraje(String cilindraje) {
+            this.cilindraje = cilindraje;
+        }
+    
+        public String getModelo() {
+            return modelo;
+        }
+    
+        public void setModelo(String modelo) {
+            this.modelo = modelo;
+        }
+    }
+                            </pre>
                         </div>
                     </div>
                 </li>
@@ -195,20 +1326,141 @@
 
                     <h3>Códigos de la solución</h3>
                     <div class="codigos">
-                        <div class="acordeon" id="4-pseint">
-                            <a href="#4-pseint" class="link">
+                        <div class="acordeon" id="7-pseint">
+                            <a href="#7-pseint" class="link">
                                 <p>Pseint</p>
                                 <img src="img/pseint.png">  
                                 <i class="fa-solid fa-circle-chevron-up"></i>   
                             </a>
+                            <pre>
+    Proceso punto_7
+        Definir nombre Como Caracter;
+        Definir peso Como Real;
+        Definir estatura Como Real;
+        Definir estado Como Caracter;
+        Definir imc Como Real;
+        
+        Escribir "Secretaria de Salud Municipal";
+        Escribir "Nombre del paciente: ";
+        Leer nombre;
+        Escribir "Peso en kilogramos: ";
+        Leer peso;
+        Escribir "Estatura en metros: ";
+        Leer estatura;
+        si estatura > 0 Entonces
+            imc <- peso / (estatura ^ 2);
+            Si imc <= 18.5 Entonces
+                estado <- "Bajo peso";
+            SiNo
+                Si imc > 18.5 && imc <= 24.9 Entonces
+                    estado <- "Normal";
+                SiNo
+                    Si imc > 24.9 && imc <= 29.9 Entonces
+                        estado <- "Sobrepeso";
+                    SiNo
+                        estado <- "Obeso";
+                    FinSi
+                FinSi
+            FinSi
+            Limpiar Pantalla;
+            Escribir "Secretaria de Salud Municipal";
+            Escribir "Nombre del paciente: ", nombre;
+            Escribir "Peso en kilogramos: ",peso;
+            Escribir "Estatura en metros: ", estatura;
+            Escribir "IMC(índice de masa corporal):", imc;
+            Escribir "Clasificación: ", estado;
+        SiNo
+            Escribir "La estatura debe ser mayor a cero.";
+        FinSi
+        
+    FinProceso
+                            </pre>
                         </div>
 
-                        <div class="acordeon"  id="4-java">
-                            <a href="#4-Java" class="link">
+                        <div class="acordeon"  id="7-java">
+                            <a href="#7-Java" class="link">
                                 <p>Java</p>
                                 <i class="fa-brands fa-java"></i>  
                                 <i class="fa-solid fa-circle-chevron-up"></i>   
                             </a>
+                            <pre>
+    import java.util.Scanner;
+
+    // Aplicación que calcula el IMC tomando los datos de peso en kilogramos y  la estatura en metros.
+    public class Main {
+        public static void main(String[] args) {
+
+            Scanner input = new Scanner(System.in);
+            Persona persona = new Persona();
+            //Solicitud de los datos para calcular el IMC
+            System.out.println("Secretaria de Salud Municipal");
+            System.out.println("Ingrese los datos solicitados a continuación: ");
+            System.out.print("Nombre del paciente: ");
+            persona.setNombre(input.nextLine());
+            System.out.print("Peso en kilogramos: ");
+            persona.setPeso(input.nextDouble());
+            System.out.print("Estatura en metros: ");
+            persona.setEstatura(input.nextDouble());
+            //Calcular el IMC y imprimir los datos del paciente.
+            persona.calcularIMC();
+            persona.clasificarIMC();
+            System.out.println(persona);
+        }
+    }
+
+    public class Persona {
+        private String nombre;
+        private String estado;
+        private double peso;
+        private double estatura;
+        private double imc;
+        // Métodos Set de las variables.
+    
+        public void setNombre(String nombre) {
+            this.nombre = nombre;
+        }
+    
+        public void setPeso(double peso) {
+            this.peso = peso;
+        }
+    
+        public void setEstatura(double estatura) {
+            this.estatura = estatura;
+        }
+    
+        // Método para calcular el IMC con la fórmula imc = peso / (estatura)^2
+        public void calcularIMC(){
+            if (this.estatura > 0)
+            this.imc = this.peso / Math.pow(this.estatura, 2);
+            else
+                System.out.println("La estatura debe ser mayor a cero.");
+        }
+    
+        //Método que clasifica el grupo en el que se encuentra la persona según el valor del IMC.
+        public void clasificarIMC(){
+            if (this.imc <= 18.5){
+                this.estado = "Bajo peso";
+            } else if (this.imc > 18.5 && this.imc <= 24.9) {
+                this.estado = "Peso normal";
+            } else if (this.imc > 24.9 && this.imc <= 29.9) {
+                this.estado = "Sobrepeso";
+            }else {
+                this.estado = "Obeso";
+            }
+        }
+    
+        @Override
+        public String toString() {
+            if (this.imc != 0) {
+                return "Nombre= " + nombre +
+                        "\nClasificación IMC= " + estado +
+                        "\nPeso= " + peso +
+                        "\nEstatura= " + estatura +
+                        "\nIMC= " + imc;
+            }else return "No se pudo calcular el IMC";
+        }
+    }
+                            </pre>
                         </div>
 
                         <div>
@@ -226,20 +1478,1030 @@
                     diariamente.
                     <h3>Códigos de la solución</h3>
                     <div class="codigos">
-                        <div class="acordeon" id="4-pseint">
-                            <a href="#4-pseint" class="link">
+                        <div class="acordeon" id="8-pseint">
+                            <a href="#8-pseint" class="link">
                                 <p>Pseint</p>
                                 <img src="img/pseint.png">  
                                 <i class="fa-solid fa-circle-chevron-up"></i>   
                             </a>
+                            <pre>
+    Proceso punto_8
+        Definir opc, opcSabor, opcPorciones, opcDecoracion, unidades Como Entero;
+        Definir precioChocolate5, precioChocolate10, precioChocolate20 Como Real;
+        Definir cantidadChocolate5, cantidadChocolate10, cantidadChocolate20, cantidadChocolate Como Entero;
+        Definir precioShortcake10, precioShortcake20 Como Real;
+        Definir cantidadShortcake10, cantidadShortcake20, cantidadShortcake Como Entero;
+        Definir precioTresLeches8, precioTresLeches12 Como Real;
+        Definir cantidadTresLeches8, cantidadTresLeches12, cantidadTresLeches Como Entero;
+        Definir totalCliente, totalVenta Como Real;
+        Definir nombre, decoracion Como Caracter;
+        opc <- 0;
+        precioChocolate5 <- 37900;
+        precioChocolate10 <- 61800;
+        precioChocolate20 <- 95300;
+        cantidadChocolate5 <- 3;
+        cantidadChocolate10 <- 5;
+        cantidadChocolate20 <- 1;
+        cantidadChocolate <- cantidadChocolate10 + cantidadChocolate20 + cantidadChocolate5;
+        precioShortcake10 <- 88100;
+        precioShortcake20 <- 126600;
+        cantidadShortcake10 <- 2;
+        cantidadShortcake20 <- 3;
+        cantidadShortcake <- cantidadShortcake10 + cantidadShortcake20;
+        precioTresLeches8 <- 27500;
+        precioTresLeches12 <- 74700;
+        cantidadTresLeches8 <- 2;
+        cantidadTresLeches12 <- 1;
+        cantidadTresLeches <- cantidadTresLeches8 + cantidadTresLeches12;
+        totalCliente <- 0;
+        totalVenta <- 0;
+        Mientras opc <> 4 Hacer
+            
+            Si opc = 0 Entonces
+                Escribir "Seleccione la operación que desea realizar: ";
+                Escribir "1. Registrar pedido";
+                Escribir "2. Mostrar tortas disponibles";
+                Escribir "3. Mostrar ventas del dia";
+                Leer opc;
+            FinSi
+            
+            Segun opc Hacer
+                1:
+                    Escribir "¿Qué torta desea ordenar?";
+                    Escribir "1. Torta de chocolate";
+                    Escribir "2. Shortcake";
+                    Escribir "3. Torta de tres leches";
+                    Leer opcSabor;
+                    Segun opcSabor Hacer
+                        1:
+                            Si cantidadChocolate > 0 Entonces
+                                Si cantidadChocolate5 > 0 y cantidadChocolate10 > 0 y 
+                                cantidadChocolate20 > 0 Entonces
+                                    Escribir "Seleccione el número de porciones de la torta: ";
+                                    Escribir "1. 5 porciones";
+                                    Escribir "2. 10 porciones";
+                                    Escribir "3. 20 porciones";
+                                    Leer opcPorciones;
+                                SiNo
+                                    Si cantidadChocolate5 > 0 y cantidadChocolate10 > 0 Entonces
+                                        Escribir "Seleccione el número de porciones de la torta: ";
+                                        Escribir "1. 5 porciones";
+                                        Escribir "2. 10 porciones";
+                                        Leer opcPorciones;
+                                    SiNo
+                                        Si cantidadChocolate5 > 0 y cantidadChocolate20 > 0 Entonces
+                                            Escribir "Seleccione el número de porciones de la torta: ";
+                                            Escribir "1. 5 porciones";
+                                            Escribir "3. 20 porciones";
+                                            Leer opcPorciones;
+                                        SiNo
+                                            Si cantidadChocolate10 > 0 y cantidadChocolate20 > 0 Entonces
+                                                Escribir "Seleccione el número de porciones de la torta: ";
+                                                Escribir "2. 10 porciones";
+                                                Escribir "3. 20 porciones";
+                                                Leer opcPorciones;
+                                            SiNo
+                                                Si cantidadChocolate5 > 0 Entonces
+                                                    Escribir "tenemos ", cantidadChocolate5, " unidades 
+                                                    de torta de 5 porciones";
+                                                    opcPorciones <- 1;
+                                                SiNo
+                                                    Si cantidadChocolate10 > 0 Entonces
+                                                        Escribir "tenemos ", cantidadChocolate10, " 
+                                                        unidades de torta de 10 porciones";
+                                                        opcPorciones <- 2;
+                                                    SiNo
+                                                        Si cantidadChocolate20 > 0 Entonces
+                                                            Escribir "tenemos ", cantidadChocolate20, " 
+                                                            unidades de torta de 20 porciones";
+                                                            opcPorciones <- 3;
+                                                        FinSi
+                                                    FinSi
+                                                FinSi
+                                            FinSi
+                                        FinSi
+                                    FinSi
+                                FinSi
+                                Escribir "¿Cuantas tortas va a llevar?";
+                                Leer unidades;
+                                Escribir "Nombre del cliente: ";
+                                Leer nombre;
+                                Segun opcPorciones Hacer
+                                    1:
+                                        Si unidades <= cantidadChocolate5 Entonces
+                                            totalCliente <- precioChocolate5 * unidades;
+                                            totalVenta <- totalVenta + totalCliente;
+                                            cantidadChocolate5 <- cantidadChocolate5 - unidades;
+                                            cantidadChocolate <- cantidadChocolate - unidades;
+                                        SiNo
+                                            Escribir "Solo tenemos ", cantidadChocolate5, 
+                                            "tortas de 5 porciones disponibles";
+                                            unidades <- cantidadChocolate5;
+                                            totalCliente <- precioChocolate5 * unidades;
+                                            totalVenta <- totalVenta + totalCliente;
+                                            cantidadChocolate5 <- 0;
+                                            cantidadChocolate <- cantidadChocolate - unidades;
+                                        FinSi
+                                        
+                                    2:
+                                        Si unidades <= cantidadChocolate10 Entonces
+                                            totalCliente <- precioChocolate10 * unidades;
+                                            totalVenta <- totalVenta + totalCliente;
+                                            cantidadChocolate10 <- cantidadChocolate10 - unidades;
+                                            cantidadChocolate <- cantidadChocolate - unidades;
+                                        SiNo
+                                            Escribir "Solo tenemos ", cantidadChocolate10, 
+                                            "tortas de 5 porciones disponibles";
+                                            unidades <- cantidadChocolate10;
+                                            totalCliente <- precioChocolate10 * unidades;
+                                            totalVenta <- totalVenta + totalCliente;
+                                            cantidadChocolate10 <- 0;
+                                            cantidadChocolate <- cantidadChocolate - unidades;
+                                        FinSi
+                                    3:
+                                        Si unidades <= cantidadChocolate20 Entonces
+                                            totalCliente <- precioChocolate20 * unidades;
+                                            totalVenta <- totalVenta + totalCliente;
+                                            cantidadChocolate20 <- cantidadChocolate20 - unidades;
+                                            cantidadChocolate <- cantidadChocolate - unidades;
+                                        SiNo
+                                            Escribir "Solo tenemos ", cantidadChocolate20, "tortas de 5 porciones disponibles";
+                                            unidades <- cantidadChocolate20;
+                                            totalCliente <- precioChocolate20 * unidades;
+                                            totalVenta <- totalVenta + totalCliente;
+                                            cantidadChocolate10 <- 0;
+                                            cantidadChocolate <- cantidadChocolate - unidades;
+                                        FinSi
+                                    De Otro Modo:
+                                        Escribir "Opción no válida";
+                                FinSegun
+                                Si totalCliente > 0 Entonces
+                                    Escribir "Seleccione un recubrimiento";
+                                    Escribir "1.Cubierta de crema de chocolate, decorada 
+                                    con hojuelas de chocolate y fresas.";
+                                    Escribir "2.Cubierta con crema de leche, decorada 
+                                    con hojuelas de chocolate y trozos de durazno.";
+                                    Escribir "Otra opción. Sin recubrimiento.";
+                                    Leer opcDecoracion;
+                                    Segun opcDecoracion Hacer
+                                        1:
+                                            Limpiar Pantalla;
+                                            decoracion <- "Cubierta de crema de chocolate, 
+                                            decorada con hojuelas de chocolate y fresas.";
+                                            Escribir "Nombre del cliente: ", nombre;
+                                            Escribir "Sabor de la torta: Chocolate";
+                                            Escribir "Decoración: ", decoracion;
+                                            Escribir "Total a pagar: ", totalCliente;
+                                        2:
+                                            Limpiar Pantalla;
+                                            decoracion <- "Cubierta con crema de leche, 
+                                            decorada con hojuelas de chocolate 
+                                            y trozos de durazno.";
+                                            Escribir "Nombre del cliente: ", nombre;
+                                            Escribir "Sabor de la torta: Chocolate";
+                                            Escribir "Decoración: ", decoracion;
+                                            Escribir "Total a pagar: ", totalCliente;
+                                        De Otro Modo:
+                                            Limpiar Pantalla;
+                                            decoracion <- "Sin recubrimiento";
+                                            Escribir "Nombre del cliente: ", nombre;
+                                            Escribir "Sabor de la torta: Chocolate";
+                                            Escribir "Decoración: ", decoracion;
+                                            Escribir "Total a pagar: ", totalCliente;
+                                    FinSegun
+                                FinSi
+                                
+                            SiNo
+                                Escribir "No tenemos nunguna torta de chocolate disponible.";
+                            FinSi
+                            totalCliente <- 0;
+                            opc <- 0;
+                            Escribir "Digite enter para volver al menú principal.";
+                            Esperar Tecla;
+                            Limpiar Pantalla;
+                        2:
+                            Si cantidadShortcake > 0 Entonces
+                                Si cantidadShortcake10 > 0 y cantidadShortcake20 > 0 Entonces
+                                    Escribir "Seleccione la opción para el número de porciones de la torta: ";
+                                    Escribir "1. 10 porciones";
+                                    Escribir "2. 20 porciones";
+                                    Leer opcPorciones;
+                                SiNo
+                                    Si cantidadShortcake10 > 0 Entonces
+                                        opcPorciones <- 1;
+                                        Escribir "Tenemos ", cantidadShortcake10, " unidades de Shortcake 
+                                        de 10 porciones disponibles.";
+                                    SiNo
+                                        Si cantidadShortcake20 > 0 Entonces
+                                            opcPorciones <- 2;
+                                            Escribir "Tenemos ", cantidadShortcake20, " unidades de Shortcake 
+                                            de 20 porciones disponibles.";
+                                        FinSi
+                                    FinSi
+                                FinSi
+                                Escribir "¿Cuantas tortas va a llevar?";
+                                Leer unidades;
+                                Escribir "Nombre del cliente: ";
+                                Leer nombre;
+                                Segun opcPorciones Hacer
+                                    1:
+                                        Si unidades <= cantidadShortcake10 Entonces
+                                            totalCliente <- precioShortcake10 * unidades;
+                                            totalVenta <- totalVenta + totalCliente;
+                                            cantidadShortcake10 <- cantidadShortcake10 - unidades;
+                                            cantidadShortcake <- cantidadShortcake - unidades;
+                                        SiNo
+                                            Escribir "Solo tenemos ", cantidadShortcake10, 
+                                            "tortas de 10 porciones disponibles";
+                                            unidades <- cantidadShortcake10;
+                                            totalCliente <- precioShortcake10 * unidades;
+                                            totalVenta <- totalVenta + totalCliente;
+                                            cantidadShortcake10 <- 0;
+                                            cantidadShortcake <- cantidadShortcake - unidades;
+                                        FinSi
+                                    2:
+                                        Si unidades <= cantidadShortcake20 Entonces
+                                            totalCliente <- precioShortcake20 * unidades;
+                                            totalVenta <- totalVenta + totalCliente;
+                                            cantidadShortcake20 <- cantidadShortcake20 - unidades;
+                                            cantidadShortcake <- cantidadShortcake - unidades;
+                                        SiNo
+                                            Escribir "Solo tenemos ", cantidadShortcake20, 
+                                            "tortas de 20 porciones disponibles";
+                                            unidades <- cantidadShortcake20;
+                                            totalCliente <- precioShortcake20 * unidades;
+                                            totalVenta <- totalVenta + totalCliente;
+                                            cantidadShortcake20 <- 0;
+                                            cantidadShortcake <- cantidadShortcake - unidades;
+                                        FinSi
+                                    De Otro Modo:
+                                        Escribir "Opción no valida";
+                                FinSegun
+                                Si totalCliente > 0 Entonces
+                                    Escribir "Seleccione un recubrimiento";
+                                    Escribir "1.Cubierta de crema de leche decorada con macarrones.";
+                                    Escribir "2.Cubierta de crema de leche decorada con merengues.";
+                                    Escribir "Otra opción. Sin recubrimiento.";
+                                    Leer opcDecoracion;
+                                    Segun opcDecoracion Hacer
+                                        1:
+                                            Limpiar Pantalla;
+                                            decoracion <- "Cubierta de crema de leche decorada 
+                                            con macarrones.";
+                                            Escribir "Nombre del cliente: ", nombre;
+                                            Escribir "Sabor de la torta: Shortcake";
+                                            Escribir "Decoración: ", decoracion;
+                                            Escribir "Total a pagar: ", totalCliente;
+                                        2:
+                                            Limpiar Pantalla;
+                                            decoracion <- "Cubierta de crema de leche decorada 
+                                            con merengues.";
+                                            Escribir "Nombre del cliente: ", nombre;
+                                            Escribir "Sabor de la torta: Shortcake";
+                                            Escribir "Decoración: ", decoracion;
+                                            Escribir "Total a pagar: ", totalCliente;
+                                        De Otro Modo:
+                                            Limpiar Pantalla;
+                                            decoracion <- "Sin recubrimiento";
+                                            Escribir "Nombre del cliente: ", nombre;
+                                            Escribir "Sabor de la torta: Shortcake";
+                                            Escribir "Decoración: ", decoracion;
+                                            Escribir "Total a pagar: ", totalCliente;
+                                    FinSegun
+                                FinSi
+                            SiNo
+                                Escribir "No hay ninguna torta Shortcake disponible";
+                            FinSi
+                            totalCliente <- 0;
+                            opc <- 0;
+                            Escribir "Digite enter para volver al menú principal.";
+                            Esperar Tecla;
+                            Limpiar Pantalla;
+                        3:
+                            Si cantidadTresLeches > 0 Entonces
+                                Si cantidadTresLeches8 > 0 y cantidadTresLeches12 > 0 Entonces
+                                    Escribir "Seleccione la opción para el número de porciones de la torta: ";
+                                    Escribir "1. 8 porciones";
+                                    Escribir "2. 12 porciones";
+                                    Leer opcPorciones;
+                                SiNo
+                                    Si cantidadTresLeches8 > 0 Entonces
+                                        opcPorciones <- 1;
+                                        Escribir "Tenemos ", cantidadTresLeches8, " 
+                                        tortas de ocho porciones.";
+                                    SiNo
+                                        Si cantidadTresLeches12 > 0 Entonces
+                                            opcPorciones <- 2;
+                                            Escribir "Tenemos ", cantidadTresLeches12, " 
+                                            tortas de doce porciones.";
+                                        FinSi
+                                    FinSi
+                                FinSi
+                                Escribir "¿Cuantas tortas va a llevar?";
+                                Leer unidades;
+                                Escribir "Nombre del cliente: ";
+                                Leer nombre;
+                                Segun opcPorciones Hacer
+                                    1:
+                                        Si unidades <= cantidadTresLeches8 Entonces
+                                            totalCliente <- precioTresLeches8 * unidades;
+                                            totalVenta <- totalVenta + totalCliente;
+                                            cantidadTresLeches8 <- cantidadTresLeches8 - unidades;
+                                            cantidadTresLeches <- cantidadTresLeches - unidades;
+                                        SiNo
+                                            Escribir "Solo tenemos ", cantidadTresLeches8, 
+                                            "tortas de ocho porciones disponibles";
+                                            unidades <- cantidadTresLeches8;
+                                            totalCliente <- precioTresLeches8 * unidades;
+                                            totalVenta <- totalVenta + totalCliente;
+                                            cantidadTresLeches8 <- 0;
+                                            cantidadTresLeches <- cantidadTresLeches - unidades;
+                                        FinSi
+                                    2:
+                                        Si unidades <= cantidadTresLeches12 Entonces
+                                            totalCliente <- precioTresLeches12 * unidades;
+                                            totalVenta <- totalVenta + totalCliente;
+                                            cantidadTresLeches12 <- cantidadTresLeches12 - unidades;
+                                            cantidadTresLeches <- cantidadTresLeches - unidades;
+                                        SiNo
+                                            Escribir "Solo tenemos ", cantidadTresLeches12, 
+                                            "tortas de 12 porciones disponibles";
+                                            unidades <- cantidadTresLeches12;
+                                            totalCliente <- precioTresLeches12 * unidades;
+                                            totalVenta <- totalVenta + totalCliente;
+                                            cantidadTresLeches12 <- 0;
+                                            cantidadTresLeches <- cantidadTresLeches - unidades;
+                                        FinSi
+                                    De Otro Modo:
+                                        Escribir "Selección no válida";
+                                FinSegun
+                                Si totalCliente > 0 Entonces
+                                    Escribir "Seleccione un recubrimiento";
+                                    Escribir "1.Decorada con  whip topping y viruta de chocolate blanco.";
+                                    Escribir "2.Crema de leche mezclada con mermelada de maracuyá.";
+                                    Escribir "Otra opción. Sin recubrimiento.";
+                                    Leer opcDecoracion;
+                                    Segun opcDecoracion Hacer
+                                        1:
+                                            Limpiar Pantalla;
+                                            decoracion <- "Decorada con  whip topping y viruta de 
+                                            chocolate blanco.";
+                                            Escribir "Nombre del cliente: ", nombre;
+                                            Escribir "Sabor de la torta: Tres leches.";
+                                            Escribir "Decoración: ", decoracion;
+                                            Escribir "Total a pagar: ", totalCliente;
+                                        2:
+                                            Limpiar Pantalla;
+                                            decoracion <- "Crema de leche mezclada con mermelada 
+                                            de maracuyá.";
+                                            Escribir "Nombre del cliente: ", nombre;
+                                            Escribir "Sabor de la torta: Tres leches.";
+                                            Escribir "Decoración: ", decoracion;
+                                            Escribir "Total a pagar: ", totalCliente;
+                                        De Otro Modo:
+                                            Limpiar Pantalla;
+                                            decoracion <- "Sin recubrimiento";
+                                            Escribir "Nombre del cliente: ", nombre;
+                                            Escribir "Sabor de la torta: Tres leches.";
+                                            Escribir "Decoración: ", decoracion;
+                                            Escribir "Total a pagar: ", totalCliente;
+                                    FinSegun
+                                FinSi
+                            SiNo
+                                Escribir "No hay tortas de tres leches disponibles.";
+                            FinSi
+                            totalCliente <- 0;
+                            opc <- 0;
+                            Escribir "Digite enter para volver al menú principal.";
+                            Esperar Tecla;
+                            Limpiar Pantalla;
+                        De Otro Modo:
+                            Escribir "Seleccione una opción válida";
+                            opc <- 1;
+                            Limpiar Pantalla;
+                    FinSegun
+                2:
+                    Limpiar Pantalla;
+                    Escribir "Tortas disponibles:";
+                    Escribir "";
+                    Si cantidadChocolate > 0 Entonces
+                        Escribir "Torta de chocolate de cinco pociones:    ", cantidadChocolate5;
+                        Escribir "Torta de chocolate de diez pociones:     ", cantidadChocolate10;
+                        Escribir "Torta de chocolate de veinte pociones:   ", cantidadChocolate20;
+                    FinSi
+                    Escribir "";
+                    Si cantidadShortcake > 0 Entonces
+                        Escribir "Torta Shortcake de diez porciones:      ", cantidadShortcake10;
+                        Escribir "Torta Shortcake de veinte porciones:    ", cantidadShortcake20;
+                    FinSi
+                    Escribir "";
+                    Si cantidadTresLeches > 0 Entonces
+                        Escribir "Torta de tres leches de ocho porciones: ", cantidadTresLeches8;
+                        Escribir "Torta de tres leches de doce porciones: ", cantidadTresLeches12;
+                    FinSi
+                    Escribir "";
+                    Escribir "Oprima enter para volver al menú principal";
+                    Esperar Tecla;
+                    opc <- 0;
+                    
+                3:
+                    Limpiar Pantalla;
+                    Escribir "Tortas en inventario: ";
+                    Escribir"";
+                    Escribir "Torta de chocolate de cinco pociones:    ", cantidadChocolate5;
+                    Escribir "Torta de chocolate de diez pociones:     ", cantidadChocolate10;
+                    Escribir "Torta de chocolate de veinte pociones:   ", cantidadChocolate20;
+                    Escribir "";
+                    Escribir "Torta Shortcake de diez porciones:      ", cantidadShortcake10;
+                    Escribir "Torta Shortcake de veinte porciones:    ", cantidadShortcake20;
+                    Escribir "";
+                    Escribir "Torta de tres leches de ocho porciones: ", cantidadTresLeches8;
+                    Escribir "Torta de tres leches de doce porciones: ", cantidadTresLeches12;
+                    Escribir "";
+                    
+                    Escribir "Venta total del dia: $",totalVenta;
+                    opc <- 4;
+                De Otro Modo:
+                    Escribir "Seleccione una opción válida";
+                    Esperar 2 Segundos;
+                    Limpiar Pantalla;
+            FinSegun
+        FinMientras
+    FinProceso
+                            </pre>
                         </div>
 
-                        <div class="acordeon"  id="4-java">
-                            <a href="#4-Java" class="link">
+                        <div class="acordeon"  id="8-java">
+                            <a href="#8-Java" class="link">
                                 <p>Java</p>
                                 <i class="fa-brands fa-java"></i>  
                                 <i class="fa-solid fa-circle-chevron-up"></i>   
                             </a>
+                            <pre>
+    import java.util.Scanner;
+
+    public class Main {
+        public static void main(String[] args) {
+
+            OperacionesPasteleria operacion = new OperacionesPasteleria();
+            Scanner input = new Scanner(System.in);
+            Scanner inputString = new Scanner(System.in);
+            int opcionOperacion, opcionSabor, opcionContinuar;
+            opcionContinuar = 1;
+            do{
+                //Menú para seleccionar la operación que se quiere hacer.
+                System.out.println("Seleccione la operación que desea realizar: ");
+                System.out.println("1. Registrar pedido");
+                System.out.println("2. Mostrar tortas disponibles");
+                System.out.println("3. Mostrar ventas del dia");
+                opcionOperacion = input.nextInt();
+                switch (opcionOperacion) {
+                    case 1 -> {//Registrar pedido.
+                        System.out.println("Seleccione el sabor de la torta");
+                        System.out.println("1.Torta de chocolate");
+                        System.out.println("2.Shortcake");
+                        System.out.println("3.Torta de tres leches");
+                        opcionSabor = input.nextInt();
+                        if (opcionSabor == 1) {
+                            operacion.pedidoTortaChocolate();
+                            if (operacion.getTotalCliente() > 0) {
+                                operacion.decoracionChocolate();
+                                System.out.println(operacion.imprimirRecibo());
+                            }
+                        } else if (opcionSabor == 2) {
+                            operacion.pedidoTortaShortcake();
+                            if (operacion.getTotalCliente() > 0) {
+                                operacion.decoracionShortcake();
+                                System.out.println(operacion.imprimirRecibo());
+                            }
+                        } else if (opcionSabor == 3) {
+                            operacion.pedidoTortaTresLeches();
+                            if (operacion.getTotalCliente() > 0) {
+                                operacion.decoracionTresLeches();
+                                System.out.println(operacion.imprimirRecibo());
+                            }
+                        } else {
+                            System.out.println("Opción no válida.");
+                        }
+                    }
+                    case 2 -> {//Mostrar tortas disponibles.
+                        System.out.println("Tortas disponibles: \n");
+                        System.out.println(operacion.chocolate.imprimirInventario());
+                        System.out.println(operacion.shortcake.imprimirInventario());
+                        System.out.println(operacion.tresLeches.imprimirInventario());
+                    }
+                    case 3 -> {//Mostrar ventas del dia.
+                        System.out.println("Tortas disponibles: \n");
+                        System.out.println(operacion.chocolate.imprimirInventario());
+                        System.out.println(operacion.shortcake.imprimirInventario());
+                        System.out.println(operacion.tresLeches.imprimirInventario());
+                        System.out.println("Tortas Vendidas: \n");
+                        System.out.println(operacion.chocolate.tortasVendidas());
+                        System.out.println(operacion.shortcake.tortasVendidas());
+                        System.out.println(operacion.tresLeches.tortasVendidas());
+                        System.out.println("Valor total vendido en el dia: $ " + operacion.getTotalVenta());
+                        opcionContinuar = 2;
+                    }
+                    default -> System.out.println("Seleccione una opción válida.");
+                }
+                if(opcionContinuar !=2){
+                    System.out.println("Oprima enter para volver al menú principal");
+                    inputString.nextLine();
+                }
+
+            }while (opcionContinuar != 2);
+        }
+    }
+
+    import java.util.Scanner;
+
+public class OperacionesPasteleria {
+        //Tortas preparadas listas para la venta
+        TortaChocolate chocolate = new TortaChocolate(3,5,2);
+        TortaShortcake shortcake = new TortaShortcake(3, 5);
+        TortaTresLeches tresLeches = new TortaTresLeches(4, 6);
+        private final Scanner input = new Scanner(System.in);
+        private int unidadesCompradas, opcion, numeroPorciones;
+        private String decoracion, saborSeleccionado;
+        private double totalCliente, totalVenta;
+
+        public double getTotalCliente() {
+            return totalCliente;
+        }
+
+        public double getTotalVenta() {
+            return totalVenta;
+        }
+
+        public void pedidoTortaChocolate(){
+            if(chocolate.getUnidadesDisponibles() >0 ){
+                boolean confirmacion = true;
+                this.saborSeleccionado = chocolate.getSabor();
+                System.out.println("Seleccione el número de porciones de la torta: ");
+                if(chocolate.getCantidad5() > 0){System.out.println("1. 5 Porciones");}
+                if(chocolate.getCantidad10() > 0){System.out.println("2. 10 Porciones");}
+                if(chocolate.getCantidad20() > 0){System.out.println("3. 20 Porciones");}
+                this.opcion = input.nextInt();
+                if(this.opcion > 0 && this.opcion < 4){
+                    System.out.print("¿Cuantas tortas va a llevar? (unidades disponibles: ");
+                    if(this.opcion == 1){
+                        System.out.print(chocolate.getCantidad5() + "): ");
+                        this.unidadesCompradas = input.nextInt();
+                        this.numeroPorciones = 5;
+                        //Ciclo se repite hasta que se ingrese una cantidad de tortas en el rango de las disponibles.
+                        while (confirmacion){
+                            if(this.unidadesCompradas <= chocolate.getCantidad5()){
+                                this.totalCliente = this.unidadesCompradas * this.numeroPorciones
+                                        * chocolate.getPrecioPorcion();
+                                this.totalVenta = this.totalVenta + this.totalCliente;
+                                chocolate.setCantidad5(chocolate.getCantidad5() - this.unidadesCompradas);
+                                chocolate.setUnidadesDisponibles(chocolate.getUnidadesDisponibles() - this.unidadesCompradas);
+                                chocolate.setVendido5(chocolate.getVendido5() + this.unidadesCompradas);
+                                confirmacion = false;
+                            }else {
+                                System.out.println("Cantidad no válida");
+                                System.out.print("¿Cuantas tortas va a llevar? (unidades disponibles: ");
+                                System.out.print(chocolate.getCantidad5() + "): ");
+                                this.unidadesCompradas = input.nextInt();
+                            }
+                        }
+                    } else if (this.opcion == 2) {
+                        System.out.print(chocolate.getCantidad10() + "): ");
+                        this.unidadesCompradas = input.nextInt();
+                        this.numeroPorciones = 10;
+                        while (confirmacion){
+                            if(this.unidadesCompradas <= chocolate.getCantidad10()){
+                                this.totalCliente = this.unidadesCompradas * this.numeroPorciones
+                                        * chocolate.getPrecioPorcion();
+                                this.totalVenta = this.totalVenta + this.totalCliente;
+                                chocolate.setCantidad10(chocolate.getCantidad10() - this.unidadesCompradas);
+                                chocolate.setVendido10(chocolate.getVendido10() + this.unidadesCompradas);
+                                chocolate.setUnidadesDisponibles(chocolate.getUnidadesDisponibles() - this.unidadesCompradas);
+                                confirmacion = false;
+                            }else {
+                                System.out.println("Cantidad no válida");
+                                System.out.print("¿Cuantas tortas va a llevar? (unidades disponibles: ");
+                                System.out.print(chocolate.getCantidad10() + "): ");
+                                this.unidadesCompradas = input.nextInt();
+                            }
+                        }
+
+                    }else {
+                        System.out.print(chocolate.getCantidad20() + "): ");
+                        this.unidadesCompradas = input.nextInt();
+                        this.numeroPorciones = 20;
+                        while (confirmacion){
+                            if(this.unidadesCompradas <= chocolate.getCantidad20()){
+                                this.totalCliente = this.unidadesCompradas * this.numeroPorciones
+                                        * chocolate.getPrecioPorcion();
+                                this.totalVenta = this.totalVenta + this.totalCliente;
+                                chocolate.setCantidad20(chocolate.getCantidad20() - this.unidadesCompradas);
+                                chocolate.setVendido20(chocolate.getVendido20() + this.unidadesCompradas);
+                                chocolate.setUnidadesDisponibles(chocolate.getUnidadesDisponibles() - this.unidadesCompradas);
+                                confirmacion = false;
+                            }else {
+                                System.out.println("Cantidad no válida");
+                                System.out.print("¿Cuantas tortas va a llevar? (unidades disponibles: ");
+                                System.out.print(chocolate.getCantidad20() + "): ");
+                                this.unidadesCompradas = input.nextInt();
+                            }
+                        }
+                    }
+                }else {
+                    System.out.println("Opción no válida.");
+                }
+            }else {
+                System.out.println("No tenemos ninguna torta de chocolate disponible.");
+            }
+        }
+        //Método para hacer pedido de torta Shortcake.
+        public void pedidoTortaShortcake(){
+            if(shortcake.getUnidadesDisponibles() > 0 ){
+                boolean confirmacion = true;
+                this.saborSeleccionado = shortcake.getSabor();
+                System.out.println("Seleccione el número de porciones de la torta: ");
+                if(shortcake.getCantidad10() > 0){System.out.println("1. 10 Porciones");}
+                if(shortcake.getCantidad20() > 0){System.out.println("2. 20 Porciones");}
+                this.opcion = input.nextInt();
+                if(this.opcion > 0 && this.opcion < 3){
+                    System.out.print("¿Cuantas tortas va a llevar? (unidades disponibles: ");
+                    if(this.opcion == 1){
+                        System.out.print(shortcake.getCantidad10() + "): ");
+                        this.unidadesCompradas = input.nextInt();
+                        this.numeroPorciones = 10;
+                        while (confirmacion){
+                            if(this.unidadesCompradas <= shortcake.getCantidad10()){
+                                this.totalCliente = this.unidadesCompradas * this.numeroPorciones
+                                        * shortcake.getPrecioPorcion();
+                                this.totalVenta = this.totalVenta + this.totalCliente;
+                                shortcake.setCantidad10(shortcake.getCantidad10() - this.unidadesCompradas);
+                                shortcake.setVendido10(shortcake.getVendido10() + this.unidadesCompradas);
+                                shortcake.setUnidadesDisponibles(shortcake.getUnidadesDisponibles() - this.unidadesCompradas);
+                                confirmacion = false;
+                            }else {
+                                System.out.println("Cantidad no válida");
+                                System.out.print("¿Cuantas tortas va a llevar? (unidades disponibles: ");
+                                System.out.print(shortcake.getCantidad10() + "): ");
+                                this.unidadesCompradas = input.nextInt();
+                            }
+                        }
+                    }else {
+                        System.out.print(shortcake.getCantidad20() + "): ");
+                        this.unidadesCompradas = input.nextInt();
+                        this.numeroPorciones = 20;
+                        while (confirmacion){
+                            if(this.unidadesCompradas <= shortcake.getCantidad20()){
+                                this.totalCliente = this.unidadesCompradas * this.numeroPorciones
+                                        * shortcake.getPrecioPorcion();
+                                this.totalVenta = this.totalVenta + this.totalCliente;
+                                shortcake.setCantidad20(shortcake.getCantidad20() - this.unidadesCompradas);
+                                shortcake.setVendido20(shortcake.getVendido20() + this.unidadesCompradas);
+                                shortcake.setUnidadesDisponibles(shortcake.getUnidadesDisponibles() - this.unidadesCompradas);
+                                confirmacion = false;
+                            }else {
+                                System.out.println("Cantidad no válida");
+                                System.out.print("¿Cuantas tortas va a llevar? (unidades disponibles: ");
+                                System.out.print(shortcake.getCantidad20() + "): ");
+                                this.unidadesCompradas = input.nextInt();
+                            }
+                        }
+                    }
+                }else {
+                    System.out.println("Opción no válida.");
+                }
+
+            }else{
+                System.out.println("No tenemos ninguna torta de Shortcake disponible.");
+            }
+        }
+        public void pedidoTortaTresLeches(){
+            if(tresLeches.getUnidadesDisponibles() > 0 ){
+                boolean confirmacion = true;
+                this.saborSeleccionado = tresLeches.getSabor();
+                System.out.println("Seleccione el número de porciones de la torta: ");
+                if(tresLeches.getCantidad8() > 0){System.out.println("1. 8 Porciones");}
+                if(tresLeches.getCantidad12() > 0){System.out.println("2. 12 Porciones");}
+                this.opcion = input.nextInt();
+                if(this.opcion > 0 && this.opcion < 3){
+                    System.out.print("¿Cuantas tortas va a llevar? (unidades disponibles: ");
+                    if(this.opcion == 1){
+                        System.out.print(tresLeches.getCantidad8() + "): ");
+                        this.unidadesCompradas = input.nextInt();
+                        this.numeroPorciones = 8;
+                        while (confirmacion){
+                            if(this.unidadesCompradas <= tresLeches.getCantidad8()){
+                                this.totalCliente = this.unidadesCompradas * this.numeroPorciones
+                                        * tresLeches.getPrecioPorcion();
+                                this.totalVenta = this.totalVenta + this.totalCliente;
+                                tresLeches.setCantidad8(tresLeches.getCantidad8() - this.unidadesCompradas);
+                                tresLeches.setVendido8(tresLeches.getVendido8() + this.unidadesCompradas);
+                                tresLeches.setUnidadesDisponibles(tresLeches.getUnidadesDisponibles() - this.unidadesCompradas);
+                                confirmacion = false;
+                            }else {
+                                System.out.println("Cantidad no válida");
+                                System.out.print("¿Cuantas tortas va a llevar? (unidades disponibles: ");
+                                System.out.print(tresLeches.getCantidad8() + "): ");
+                                this.unidadesCompradas = input.nextInt();
+                            }
+                        }
+                    }else {
+                        System.out.print(tresLeches.getCantidad12() + "): ");
+                        this.unidadesCompradas = input.nextInt();
+                        this.numeroPorciones = 12;
+                        while (confirmacion){
+                            if(this.unidadesCompradas <= tresLeches.getCantidad12()){
+                                this.totalCliente = this.unidadesCompradas * this.numeroPorciones
+                                        * tresLeches.getPrecioPorcion();
+                                this.totalVenta = this.totalVenta + this.totalCliente;
+                                tresLeches.setCantidad12(tresLeches.getCantidad12() - this.unidadesCompradas);
+                                tresLeches.setVendido12(tresLeches.getVendido12() + this.unidadesCompradas);
+                                tresLeches.setUnidadesDisponibles(tresLeches.getUnidadesDisponibles() - this.unidadesCompradas);
+                                confirmacion = false;
+                            }else {
+                                System.out.println("Cantidad no válida");
+                                System.out.print("¿Cuantas tortas va a llevar? (unidades disponibles: ");
+                                System.out.print(tresLeches.getCantidad12() + "): ");
+                                this.unidadesCompradas = input.nextInt();
+                            }
+                        }
+                    }
+                }else {
+                    System.out.println("Opción no válida.");
+                }
+
+            }else{
+                System.out.println("No tenemos ninguna torta de tres leches disponible.");
+            }
+
+        }
+        public void decoracionChocolate(){
+            System.out.println("Seleccione un recubrimiento: ");
+            System.out.println("1.Cubierta de crema de chocolate, decorada con hojuelas de chocolate y fresas.");
+            System.out.println("2.Cubierta con crema de leche, decorada con hojuelas de chocolate y trozos de durazno.");
+            System.out.println("Otra opción. Sin recubrimiento.");
+            this.opcion = input.nextInt();
+            if(this.opcion == 1){decoracion = "Cubierta de crema de chocolate, decorada con hojuelas de chocolate y fresas";
+            } else if (this.opcion == 2) {
+                decoracion = "Cubierta con crema de leche, decorada con hojuelas de chocolate y trozos de durazno";
+            }else {
+                decoracion = "Sin recubrimiento";
+            }
+        }
+
+        public void decoracionShortcake(){
+            System.out.println("Seleccione un recubrimiento: ");
+            System.out.println("1.Cubierta de crema de leche decorada con macarrones.");
+            System.out.println("2.Cubierta de crema de leche decorada con merengues.");
+            System.out.println("Otra opción. Sin recubrimiento.");
+            this.opcion = input.nextInt();
+            if(this.opcion == 1){decoracion = "Cubierta de crema de leche decorada con macarrones";
+            } else if (this.opcion == 2) {
+                decoracion = "Cubierta de crema de leche decorada con merengues";
+            }else {
+                decoracion = "Sin recubrimiento";
+            }
+        }
+
+        public void decoracionTresLeches(){
+            System.out.println("Seleccione un recubrimiento: ");
+            System.out.println("1.Decorada con  whip topping y viruta de chocolate blanco");
+            System.out.println("2.Crema de leche mezclada con mermelada de maracuyá.");
+            System.out.println("Otra opción. Sin recubrimiento.");
+            this.opcion = input.nextInt();
+            if(this.opcion == 1){decoracion = "Decorada con  whip topping y viruta de chocolate blanco";
+            } else if (this.opcion == 2) {
+                decoracion = "Crema de leche mezclada con mermelada de maracuyá.";
+            }else {
+                decoracion = "Sin recubrimiento";
+            }
+        }
+        public String imprimirRecibo(){
+            String impresion, nombre;
+            Scanner inputString = new Scanner(System.in);
+            System.out.println("Ingrese el nombre del cliente: ");
+            nombre = inputString.nextLine();
+            impresion = "Nombre del cliente: " + nombre + "\nSabor de la torta: " + this.saborSeleccionado
+                    + "\nDecoración: " + this.decoracion + "\n Total a pagar: $ " + this.totalCliente;
+            this.saborSeleccionado = "";
+            this.decoracion = "";
+            this.totalCliente = 0.0;
+            return impresion;
+        }
+    }
+
+    /*Clase donde se definen las caracteristicas que tienen las tortas
+como sabor, número de porciones,  precio por porción y unidades disponibles.
+ */
+    public class Torta {
+        // Atributos
+        private final String sabor;
+        private int unidadesDisponibles;
+        private final double precioPorcion;
+        // Constructor
+        public Torta(String sabor, int unidadesDisponibles, double precioPorcion){
+            this.sabor = sabor;
+            this.unidadesDisponibles = unidadesDisponibles;
+            this.precioPorcion = precioPorcion;
+        }
+        //Métodos
+
+        public int getUnidadesDisponibles() {
+            return unidadesDisponibles;
+        }
+
+        public String getSabor() {
+            return sabor;
+        }
+
+        public double getPrecioPorcion() {
+            return precioPorcion;
+        }
+
+        public void setUnidadesDisponibles(int unidadesDisponibles) {
+            this.unidadesDisponibles = unidadesDisponibles;
+        }
+    }
+
+    public class TortaChocolate extends Torta{
+        private int cantidad5, cantidad10, cantidad20, vendido5, vendido10, vendido20;
+    
+        //Constructor que inicializa la cantidad de tortas de chocolate disponibles para ser vendidas
+        public TortaChocolate(int unidades5, int unidades10, int unidades20){
+            super("Chocolate", unidades5+unidades10+unidades20, 7580.0);
+            this.cantidad5 = unidades5;
+            this.cantidad10 = unidades10;
+            this.cantidad20 = unidades20;
+        }
+        public int getCantidad5() {
+            return cantidad5;
+        }
+    
+        public void setCantidad5(int cantidad5) {
+            this.cantidad5 = cantidad5;
+        }
+    
+        public int getCantidad10() {
+            return cantidad10;
+        }
+    
+        public void setCantidad10(int cantidad10) {
+            this.cantidad10 = cantidad10;
+        }
+    
+        public int getCantidad20() {
+            return cantidad20;
+        }
+    
+        public void setCantidad20(int cantidad20) {
+            this.cantidad20 = cantidad20;
+        }
+    
+        public void setVendido5(int vendido5) {
+            this.vendido5 = vendido5;
+        }
+    
+        public void setVendido10(int vendido10) {
+            this.vendido10 = vendido10;
+        }
+    
+        public void setVendido20(int vendido20) {
+            this.vendido20 = vendido20;
+        }
+    
+        public int getVendido5() {
+            return vendido5;
+        }
+    
+        public int getVendido10() {
+            return vendido10;
+        }
+    
+        public int getVendido20() {
+            return vendido20;
+        }
+    
+        //Método que retorna las unidades disponibles de la torta.
+        public String imprimirInventario(){
+            return  "Torta de "+ getSabor() + " de cinco porciones: " + this.cantidad5 +
+                    "\nTorta de "+ getSabor() + " de diez porciones: " + this.cantidad10 +
+                    "\nTorta de "+ getSabor() + " de veinte porciones: " + this.cantidad20 + "\n";
+        }
+    
+        //Método que retorna las unidades vendidas de cada torta.
+        public String tortasVendidas(){
+            return  "Torta de "+ getSabor() + " de cinco porciones: " + this.vendido5 +
+                    "\nTorta de "+ getSabor() + " de diez porciones: " + this.vendido10 +
+                    "\nTorta de "+ getSabor() + " de veinte porciones: " + this.vendido20 + "\n";
+        }
+    
+    
+    }
+
+    public class TortaShortcake extends Torta{
+        private int cantidad10, cantidad20, vendido10, vendido20;
+        // Constructor que inicializa la cantidad de tortas de Shortcake disponibles para ser vendidas
+        public TortaShortcake(int unidades10, int unidades20){
+            super("Shortcake", unidades10+unidades20, 8810.5);
+            this.cantidad10 = unidades10;
+            this.cantidad20 = unidades20;
+        }
+    
+        public int getCantidad10() {
+            return cantidad10;
+        }
+    
+        public int getCantidad20() {
+            return cantidad20;
+        }
+    
+        public void setCantidad10(int cantidad10) {
+            this.cantidad10 = cantidad10;
+        }
+    
+        public void setCantidad20(int cantidad20) {
+            this.cantidad20 = cantidad20;
+        }
+    
+        public int getVendido10() {
+            return vendido10;
+        }
+    
+        public int getVendido20() {
+            return vendido20;
+        }
+    
+        public void setVendido10(int vendido10) {
+            this.vendido10 = vendido10;
+        }
+    
+        public void setVendido20(int vendido20) {
+            this.vendido20 = vendido20;
+        }
+    
+        //Método que retorna las unidades disponibles de la torta.
+        public String imprimirInventario(){
+            return  "Torta de "+ getSabor() + " de diez porciones: " + this.cantidad10 +
+                    "\nTorta de "+ getSabor() + " de veinte porciones: " + this.cantidad20 + "\n";
+        }
+    
+        public String tortasVendidas(){
+            return  "Torta de "+ getSabor() + " de diez porciones: " + this.vendido10 +
+                    "\nTorta de "+ getSabor() + " de veinte porciones: " + this.vendido20 + "\n";
+        }
+    }
+
+    public class TortaTresLeches extends Torta{
+        private int cantidad8, cantidad12, vendido8, vendido12;
+        //Constructor que inicializa la cantidad de tortas de tres leches disponibles para ser vendidas
+        public TortaTresLeches(int unidades8, int unidades12){
+            super("Tres Leches", unidades8 + unidades12, 6225.85);
+            this.cantidad8 = unidades8;
+            this.cantidad12 = unidades12;
+        }
+    
+        public int getCantidad8() {
+            return cantidad8;
+        }
+    
+        public void setCantidad8(int cantidad8) {
+            this.cantidad8 = cantidad8;
+        }
+    
+        public int getCantidad12() {
+            return cantidad12;
+        }
+    
+        public void setCantidad12(int cantidad12) {
+            this.cantidad12 = cantidad12;
+        }
+    
+        public int getVendido8() {
+            return vendido8;
+        }
+    
+        public int getVendido12() {
+            return vendido12;
+        }
+    
+        public void setVendido8(int vendido8) {
+            this.vendido8 = vendido8;
+        }
+    
+        public void setVendido12(int vendido12) {
+            this.vendido12 = vendido12;
+        }
+    
+        //Método que retorna las unidades disponibles de la torta.
+        public String imprimirInventario(){
+            return  "Torta de "+ getSabor() + " de ocho porciones: " + this.cantidad8 +
+                    "\nTorta de "+ getSabor() + " de doce porciones: " + this.cantidad12 + "\n";
+        }
+        public String tortasVendidas(){
+            return  "Torta de "+ getSabor() + " de ocho porciones: " + this.vendido8 +
+                    "\nTorta de "+ getSabor() + " de doce porciones: " + this.vendido12 + "\n";
+        }
+    }
+                            </pre>
                         </div>
                     </div>
                 </li>
@@ -252,12 +2514,53 @@
                     para realizar cada cálculo y mostrar su respectivo resultado.
                     <h3>Códigos de la solución</h3>
                     <div class="codigos">
-                        <div class="acordeon" id="4-pseint">
-                            <a href="#4-pseint" class="link">
+                        <div class="acordeon" id="9-pseint">
+                            <a href="#9-pseint" class="link">
                                 <p>Pseint</p>
                                 <img src="img/pseint.png">  
                                 <i class="fa-solid fa-circle-chevron-up"></i>   
                             </a>
+                            <pre>
+    Proceso Punto_9
+        
+        Definir base, altura, baseSuperior, baseInferior, area Como Real;
+        Definir opc Como Entero;
+        Escribir "¿De qué figura desea calcular el área?, digite el número de la opción deseada";
+        Escribir "1.Rectángulo";
+        Escribir "2.Triángulo";
+        Escribir "3.Trapecio";
+        Leer opc;
+        
+        Segun opc Hacer
+            1:
+                Escribir "Inserte la base: ";
+                Leer base;
+                Escribir "Inserte la altura: ";
+                Leer altura;
+                area <- base * altura;
+                Escribir "El área del rectángulo es : ", area;
+            2:
+                Escribir "Inserte la base: ";
+                Leer base;
+                Escribir "Inserte la altura: ";
+                Leer altura;
+                area <- (base * altura)/2;
+                Escribir "El área del Triángulo es : ", area;
+            3:
+                Escribir "Inserte la base superior: ";
+                Leer baseSuperior;
+                Escribir "Inserte la base inferior: ";
+                Leer baseInferior;
+                Escribir "Inserte la altura: ";
+                Leer altura;
+                area <- ((baseInferior + baseSuperior) * altura)/2;
+                Escribir "El área del Trapecio es : ", area;
+
+            De Otro Modo:
+                Escribir "Opción no valida.";
+        FinSegun
+    FinProceso
+                            </pre>
                         </div>
 
                         <div class="acordeon"  id="4-java">
@@ -266,6 +2569,88 @@
                                 <i class="fa-brands fa-java"></i>  
                                 <i class="fa-solid fa-circle-chevron-up"></i>   
                             </a>
+                            <pre>
+    import java.util.Scanner;
+
+    public class Main {
+        public static void main(String[] args) {
+
+            Scanner input = new Scanner(System.in);
+            int opcion;
+            double baseInferior, altura, baseSuperior;
+            System.out.println("Seleccione la figura para calcular su área:");
+            System.out.println("1. Rectángulo.");
+            System.out.println("2. Triangulo.");
+            System.out.println("3. Trapecio.");
+            opcion = input.nextInt();
+            if(opcion > 0 && opcion < 4){
+                System.out.print("Ingrese la base inferior: ");
+                baseInferior = input.nextDouble();
+                System.out.print("Ingrese la altura: ");
+                altura = input.nextDouble();
+                if (opcion == 1){
+                    Figura figura = new Figura("Rectángulo", baseInferior, altura);
+                    figura.areaRectangulo();
+                    figura.imprimirResultado();
+                } else if (opcion == 2) {
+                    Figura figura = new Figura("Triangulo", baseInferior, altura);
+                    figura.areaTriangulo();
+                    figura.imprimirResultado();
+                }else {
+                    System.out.print("Ingrese la base superior: ");
+                    baseSuperior = input.nextDouble();
+                    Figura figura = new Figura("Trapecio", baseInferior, altura, baseSuperior);
+                    figura.areaTrapecio();
+                    figura.imprimirResultado();
+                }
+            }else{
+                System.out.println("La opción seleccionada no es válida.");
+            }
+        }
+    }
+
+    public class Figura {
+        private final String figura;
+        private final double baseInferior, altura;
+        private double area, baseSuperior;
+        // Constructor para inicializar parámetros de base y altura para el triángulo y el rectángulo.
+        public Figura(String figura, double base, double altura){
+            this.baseInferior = base;
+            this.altura = altura;
+            this.figura = figura;
+        }
+        // Constructor para inicializar parámetros de basesuperior, base inferior y altura para el trapecio.
+        public Figura(String figura, double base, double altura, double base2){
+            this.baseInferior = base;
+            this.baseSuperior = base2;
+            this.altura = altura;
+            this.figura = figura;
+        }
+    
+    
+        //Métodos para calcular el área de cada figura
+        public void areaRectangulo(){
+            this.area = this.baseInferior * this.altura;
+        }
+    
+        public void areaTriangulo(){
+            this.area = (this.baseInferior * this.altura)/2;
+        }
+        public void areaTrapecio(){
+            this.area = ((this.baseInferior+ this.baseSuperior)* this.altura)/2;
+        }
+        //Método para imprimir resultado
+        public void imprimirResultado(){
+            System.out.println("Figura: " + this.figura );
+            System.out.println("base inferior: " + this.baseInferior);
+            if(this.figura.equals("Trapecio")){
+                System.out.println("Base superior: " + this.baseSuperior);
+            }
+            System.out.println("Altura: " + this.altura);
+            System.out.println("Área: " + this.area);
+        }
+    }
+                            </pre>
                         </div>
                     </div>
                 </li>
@@ -279,20 +2664,200 @@
 
                     <h3>Códigos de la solución</h3>
                     <div class="codigos">
-                        <div class="acordeon" id="4-pseint">
-                            <a href="#4-pseint" class="link">
+                        <div class="acordeon" id="10-pseint">
+                            <a href="#10-pseint" class="link">
                                 <p>Pseint</p>
                                 <img src="img/pseint.png">  
                                 <i class="fa-solid fa-circle-chevron-up"></i>   
                             </a>
+                            <pre>
+    Proceso Punto_10
+        Definir usuario Como Caracter;
+        Definir saldo, deposito, retiro Como Real;
+        definir opc Como Entero;
+        opc <- 0;
+        Escribir "Ingrese su nombre:";
+        Leer usuario;
+        saldo <- 1000000;
+        Escribir "Bienvenido a Su banco fiel ", usuario;
+        Mientras opc <> 4 Hacer
+            Si opc = 0 Entonces
+                Escribir "¿Qué operación desea realizar?";
+                Escribir "1.Realizar depósito.";
+                Escribir "2.Realizar retiro.";
+                Escribir "3.Consultar saldo.";
+                Escribir "4. Cancelar.";
+                Leer opc;
+            FinSi
+            
+            Segun opc Hacer
+                1:
+                    Escribir "Ingrese el monto que desea depositar: ";
+                    Leer deposito;
+                    Si deposito > 0 Entonces
+                        saldo <- saldo + deposito;
+                        Limpiar Pantalla;
+                        Escribir "Depósito realizado con éxito";
+                        Escribir "Nombre del cliente: ", usuario;
+                        Escribir "Valor del depósito: $", deposito;
+                        Escribir "Saldo disponible: $", saldo;
+                        opc <- 4;
+                    SiNo
+                        Escribir "El valor del depósito debe ser mayor a cero.";
+                        opc <- 0;
+                        Esperar 3 Segundos;
+                        Limpiar Pantalla;
+                    FinSi
+                2:
+                    Escribir "Ingrese el monto que desea retirar: ";
+                    Leer retiro;
+                    Si retiro > 0 Entonces
+                        Si retiro <= saldo Entonces
+                            saldo <- saldo - retiro;
+                            Limpiar Pantalla;
+                            Escribir "Retiro realizado con éxito";
+                            Escribir "Nombre del cliente: ", usuario;
+                            Escribir "Valor del retiro: $", retiro;
+                            Escribir "Saldo disponible: $", saldo;
+                            opc <- 4;
+                        SiNo
+                            Escribir "Saldo insuficiente";
+                            opc <- 0;
+                            Esperar 2 Segundos;
+                            Limpiar Pantalla;
+                        FinSi
+                    SiNo
+                        Escribir "Monto del retiro debe ser mayor a cero;";
+                        opc <- 0;
+                    FinSi
+                3:
+                    Escribir "Nombre del cliente: ", usuario;
+                    Escribir "Saldo disponible: ", saldo;
+                    Escribir "Presione una tecla para volver al menú pricipal. ";
+                    Esperar Tecla;
+                    Limpiar Pantalla;
+                    opc <- 0;
+                4:
+                    Escribir "Sesión finalizada.";
+                De Otro Modo:
+                    Escribir "Opción no valida";
+                    opc <- 0;
+                    Esperar 2 Segundos;
+                    Limpiar Pantalla;
+            FinSegun
+        FinMientras
+    FinProceso
+                            </pre>
+
                         </div>
 
-                        <div class="acordeon"  id="4-java">
-                            <a href="#4-Java" class="link">
+                        <div class="acordeon"  id="10-java">
+                            <a href="#10-Java" class="link">
                                 <p>Java</p>
                                 <i class="fa-brands fa-java"></i>  
                                 <i class="fa-solid fa-circle-chevron-up"></i>   
                             </a>
+                            <pre>
+    import java.util.Scanner;
+
+    public class Main {
+        public static void main(String[] args) {
+
+            Scanner input = new Scanner(System.in);
+            String nombre;
+            double cantidad;
+            int opcion;
+            //Solicitud del nombre del usuario y creacion del objeto cuenta con saldo inicial 1000000.
+            System.out.println("Ingrese el nombre del titular de la cuenta: ");
+            nombre = input.nextLine();
+            Cuenta cuenta = new Cuenta(nombre, 1000000.0);
+            System.out.println("Seleccione la opción de la operación que desea realizar:");
+            System.out.println("1. Realizar depósito.");
+            System.out.println("2. Realizar retiro.");
+            System.out.println("3. Consultar saldo.");
+            System.out.println("4. Cancelar.");
+            opcion = input.nextInt();
+            if(opcion > 0 && opcion < 5){
+                // Opción 1 para depositar si la cantidad ingresada es mayor a 0.
+                if(opcion == 1){
+                    System.out.println("Ingrese el monto que desea depositar: ");
+                    cantidad = input.nextDouble();
+                    if(cuenta.depositarFondos(cantidad)){
+                        cuenta.imprimirRecibo(opcion, cantidad);
+                    }
+                // Opción 2 para hacer retiro verificando que el valor introducido no supere el saldo de
+                 la cuenta.
+                } else if (opcion == 2) {
+                    System.out.println("Ingrese el monto que desea retirar: ");
+                    cantidad = input.nextDouble();
+                    if (cuenta.retirarFondos(cantidad)){
+                        cuenta.imprimirRecibo(opcion, cantidad);
+                    }
+                } else if (opcion == 3) {
+                    System.out.println("Titular: " + cuenta.getTitular());
+                    System.out.println("Saldo disponible: $ " + cuenta.getSaldo());
+                }else {
+                    System.out.println("Sesión finalizada.");
+                }
+            }else {
+                System.out.println("La opción introducida no es válida.");
+                System.out.println("Sesión finalizada.");
+            }
+        }
+    }
+
+    public class Cuenta {
+        private final String titular;
+        private double saldo;
+        // Constructor para crear la cuenta con el saldo inicial y el nombre del titular.
+        public Cuenta(String titular, double saldo){
+            this.titular = titular;
+            this.saldo = saldo;
+        }
+    
+        public String getTitular() {
+            return titular;
+        }
+        public double getSaldo() {
+            return saldo;
+        }
+        public boolean depositarFondos(double monto){
+            if (monto > 0){
+                this.saldo += monto;
+                return true;
+            }else{
+                System.out.println("El valor del deposito debe ser mayor a cero");
+                System.out.println("Operación rechazada.");
+                return false;
+            }
+        }
+    
+        public boolean retirarFondos(double monto){
+            if ((monto <= this.saldo) && (monto > 0)){
+                this.saldo -= monto;
+                return true;
+            }else{
+                if(monto > 0){
+                    System.out.println("Saldo insuficiente.");
+                }else {
+                    System.out.println("El valor del deposito debe ser mayor a cero");
+                }
+                System.out.println("Operación rechazada.");
+                return false;
+            }
+        }
+        public void imprimirRecibo(int opcion, double cantidad){
+            if (opcion == 1){
+                System.out.println("Depósito realizado con éxito.");
+            }else {
+                System.out.println("Retiro realizado con éxito.");
+            }
+            System.out.println("Titular: " + this.titular);
+            System.out.println("Monto de la transacción: $ " + cantidad);
+            System.out.println("Saldo disponible: $ " + this.saldo);
+        }
+    }
+                            </pre>
                         </div>
                     </div>
                 </li>
