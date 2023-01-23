@@ -47,6 +47,23 @@
                             <img src="img/pseint.png">  
                             <i class="fa-solid fa-circle-chevron-up"></i>   
                         </a>
+                        <pre>
+    // Ejercicio correspondiente al punto 1 del taller 2 organizado en funciones.
+    SubProceso Validaredad(edad)
+        Si edad >= 18 Entonces
+            Escribir "Usted es mayor de edad.";
+        SiNo
+            Escribir "Usted es menor de edad";
+        FinSi
+    FinSubProceso
+
+    Proceso ValidacionEdad
+        Definir edad Como Entero;
+        Escribir"Ingrese su edad: ";
+        Leer edad;
+        Validaredad(edad);
+    FinProceso
+                        </pre>
                     </div>
                 </div>
             </li>
@@ -64,6 +81,23 @@
                             <img src="img/pseint.png">  
                             <i class="fa-solid fa-circle-chevron-up"></i>   
                         </a>
+                        <pre>
+    // Ejercicio correspondiente al punto 2 del taller 2 organizado en funciones.
+    SubProceso Validaredad(edad)
+        Si edad >= 18 Entonces
+            Escribir "Usted es ya una persona adulta";
+        SiNo
+            Escribir "Usted aun es un niño(a)";
+        FinSi
+    FinSubProceso
+
+    Proceso VerificarEtapa
+        Definir edad Como Entero;
+        Escribir"Ingrese su edad: ";
+        Leer edad;
+        Validaredad(edad);
+    FinProceso
+                        </pre>
                     </div>
                 </div>
             </li>
@@ -83,6 +117,32 @@
                             <img src="img/pseint.png">  
                             <i class="fa-solid fa-circle-chevron-up"></i>   
                         </a>
+                        <pre>
+    // Ejercicio correspondiente al punto 3 del taller 2 organizado en funciones.
+    SubProceso ImprimirDatos(nombre, apellidos, edad)
+        Si edad >= 18 Entonces
+            Escribir nombre, " ", apellidos, " usted es mayor de edad, por lo tanto, 
+            puede entrar a la fiesta.";
+        SiNo
+            Escribir nombre, " ", apellidos, " usted es menor de edad, por lo tanto, no 
+            puede entrar a la fiesta, por favor devuélvase a su casa.";
+        FinSi
+    FinSubProceso
+
+    Proceso EntradaFiesta
+        Definir nombre Como Caracter;
+        Definir apellidos Como Caracter;
+        Definir edad Como Entero;
+        Escribir "¿Cuál es su nombre?";
+        Leer nombre;
+        Escribir "¿Cuales son sus apellidos?";
+        Leer apellidos;
+        Escribir "Cuál es su edad";
+        Leer edad;
+        
+        ImprimirDatos(nombre, apellidos, edad);
+    FinProceso
+                        </pre>
                     </div>
                 </div>
             </li>
@@ -102,6 +162,147 @@
                             <img src="img/pseint.png">  
                             <i class="fa-solid fa-circle-chevron-up"></i>   
                         </a>
+                        <pre>
+    // Ejercicio correspondiente al punto 4 del taller 2 organizado en funciones.
+    SubProceso opcion <- imprimirMenu()
+        Definir opcion Como Entero;
+        Escribir "Seleccione el número de la operación que desea realizar hoy, 
+        de las que se encuentran a continuación: ";
+        Escribir "1. Alquilar una película";
+        Escribir "2. Consultar películas disponibles.";
+        Escribir "3. Recibir película en la videotienda.";
+        Escribir "4. Salir";
+        Leer opcion;
+    FinSubProceso
+
+    SubProceso opcion <- seleccionPelicula()
+        Definir opcion Como Entero;
+        Escribir "¿Qué película desea alquilar?";
+        Escribir "1. El señor de los anillos: La comunidad del anillo";
+        Escribir "2. El Hobbit: La desolación de Smaug";
+        Escribir "3. Transformers: El lado oscuro de la luna";
+        Escribir "4. Batman VS Superman";
+        Escribir "5. Avengers: Endgame";
+        Leer opcion;
+    FinSubProceso
+
+    SubProceso ListaPeliculas(copiasESA, copiasEH, copiasT, copiasBvsS, copiasAV)
+        Escribir "nombre de película                                copias disponibles";
+        Escribir "El señor de los anillos: La comunidad del anillo        ", copiasESA;
+        Escribir "El Hobbit: La desolación de Smaug                       ", copiasEH;
+        Escribir "Transformers: El lado oscuro de la luna                 ", copiasT;
+        Escribir "Batman VS Superman                                      ", copiasBvsS;
+        Escribir "Avengers: Endgame                                       ", copiasAV;
+        Escribir "Oprima una tecla para volver al menú inicial";
+        Esperar Tecla;
+    FinSubProceso
+
+    SubProceso generarRecibo(nombre, numeroPeliculas, observaciones)
+        Escribir "********** Video Tienda El Porvenir **********";
+        Escribir "Nombre del cliente: ", nombre;
+        Escribir "Numero de películas alquiladas: ", numeroPeliculas;
+        Escribir "Valor a pagar $", numeroPeliculas*3000;
+        Escribir "Observaciones: ", observaciones;
+        Escribir "        Gracias por su visita. ";
+    FinSubProceso
+
+    Proceso VideoTienda
+        Definir nombre Como Caracter;
+        Definir edad, opc, opcion, seleccion Como Entero;
+        Definir copiasESA Como Entero;
+        Definir copiasEH Como Entero;
+        Definir copiasT Como Entero;
+        Definir copiasBvsS Como Entero;
+        Definir copiasAv Como Entero;
+        Definir numeroPeliculas Como Entero;
+        Definir observaciones Como Caracter;
+        copiasESA <- 2;
+        copiasEH <- 3;
+        copiasT <- 0;
+        copiasBvsS <- 1;
+        copiasAv <- 3;
+        numeroPeliculas <- 0;
+        opcion <- 0;
+        observaciones <- "";
+        Escribir "Digite su nombre completo";
+        Leer nombre;
+        Escribir "********** Video Tienda El Porvenir **********";
+        Escribir "Bienvenido ", nombre;
+        
+        Mientras opcion <> 4 Hacer
+            opcion <- imprimirMenu();
+            Segun opcion Hacer
+                1:
+                    Limpiar Pantalla;
+                    seleccion <- seleccionPelicula();
+                    Segun seleccion Hacer
+                        1:
+                            Si copiasESA > 0 Entonces
+                                Escribir "El señor de los anillos: la comunidad del anillo, 
+                                ha sido agregado a la cesta";
+                                numeroPeliculas <- numeroPeliculas + 1;
+                                copiasESA <- copiasESA - 1;
+                            SiNo
+                                Escribir "No hay copias disponibles de la película seleccionada";
+                            FinSi
+                        2:
+                            Si copiasEH > 0 Entonces
+                                Escribir "El Hobbit: La desolación de Smaug, ha sido agregado a la cesta";
+                                numeroPeliculas <- numeroPeliculas + 1;
+                                copiasEH <- copiasEH - 1;
+                            SiNo
+                                Escribir "No hay copias disponibles de la película seleccionada";
+                            FinSi
+                        3:
+                            Si copiasT > 0 Entonces
+                                Escribir "Transformers: El lado oscuro de la luna, ha sido agregado 
+                                a la cesta";
+                                numeroPeliculas <- numeroPeliculas + 1;
+                                copiasT <- copiasT - 1;
+                            SiNo
+                                Escribir "No hay copias disponibles de la película seleccionada";
+                            FinSi
+                        4:
+                            Si copiasBvsS > 0 Entonces
+                                Escribir "Batman VS Superman, ha sido agregado a la cesta";
+                                numeroPeliculas <- numeroPeliculas + 1;
+                                copiasBvsS <- copiasBvsS - 1;
+                            SiNo
+                                Escribir "No hay copias disponibles de la película seleccionada";
+                            FinSi
+                        5:
+                            Si copiasAv > 0 Entonces
+                                Escribir "Avengers: Endgame, ha sido agregado a la cesta";
+                                numeroPeliculas <- numeroPeliculas + 1;
+                                copiasAV <- copiasAV - 1;
+                            SiNo
+                                Escribir "No hay copias disponibles de la película seleccionada";
+                            FinSi
+                        De Otro Modo:
+                            Escribir "Elección no válida";
+                    FinSegun
+                2:
+                    ListaPeliculas(copiasESA, copiasEH, copiasT, copiasBvsS, copiasAV);
+                3:
+                    Escribir "Sus películas estan listas, esperamos que disfrute un buen rato 
+                    de entretenimiento.";
+                    Escribir "oprima 1 si desea hacer observaciones";
+                    Escribir "oprima cualquier otra tecla para continuar";
+                    Leer opc;
+                    Si opc = 1 Entonces
+                        Escribir "Digite sus observaciones a continuación: ";
+                        Leer observaciones;
+                    FinSi
+                4:
+                    Escribir "Generando ticket de la operación";
+                De Otro Modo:
+                    Escribir "La opción seleccionada no es válida";
+            FinSegun
+            
+        FinMientras
+        generarRecibo(nombre, numeroPeliculas, observaciones);
+    FinProceso
+                        </pre>
                     </div>
                 </div>
             </li>
@@ -121,6 +322,191 @@
                             <img src="img/pseint.png">  
                             <i class="fa-solid fa-circle-chevron-up"></i>   
                         </a>
+                        <pre>
+    // Ejercicio correspondiente al punto 5 del taller 2 organizado en funciones.
+    SubProceso imprimirMenuProducto() 
+        Escribir "1.Champú anticaspa.";
+        Escribir "2.Crema de dientes.";
+        Escribir "3.Jarabe para la tos.";
+        Escribir "4.Bebida energizante.";
+        Escribir "5.Botella de agua 600 ml.";
+    FinSubProceso
+
+    SubProceso opc <- imprimirSubmenuCompra()
+        Definir opc Como Entero;
+        Escribir "Elija una opción a continuación: ";
+        Escribir "0.Volver al menú principal.";
+        Escribir "1.Agregar más productos a la cesta.";
+        Escribir "2.Terminar compra.";
+        Leer opc;
+        si opc=2 Entonces
+            opc <- 4;
+        FinSi
+    FinSubProceso
+
+    SubProceso imprimirListaPrecios()
+        Escribir " Producto                              valor unitario";
+        Escribir "1.Champú anticaspa       *************    $ 10000";
+        Escribir "2.Crema de dientes       *************    $ 3200.85";
+        Escribir "3.Jarabe para la tos     *************    $ 5854.25";
+        Escribir "4.Bebida energizante     *************    $ 9740.34";
+        Escribir "5.Botella de agua 600 ml *************    $ 1200";
+        Escribir "Elija una opción a continuación: ";
+        Escribir "0.Volver al menú principal.";
+        Escribir "1.Comprar productos.";
+        Escribir "2.Terminar consulta.";
+    FinSubProceso
+
+    SubProceso imprimirTicketCambio(nombre, valorTicket, observaciones)
+        Escribir "************* Droguería Mi Salud *************";
+        Escribir "************* Ticket de cambio *************";
+        Escribir "Nombre del cliente: ", nombre;
+        Escribir "Valor del Ticket: ", valorTicket;
+        Escribir "Observaciones: ", observaciones;
+        Escribir "El presente ticket puede ser redimido en su próxima compra mayor o igual 
+        al valor descrito.";
+    FinSubProceso
+
+    SubProceso imprimirFactura(total, nombre, valorItemAg, valorItemBe, valorItemCd, valorItemJt, valorItemSh)
+        Si total > 0 Entonces
+            Limpiar Pantalla;
+            Escribir "************* Droguería Mi Salud *************";
+            Escribir "************* Factura de venta *************";
+            Escribir "Nombre del cliente: ", nombre;
+            Escribir "Producto         Cantidad           Valor ";
+            Si valorItemAg > 0 Entonces
+                Escribir "Agua 600ml          ",valorItemAg/1200, "               $",valorItemAg;
+            FinSi
+            Si valorItemBe > 0 Entonces
+                Escribir "Bebida energizante  ",valorItemBe/9740.34, "               $",valorItemBe;
+            FinSi
+            Si valorItemCd > 0 Entonces
+                Escribir "Crema de dientes    ",valorItemCd/3200.85, "               $",valorItemCd;
+            FinSi
+            Si valorItemJt > 0 Entonces
+                Escribir "Jarabe para la tos  ",valorItemJt/5854.25, "               $",valorItemJt;
+            FinSi
+            Si valorItemSh > 0 Entonces
+                Escribir "Champú              ",valorItemSh/10000, "               $",valorItemSh;
+            FinSi
+            Escribir "Total                               $",total;
+        FinSi
+        Escribir "******** Gracias por su visita. ********";
+    FinSubProceso
+
+    SubProceso valorItem <- calcularTotalItem(unidades, precio, valorItemInicial)
+        Definir valorItem Como Real;
+        valorItem <- (unidades * precio) + valorItemInicial;
+    FinSubProceso
+
+    Proceso Drogueria
+        Definir opc, opcProduct, unidades Como Entero;
+        Definir valorItemSh, valorItemCd, valorItemJt, valorItemBe, valorItemAg Como Real;
+        Definir total, valorTicket Como Real;
+        Definir nombre, observaciones Como Caracter;
+        opc <- 0;
+        valorItemSh <- 0;
+        valorItemCd <- 0;
+        valorItemJt <- 0;
+        valorItemBe <- 0;
+        valorItemAg <- 0;
+        
+        Escribir "Bienvenido a la droguería Mi Salud";
+        Escribir "¿Cuál es su nombre?";
+        Leer nombre;
+
+        Mientras opc <> 4 Hacer
+            Si opc=0 Entonces
+                Escribir "Seleccione la operación que desea realizar de las que se encuentran
+                 a continuación: ";
+                Escribir "1.Comprar productos.";
+                Escribir "2.Consultar precios.";
+                Escribir "3.Devoluciones.";
+                Leer opc;
+            SiNo
+                Segun opc Hacer
+                    //  codigo para comprar productos
+                    1:Escribir "Digite la opción del producto que desea comprar: ";
+                        imprimirMenuProducto();
+                        Leer opcProduct;
+                        Si opcProduct <= 5 Y opcProduct > 0 Entonces
+                            Escribir "Digite las unidades que desea comprar del producto";
+                            Leer unidades;
+                        FinSi
+                        Segun opcProduct Hacer
+                            1:
+                                valorItemSh <- calcularTotalItem(unidades, 10000, valorItemSh);
+                                Escribir unidades," unidades de champú se han agregado a la cesta.";
+                                opc <- imprimirSubmenuCompra();
+                            2:
+                                valorItemCd <- calcularTotalItem(unidades, 3200.85, valorItemCd);
+                                Escribir unidades," unidades de crema dental se han agregado a la cesta.";
+                                opc <- imprimirSubmenuCompra();
+                            3:
+                                valorItemJt <- calcularTotalItem(unidades, 5854.25, valorItemJt);
+                                Escribir unidades," unidades de jarabe para la tos se han agregado a la cesta.";
+                                opc <- imprimirSubmenuCompra();
+                            4:
+                                valorItemBe <- calcularTotalItem(unidades, 9740.34, valorItemBe);
+                                Escribir unidades," unidades de bebida energizante se han agregado a la cesta";
+                                opc <- imprimirSubmenuCompra();
+                            5:
+                                valorItemAg <- calcularTotalItem(unidades, 1200, valorItemAg);
+                                Escribir unidades," unidades de agua se han agregado a la cesta";
+                                opc <- imprimirSubmenuCompra();
+                            De Otro Modo:
+                                Escribir "No existe un producto con la opción escogida";
+                                opc <- 1;
+                                Limpiar Pantalla;
+                        FinSegun
+                    2:
+                        imprimirListaPrecios();
+                        Leer opc;
+                        si opc=2 Entonces
+                            opc <- 4;
+                        FinSi
+                    3:	// Cambiar productos
+                        Escribir "Seleccione la opción del producto que desea cambiar (recuerde que 
+                        puede cambiar solo un tipo de producto a la vez): ";
+                        imprimirMenuProducto();
+                        Leer opcProduct;
+                        Escribir "Digite las unidades del producto que necesitan cambio";
+                        Leer unidades;
+                        Escribir "Escriba a continuación los motivos del cambio: ";
+                        Leer observaciones;
+                        Segun opcProduct Hacer
+                            1:
+                                valorTicket <- (unidades * 10000);
+                            2:
+                                valorTicket <- (unidades * 3200.85) ;
+                                
+                            3:
+                                valorTicket <- (unidades * 5854.25);
+                                
+                            4:
+                                valorTicket <- (unidades * 9740.34);
+                                
+                            5:
+                                valorTicket <- (unidades * 1200);
+                            De Otro Modo:
+                                Escribir "No existe un producto con la opción seleccionada.";
+                                opc <- 3;
+                                Limpiar Pantalla;
+                        FinSegun
+                        Limpiar Pantalla;
+                        imprimirTicketCambio(nombre, valorTicket, observaciones);
+                        opc <- 4;
+                    De Otro Modo:
+                        Escribir "La opción escogida no es válida.";
+                FinSegun
+            FinSi
+            
+        FinMientras
+        
+        total <- valorItemAg + valorItemBe + valorItemCd + valorItemJt + valorItemSh;
+        imprimirFactura(total, nombre, valorItemAg, valorItemBe, valorItemCd, valorItemJt, valorItemSh);
+    FinProceso
+                        </pre>
                     </div>
                 </div>
             </li>
@@ -133,7 +519,6 @@
                 otra de arreglos hechos por el mecánico en caso de que se requiera inventariar cambios repuestos en la motocicleta al
                 entregarla.
 
-
                 <h3>Códigos de la solución</h3>
                 <div class="codigos">
                     <div class="acordeon" id="6-pseint">
@@ -142,6 +527,70 @@
                             <img src="img/pseint.png">  
                             <i class="fa-solid fa-circle-chevron-up"></i>   
                         </a>
+                        <pre>
+                            // Ejercicio correspondiente al punto 6 del taller 2 organizado en funciones.
+    SubProceso registrarDatos(opc, nombre)
+        Definir marca, cilindraje, modelo, observaciones Como Caracter;
+        Escribir "Marca de motocicleta: ";
+        Leer marca;
+        Escribir "Cilindraje:";
+        Leer cilindraje;
+        Escribir "Modelo: ";
+        Leer modelo;
+        Segun opc Hacer
+            1:
+                Escribir "Observaciones del cliente: ";
+                Leer observaciones;
+            2:
+                Escribir "Novedades sobre la motocicleta: ";
+                Leer observaciones;
+            3:
+                Escribir "Reparaciones realizadas: ";
+                Leer observaciones;
+            De Otro Modo:
+                Escribir "Opción no válida";
+        FinSegun
+        Limpiar Pantalla;
+        imprimirDatos(opc, nombre, marca, cilindraje, modelo, observaciones);
+    FinSubProceso
+
+    SubProceso imprimirDatos(opc, nombre, marca, cilindraje, modelo, observaciones)
+        Escribir "          El Maquinista";
+        Escribir "Nombre del cliente: ", nombre;
+        Escribir "Marca de motocicleta: ", marca;
+        Escribir "Cilindraje: ", cilindraje;
+        Escribir "Modelo: ", modelo;
+        Segun opc Hacer
+            1:
+                Escribir "Observaciones del cliente: ", observaciones;
+            2:
+                Escribir "Novedades de salida: ", observaciones;
+            3:
+                Escribir "Reparaciones: ", observaciones;
+        FinSegun
+    FinSubProceso
+
+    Proceso Taller
+        Definir nombre Como Caracter;
+        Definir opc Como Entero;
+        Escribir "          El Maquinista";
+        Escribir "Ingrese el nombre del cliente: ";
+        Leer nombre;
+        Escribir "Seleccione la opción de la operación que desea realizar: ";
+        Escribir "1. Registrar ingreso de motocicleta";
+        Escribir "2. Registrar novedades de motocicleta";
+        Escribir "3. Registrar reparaciones de motocicleta";
+        Leer opc;
+        Si opc > 0 Y opc < 4 Entonces
+            registrarDatos(opc, nombre);
+        SiNo
+            Escribir "Opción no válida";
+        FinSi
+        
+    FinProceso
+
+                        </pre>
+    
                     </div>
                 </div>
             </li>
@@ -160,6 +609,62 @@
                             <img src="img/pseint.png">  
                             <i class="fa-solid fa-circle-chevron-up"></i>   
                         </a>
+                        <pre>
+                            // Ejercicio correspondiente al punto 7 del taller número 2 de condicionales organizado en funciones.
+    SubProceso imc <- calcularIMC(peso, estatura)
+        Definir imc Como Real;
+        imc <- peso / (estatura ^ 2);
+    FinSubProceso
+
+    SubProceso estado <- definirEstado(imc)
+        Definir estado Como Caracter;
+        Si imc <= 18.5 Entonces
+            estado <- "Bajo peso";
+        SiNo
+            Si imc > 18.5 & imc <= 24.9 Entonces
+                estado <- "Normal";
+            SiNo
+                Si imc > 24.9 & imc <= 29.9 Entonces
+                    estado <- "Sobrepeso";
+                SiNo
+                    estado <- "Obeso";
+                FinSi
+            FinSi
+        FinSi
+    FinSubProceso
+
+    SubProceso imprimirResultado(nombre, peso, estatura, imc, estado)
+        Escribir "Secretaria de Salud Municipal";
+        Escribir "Nombre del paciente: ", nombre;
+        Escribir "Peso en kilogramos: ",peso;
+        Escribir "Estatura en metros: ", estatura;
+        Escribir "IMC(índice de masa corporal):", imc;
+        Escribir "Clasificación: ", estado;
+    FinSubProceso
+
+    Proceso Aplicacion_IMC
+        Definir nombre, estado Como Caracter;
+        Definir peso, estatura, imc Como Real;
+        Escribir "Secretaria de Salud Municipal";
+        Escribir "Ingrese los datos solicitados a continuación: ";
+        Escribir "Nombre del paciente: ";
+        Leer nombre;
+        Escribir "Peso en kilogramos: ";
+        Leer peso;
+        Escribir "Estatura en metros: ";
+        Leer estatura;
+        Si estatura > 0 Entonces
+            imc <- calcularIMC(peso, estatura);
+            estado <- definirEstado(imc);
+            Limpiar Pantalla;
+            imprimirResultado(nombre, peso, estatura, imc, estado);
+        SiNo
+            Escribir "La estatura debe ser mayor a 0";
+        FinSi
+    FinProceso
+
+                        </pre>
+    
                     </div>
                 </div>
             </li>
@@ -179,6 +684,514 @@
                             <img src="img/pseint.png">  
                             <i class="fa-solid fa-circle-chevron-up"></i>   
                         </a>
+                        <pre>
+    // Ejercicio correspondiente al punto 8 del taller número 2 de condicionales organizado en funciones.
+    // Función para seleccionar el número de porciones de la torta.
+
+    SubProceso opcPorciones <- tortaChocolate(cantidadChocolate, cantidadChocolate5, cantidadChocolate10, cantidadChocolate20) 
+        Definir opcPorciones Como Entero;
+        Si cantidadChocolate > 0 Entonces
+            Si cantidadChocolate5 > 0 y cantidadChocolate10 > 0 y cantidadChocolate20 > 0 Entonces
+                Escribir "Seleccione el número de porciones de la torta: ";
+                Escribir "1. 5 porciones";
+                Escribir "2. 10 porciones";
+                Escribir "3. 20 porciones";
+                Leer opcPorciones;
+            SiNo
+                Si cantidadChocolate5 > 0 y cantidadChocolate10 > 0 Entonces
+                    Escribir "Seleccione el número de porciones de la torta: ";
+                    Escribir "1. 5 porciones";
+                    Escribir "2. 10 porciones";
+                    Leer opcPorciones;
+                SiNo
+                    Si cantidadChocolate5 > 0 y cantidadChocolate20 > 0 Entonces
+                        Escribir "Seleccione el número de porciones de la torta: ";
+                        Escribir "1. 5 porciones";
+                        Escribir "3. 20 porciones";
+                        Leer opcPorciones;
+                    SiNo
+                        Si cantidadChocolate10 > 0 y cantidadChocolate20 > 0 Entonces
+                            Escribir "Seleccione el número de porciones de la torta: ";
+                            Escribir "2. 10 porciones";
+                            Escribir "3. 20 porciones";
+                            Leer opcPorciones;
+                        SiNo
+                            Si cantidadChocolate5 > 0 Entonces
+                                Escribir "tenemos ", cantidadChocolate5, 
+                                " unidades de torta de 5 porciones";
+                                opcPorciones <- 1;
+                            SiNo
+                                Si cantidadChocolate10 > 0 Entonces
+                                    Escribir "tenemos ", cantidadChocolate10, " unidades de torta de 
+                                    10 porciones";
+                                    opcPorciones <- 2;
+                                SiNo
+                                    Si cantidadChocolate20 > 0 Entonces
+                                        Escribir "tenemos ", cantidadChocolate20, " 
+                                        unidades de torta de 20 porciones";
+                                        opcPorciones <- 3;
+                                    FinSi
+                                FinSi
+                            FinSi
+                        FinSi
+                    FinSi
+                FinSi
+            FinSi
+        SiNo
+            Escribir "No tenemos nunguna torta de chocolate disponible.";
+            opcPorciones <- 0;
+        FinSi
+    FinSubProceso
+
+    // Función para calcular el precio de las tortas de chocolate del pedido
+    SubProceso totalCompra <- calcularTotalClienteChocolate(opcPorciones, unidades, 
+    cantidadChocolate, cantidadChocolate5, cantidadChocolate10, cantidadChocolate20)
+        Definir totalCompra Como Real;
+        Segun opcPorciones Hacer
+            1:
+                Si unidades <= cantidadChocolate5 Entonces
+                    totalCompra <- unidades * 37900;
+                SiNo
+                    Escribir "Solo tenemos ", cantidadChocolate5, "tortas de 5 porciones disponibles";
+                    unidades <- cantidadChocolate5;
+                    totalCompra <- unidades * 37900;
+                FinSi
+            2:
+                Si unidades <= cantidadChocolate10 Entonces
+                    totalCompra <- unidades * 61800;
+                SiNo
+                    Escribir "Solo tenemos ", cantidadChocolate10, "tortas de 10 porciones disponibles";
+                    unidades <- cantidadChocolate10;
+                    totalCompra <- unidades * 61800;
+                FinSi
+            3:
+                Si unidades <= cantidadChocolate20 Entonces
+                    totalCompra <- unidades * 95300;
+                SiNo
+                    Escribir "Solo tenemos ", cantidadChocolate20, "tortas de 20 porciones disponibles";
+                    unidades <- cantidadChocolate20;
+                    totalCompra <- unidades * 95300;
+                FinSi
+        FinSegun
+    FinSubProceso
+
+    // Función para calcular el precio de las tortas Shortcake del pedido
+    SubProceso totalCompra <- calcularTotalClienteShortcake(opcPorciones, unidades, 
+    cantidadShortcake, cantidadShortcake10, cantidadShortcake20)
+        Definir totalCompra Como Real;
+        Si opcPorciones = 1 Entonces
+            Si unidades <= cantidadShortcake10 Entonces
+                totalCompra <- unidades * 88100;
+            SiNo
+                Escribir "Solo tenemos ", cantidadShortcake10, "tortas de 10 porciones disponibles";
+                unidades <- cantidadShortcake10;
+                totalCompra <- unidades * 88100;
+            FinSi
+        SiNo
+            Si opcPorciones = 2 Entonces
+                Si unidades <= cantidadShortcake20 Entonces
+                    totalCompra <- unidades * 126600;
+                SiNo
+                    Escribir "Solo tenemos ", cantidadShortcake20, "tortas de 20 porciones disponibles";
+                    unidades <- cantidadShortcake20;
+                    totalCompra <- unidades * 126600;
+                FinSi
+            FinSi
+        FinSi
+    FinSubProceso
+    // Función para calcular el precio de las tortas de tres leches del pedido
+    SubProceso totalCompra <- calcularTotalClienteTresLeches(opcPorciones, unidades, 
+    cantidadTresLeches, cantidadTresLeches8, cantidadTresLeches12)
+        Definir totalCompra Como Real;
+        Si opcPorciones = 1 Entonces
+            Si unidades <= cantidadTresLeches8 Entonces
+                totalCompra <- unidades * 27500;
+            SiNo
+                Escribir "Solo tenemos ", cantidadTresLeches8, "tortas de 8 porciones disponibles";
+                unidades <- cantidadTresLeches8;
+                totalCompra <- unidades * 27500;
+            FinSi
+        SiNo
+            Si opcPorciones = 2 Entonces
+                Si unidades <= cantidadTresLeches12 Entonces
+                    totalCompra <- unidades * 74700;
+                SiNo
+                    Escribir "Solo tenemos ", cantidadTresLeches12, "tortas de 12 porciones disponibles";
+                    unidades <- cantidadTresLeches12;
+                    totalCompra <- unidades * 74700;
+                FinSi
+            FinSi
+        FinSi
+    FinSubProceso
+
+    SubProceso cantidadDisponible <- actualizarInventario(totalFactura, cantidadPorciones, 
+    opcSabor, opcPorciones)
+        Definir cantidadDisponible Como Entero;
+        Definir unidades Como Entero;
+        Segun opcSabor Hacer
+            1:
+                Segun opcPorciones Hacer
+                    1:
+                        unidades <- totalFactura / 37900;
+                    2:
+                        unidades <- totalFactura / 61800;
+                    3:
+                        unidades <- totalFactura / 95300;
+                FinSegun
+            2:
+                Si opcPorciones = 1 Entonces
+                    unidades <- totalFactura / 88100;
+                SiNo
+                    Si opcPorciones = 2 Entonces
+                        unidades <- totalFactura / 126600;
+                    FinSi
+                FinSi
+            3:
+                Si opcPorciones = 1 Entonces
+                    unidades <- totalFactura / 27500;
+                SiNo
+                    Si opcPorciones = 2 Entonces
+                        unidades <- totalFactura / 74700;
+                    FinSi
+                FinSi
+        FinSegun
+        cantidadDisponible <- cantidadPorciones - unidades;
+    FinSubProceso
+
+    // Función para imprimir el recibo de compra
+    SubProceso imprimirRecibo(opcSabor, nombre, decoracion, totalCliente)
+        Limpiar Pantalla;
+        Definir sabor Como Caracter;
+        Segun opcSabor Hacer
+            1:
+                sabor <- "Chocolate";
+            2:
+                sabor <- "Shortcake";
+            3:
+                sabor <- "Tres Leches";
+        FinSegun
+        Escribir "Nombre del cliente: ", nombre;
+        Escribir "Sabor de la torta: ", sabor;
+        Escribir "Decoración: ", decoracion;
+        Escribir "Total a pagar: ", totalCliente;
+    FinSubProceso
+
+    SubProceso opcPorciones <- shortcake(cantidadShortcake, cantidadShortcake10, cantidadShortcake20)
+        Definir opcPorciones Como Entero;
+        Si cantidadShortcake > 0 Entonces
+            Si cantidadShortcake10 > 0 y cantidadShortcake20 > 0 Entonces
+                Escribir "Seleccione la opción para el número de porciones de la torta: ";
+                Escribir "1. 10 porciones";
+                Escribir "2. 20 porciones";
+                Leer opcPorciones;
+            SiNo
+                Si cantidadShortcake10 > 0 Entonces
+                    opcPorciones <- 1;
+                    Escribir "Tenemos ", cantidadShortcake10, " unidades de Shortcake de 
+                    10 porciones disponibles.";
+                SiNo
+                    Si cantidadShortcake20 > 0 Entonces
+                        opcPorciones <- 2;
+                        Escribir "Tenemos ", cantidadShortcake20, " unidades de Shortcake de 
+                        20 porciones disponibles.";
+                    FinSi
+                FinSi
+            FinSi
+        SiNo
+            Escribir "No hay tortas Shortcake disponibles.";
+            opcPorciones <- 0;
+        FinSi
+        
+    FinSubProceso
+
+    Subproceso opcPorciones <- tresLeches(cantidadTresLeches, cantidadTresLeches8, cantidadTresLeches12)
+        Definir opcPorciones Como Entero;
+        Si cantidadTresLeches > 0 Entonces
+            Si cantidadTresLeches8 > 0 y cantidadTresLeches12 > 0 Entonces
+                Escribir "Seleccione la opción para el número de porciones de la torta: ";
+                Escribir "1. 8 porciones";
+                Escribir "2. 12 porciones";
+                Leer opcPorciones;
+            SiNo
+                Si cantidadTresLeches8 > 0 Entonces
+                    opcPorciones <- 1;
+                    Escribir "Tenemos ", cantidadTresLeches8, " unidades de torta de tres leches 
+                    de 8 porciones disponibles.";
+                SiNo
+                    Si cantidadTresLeches12 > 0 Entonces
+                        opcPorciones <- 2;
+                        Escribir "Tenemos ", cantidadTresLeches12, " unidades de torta de tres 
+                        leches de 12 porciones disponibles.";
+                    FinSi
+                FinSi
+            FinSi
+        SiNo
+            Escribir "No hay tortas de tres leches disponibles.";
+            opcPorciones <- 0;
+        FinSi
+    FinSubProceso
+
+    // Función para escoger la decoracion de la torta.
+    SubProceso decoracion <- escogerDecoracion(opcSabor)
+        Definir decoracion Como Caracter;
+        Definir opcDecoracion Como Entero;
+        Segun opcSabor Hacer
+            1:
+                Escribir "Seleccione un recubrimiento";
+                Escribir "1.Cubierta de crema de chocolate, decorada con hojuelas de chocolate y fresas.";
+                Escribir "2.Cubierta con crema de leche, decorada con hojuelas de chocolate y 
+                trozos de durazno.";
+                Escribir "Otra opción. Sin recubrimiento.";
+                Leer opcDecoracion;
+                Si opcDecoracion = 1 Entonces
+                    decoracion <- "Cubierta de crema de chocolate, decorada con hojuelas de 
+                    chocolate y fresas.";
+                SiNo
+                    Si opcDecoracion = 2 Entonces
+                        decoracion <- "Cubierta con crema de leche, decorada con hojuelas de 
+                        chocolate y trozos de durazno.";
+                    SiNo
+                        decoracion <- "Sin recubrimiento";
+                    FinSi
+                FinSi
+            2:
+                Escribir "Seleccione un recubrimiento";
+                Escribir "1.Cubierta de crema de leche decorada con macarrones.";
+                Escribir "2.Cubierta de crema de leche decorada con merengues.";
+                Escribir "Otra opción. Sin recubrimiento.";
+                Leer opcDecoracion;
+                Si opcDecoracion = 1 Entonces
+                    decoracion <- "Cubierta de crema de leche decorada con macarrones.";
+                SiNo
+                    Si opcDecoracion = 2 Entonces
+                        decoracion <- "Cubierta de crema de leche decorada con merengues";
+                    SiNo
+                        decoracion <- "Sin recubrimiento.";
+                    FinSi
+                FinSi
+            3:
+                Escribir "Seleccione un recubrimiento";
+                Escribir "1.Decorada con  whip topping y viruta de chocolate blanco.";
+                Escribir "2.Crema de leche mezclada con mermelada de maracuyá.";
+                Escribir "Otra opción. Sin recubrimiento.";
+                Leer opcDecoracion;
+                Si opcDecoracion = 1 Entonces
+                    decoracion <- "Decorada con  whip topping y viruta de chocolate blanco.";
+                SiNo
+                    Si opcDecoracion = 2 Entonces
+                        decoracion <- "Crema de leche mezclada con mermelada de maracuyá.";
+                    SiNo
+                        decoracion <- "Sin recubrimiento";
+                    FinSi
+                FinSi
+        FinSegun
+        
+    FinSubProceso
+
+    Proceso Pastelero
+        Definir opc, opcSabor, opcPorciones, opcDecoracion, unidades Como Entero;
+        Definir cantidadChocolate5, cantidadChocolate10, cantidadChocolate20, cantidadChocolate Como Entero;
+        Definir cantidadShortcake10, cantidadShortcake20, cantidadShortcake Como Entero;
+        Definir cantidadTresLeches8, cantidadTresLeches12, cantidadTresLeches Como Entero;
+        Definir totalCliente, totalVenta Como Real;
+        Definir nombre, decoracion Como Caracter;
+        opc <- 0;
+        cantidadChocolate5 <- 3;
+        cantidadChocolate10 <- 5;
+        cantidadChocolate20 <- 1;
+        cantidadChocolate <- cantidadChocolate10 + cantidadChocolate20 + cantidadChocolate5;
+        cantidadShortcake10 <- 2;
+        cantidadShortcake20 <- 3;
+        cantidadShortcake <- cantidadShortcake10 + cantidadShortcake20;
+        cantidadTresLeches8 <- 2;
+        cantidadTresLeches12 <- 1;
+        cantidadTresLeches <- cantidadTresLeches8 + cantidadTresLeches12;
+        totalCliente <- 0;
+        totalVenta <- 0;
+        Mientras opc <> 4 Hacer
+            Si opc = 0 Entonces
+                Escribir "Seleccione la operación que desea realizar: ";
+                Escribir "1. Registrar pedido";
+                Escribir "2. Mostrar tortas disponibles";
+                Escribir "3. Mostrar ventas del dia";
+                Leer opc;
+            FinSi
+            Segun opc Hacer
+                1:// Registrar un pedido
+                    Escribir "¿Qué torta desea ordenar?";
+                    Escribir "1. Torta de chocolate";
+                    Escribir "2. Shortcake";
+                    Escribir "3. Torta de tres leches";
+                    leer opcSabor;
+                    Segun opcSabor Hacer
+                        1: // Registrar pedido de torta con sabor a chocolate
+                            opcPorciones <- tortaChocolate(cantidadChocolate, cantidadChocolate5, 
+                            cantidadChocolate10, cantidadChocolate20);
+                            Si opcPorciones <> 0 Y opcPorciones < 4 Entonces
+                                Escribir "¿Cuantas tortas va a llevar?";
+                                Leer unidades;
+                                Escribir "Nombre del cliente: ";
+                                Leer nombre;
+                                totalCliente <- calcularTotalClienteChocolate(opcPorciones, unidades, 
+                                cantidadChocolate, cantidadChocolate5, cantidadChocolate10, 
+                                cantidadChocolate20);
+                                
+                                Segun opcPorciones Hacer
+                                    1:
+                                        cantidadChocolate5 <- actualizarInventario(totalCliente, 
+                                        cantidadChocolate5, opcSabor, opcPorciones);
+                                    2:
+                                        cantidadChocolate10 <- actualizarInventario(totalCliente, 
+                                        cantidadChocolate10, opcSabor, opcPorciones);
+                                    3:
+                                        cantidadChocolate20 <- actualizarInventario(totalCliente, 
+                                        cantidadChocolate20, opcSabor, opcPorciones);
+                                FinSegun
+                                cantidadChocolate <- cantidadChocolate5 + cantidadChocolate10 + 
+                                cantidadChocolate20;
+                                decoracion <- escogerDecoracion(opcSabor);
+                                Si totalCliente > 0 Entonces
+                                    imprimirRecibo(opcSabor, nombre, decoracion, totalCliente);
+                                    totalVenta <- totalVenta + totalCliente;
+                                FinSi
+                                totalCliente <- 0;
+                                opc <- 0;
+                                Escribir "Digite enter para volver al menú principal.";
+                                Esperar Tecla;
+                                Limpiar Pantalla;
+                            SiNo
+                                Escribir "Opción no válida";
+                                opc <- 0;
+                                Limpiar Pantalla;
+                            FinSi
+                            
+                        2:// Registrar pedido de torta shortcake
+                            opcPorciones <- shortcake(cantidadShortcake, cantidadShortcake10, 
+                            cantidadShortcake20);
+                            Si opcPorciones <> 0 Y opcPorciones < 3 Entonces
+                                Escribir "¿Cuantas tortas va a llevar?";
+                                Leer unidades;
+                                Escribir "Nombre del cliente: ";
+                                Leer nombre;
+                                totalCliente <- calcularTotalClienteShortcake(opcPorciones, 
+                                unidades, cantidadShortcake, cantidadShortcake10, cantidadShortcake20);
+                                Si opcPorciones = 1 Entonces
+                                    cantidadShortcake10 <- actualizarInventario(totalCliente, 
+                                    cantidadShortcake10, opcSabor, opcPorciones);
+                                SiNo
+                                    Si opcPorciones = 2 Entonces
+                                        cantidadShortcake20 <- actualizarInventario(totalCliente, 
+                                        cantidadShortcake20, opcSabor, opcPorciones);
+                                    FinSi
+                                FinSi
+                                cantidadShortcake <- cantidadShortcake10 + cantidadShortcake20;
+                                decoracion <- escogerDecoracion(opcSabor);
+                                Si totalCliente > 0 Entonces
+                                    imprimirRecibo(opcSabor, nombre, decoracion, totalCliente);
+                                    totalVenta <- totalVenta + totalCliente;
+                                FinSi
+                                totalCliente <- 0;
+                                opc <- 0;
+                                Escribir "Digite enter para volver al menú principal.";
+                                Esperar Tecla;
+                                Limpiar Pantalla;
+                            Sino 
+                                Escribir "Opción no válida";
+                                opc <- 0;
+                                Limpiar Pantalla;
+                            FinSi
+                            
+                        3:// Registrar pedido de torta de tres leches
+                            opcPorciones <- tresLeches(cantidadTresLeches, cantidadTresLeches8, 
+                            cantidadTresLeches12);
+                            Si opcPorciones <> 0 y opcPorciones < 3 Entonces
+                                Escribir "¿Cuantas tortas va a llevar?";
+                                Leer unidades;
+                                Escribir "Nombre del cliente: ";
+                                Leer nombre;
+                                totalCliente <- calcularTotalClienteTresLeches(opcPorciones, unidades, 
+                                cantidadTresLeches, cantidadTresLeches8, cantidadTresLeches12);
+                                Si opcPorciones = 1 Entonces
+                                    cantidadTresLeches8 <- actualizarInventario(totalCliente, 
+                                    cantidadTresLeches8, opcSabor, opcPorciones);
+                                SiNo
+                                    Si opcPorciones = 2 Entonces
+                                        cantidadTresLeches12 <- actualizarInventario(totalCliente, 
+                                        cantidadTresLeches12, opcSabor, opcPorciones);
+                                    FinSi
+                                FinSi
+                                cantidadTresLeches <- cantidadTresLeches12 + cantidadTresLeches8;
+                                decoracion <- escogerDecoracion(opcSabor);
+                                Si totalCliente > 0 Entonces
+                                    imprimirRecibo(opcSabor, nombre, decoracion, totalCliente);
+                                    totalVenta <- totalVenta + totalCliente;
+                                FinSi
+                                totalCliente <- 0;
+                                opc <- 0;
+                                Escribir "Digite enter para volver al menú principal.";
+                                Esperar Tecla;
+                                Limpiar Pantalla;
+                            Sino 
+                                Escribir "Opción no válida";
+                                opc <- 0;
+                                Limpiar Pantalla;
+                            FinSi
+                        De Otro Modo:
+                            
+                    FinSegun
+                    
+                2:// Revisar las tortas disponibles
+                    Limpiar Pantalla;
+                    Escribir "Tortas disponibles:";
+                    Escribir "";
+                    Si cantidadChocolate > 0 Entonces
+                        Escribir "Torta de chocolate de cinco pociones:    ", cantidadChocolate5;
+                        Escribir "Torta de chocolate de diez pociones:     ", cantidadChocolate10;
+                        Escribir "Torta de chocolate de veinte pociones:   ", cantidadChocolate20;
+                    FinSi
+                    Escribir "";
+                    Si cantidadShortcake > 0 Entonces
+                        Escribir "Torta Shortcake de diez porciones:      ", cantidadShortcake10;
+                        Escribir "Torta Shortcake de veinte porciones:    ", cantidadShortcake20;
+                    FinSi
+                    Escribir "";
+                    Si cantidadTresLeches > 0 Entonces
+                        Escribir "Torta de tres leches de ocho porciones: ", cantidadTresLeches8;
+                        Escribir "Torta de tres leches de doce porciones: ", cantidadTresLeches12;
+                    FinSi
+                    Escribir "";
+                    Escribir "Oprima enter para volver al menú principal";
+                    Esperar Tecla;
+                    opc <- 0;
+                3:// Mostrar ventas realizadas en el dia
+                    Limpiar Pantalla;
+                    Escribir "Tortas en inventario: ";
+                    Escribir"";
+                    Escribir "Torta de chocolate de cinco pociones:    ", cantidadChocolate5;
+                    Escribir "Torta de chocolate de diez pociones:     ", cantidadChocolate10;
+                    Escribir "Torta de chocolate de veinte pociones:   ", cantidadChocolate20;
+                    Escribir "";
+                    Escribir "Torta Shortcake de diez porciones:      ", cantidadShortcake10;
+                    Escribir "Torta Shortcake de veinte porciones:    ", cantidadShortcake20;
+                    Escribir "";
+                    Escribir "Torta de tres leches de ocho porciones: ", cantidadTresLeches8;
+                    Escribir "Torta de tres leches de doce porciones: ", cantidadTresLeches12;
+                    Escribir "";
+                    
+                    Escribir "Venta total del dia: $",totalVenta;
+                    opc <- 4;
+                De Otro Modo:
+                    Escribir "Seleccione una opción válida";
+                    Esperar 2 Segundos;
+                    Limpiar Pantalla;
+                De Otro Modo:
+                    Escribir "Seleccione una opción válida";
+                    Esperar 2 Segundos;
+                    Limpiar Pantalla;
+            FinSegun
+        FinMientras
+    FinProceso
+                        </pre>
                     </div>
                 </div>
             </li>
@@ -198,6 +1211,67 @@
                             <img src="img/pseint.png">  
                             <i class="fa-solid fa-circle-chevron-up"></i>   
                         </a>
+                        <pre>
+                            
+    // Programa correspondiente al punto 9 del taller 2 organizado en funciones.
+    // Función para calcular área de un triángulo.
+    Subproceso areaF <- areaTriangulo(base, altura)
+        Definir areaF Como Real;
+        areaF <- (base * altura)/2;
+    FinSubProceso
+
+    // Función para calcular área de un trapecio
+    SubProceso areaF <- areaTrapecio(base, base2, altura)
+        Definir areaF Como Real;
+        areaF <- ((base + base2) * altura) / 2;
+    FinSubProceso
+
+    // Función para calcular área de un rectángulo
+    Subproceso areaF <- areaRectangulo(base, altura)
+        Definir areaF Como Real;
+        areaF <- base * altura;
+    FinSubProceso
+
+    // Programa principal.
+    Proceso Area
+        Definir areaFigura Como Real;
+        Definir base, altura, base2 Como Real;
+        Definir opc Como Entero;
+        areaFigura <- 0;
+        Escribir "¿De qué figura desea calcular el área?, digite el número de la opción deseada";
+        Escribir "1.Rectángulo";
+        Escribir "2.Triángulo";
+        Escribir "3.Trapecio";
+        Leer opc;
+        
+        Si opc = 1 O opc = 2 Entonces
+            Escribir "Inserte la base: ";
+            Leer base;
+            Escribir "Inserte la altura: ";
+            Leer altura;
+            Si opc = 1 Entonces
+                areaFigura <- areaRectangulo(base, altura);
+            SiNo
+                areaFigura <- areaTriangulo(base, altura);
+            FinSi
+        SiNo
+            Si opc = 3 Entonces
+                Escribir "Inserte la base superior: ";
+                Leer base;
+                Escribir "Inserte la base inferior: ";
+                Leer base2;
+                Escribir "Inserte la altura: ";
+                Leer altura;
+                areaFigura <- areaTrapecio(base, base2, altura);
+            SiNo
+                Escribir "Opción no valida.";
+            FinSi
+        FinSi
+        Si (areaFigura > 0) Entonces
+            Escribir "El área es: ", areaFigura;
+        FinSi
+    FinProceso
+                        </pre>
                     </div>
                 </div>
             </li>
@@ -217,6 +1291,101 @@
                             <img src="img/pseint.png">  
                             <i class="fa-solid fa-circle-chevron-up"></i>   
                         </a>
+                        <pre>
+    // Ejercicio correspondiente al punto 10 del taller 2 organizado en funciones.
+
+    SubProceso agregarSaldo <- depositar(deposito)
+        Definir agregarSaldo Como Real;
+        Si deposito > 0 Entonces
+            agregarSaldo <- deposito;
+        SiNo
+            Escribir "El deposito debe ser mayor a cero.";
+            agregarSaldo <- 0;
+        FinSi
+    FinSubProceso
+
+    SubProceso restarSaldo <- retirar(retiro, saldo)
+        Definir restarSaldo Como Real;
+        Si retiro > 0 Entonces
+            Si retiro <= saldo Entonces
+                restarSaldo <- retiro;
+            SiNo
+                Escribir "Saldo insuficiente";
+                Esperar 2 Segundos;
+                restarSaldo <- 0;
+            FinSi
+        SiNo
+            Escribir "Monto del retiro no es válido";
+            restarSaldo <- 0;
+            Esperar 2 Segundos;
+        FinSi
+    FinSubProceso
+
+    SubProceso imprimirRecibo(usuario, Transaccion, saldo, opc)
+        Si opc = 1 Entonces
+            Si Transaccion = 0 Entonces
+                Escribir "Operación rechazada.";
+            SiNo
+                Escribir "Depósito realizado con éxito";
+            FinSi
+        SiNo
+            Si opc = 2 Entonces
+                Si Transaccion = 0 Entonces
+                    Escribir "Operación rechazada.";
+                SiNo
+                    Escribir "Retiro realizado con éxito";
+                FinSi
+            FinSi
+        FinSi
+        Escribir "Nombre del cliente: ", usuario;
+        Escribir "Valor de la operación: $", transaccion;
+        Escribir "Saldo disponible: $", saldo;
+    FinSubProceso
+
+    Proceso SuBancoFiel
+        Definir usuario Como Caracter;
+        Definir valorTransaccion, saldo Como Real;
+        Definir opc Como Entero;
+        opc <- 0;
+        saldo <- 1000000;
+        Escribir "Ingrese su nombre:";
+        Leer usuario;
+        
+                Escribir "¿Qué operación desea realizar?";
+                Escribir "1.Realizar depósito.";
+                Escribir "2.Realizar retiro.";
+                Escribir "3.Consultar saldo.";
+                Escribir "4. Cancelar.";
+                Leer opc;
+                
+                Segun opc Hacer
+                    1:
+                        Escribir "Ingrese el monto que desea depositar: ";
+                        Leer valorTransaccion;
+                        valorTransaccion <- depositar(valorTransaccion);
+                        saldo <- saldo + valorTransaccion;
+                        imprimirRecibo(usuario, valorTransaccion, saldo, opc);
+                    2:
+                        Escribir "Ingrese el monto que desea retirar: ";
+                        Leer valorTransaccion;
+                        valorTransaccion <- retirar(valorTransaccion, saldo);
+                        saldo <- saldo - valorTransaccion;
+                        imprimirRecibo(usuario, valorTransaccion, saldo, opc);
+                    3:
+                        Escribir "Nombre del cliente: ", usuario;
+                        Escribir "Saldo disponible: ", saldo;
+                        Escribir "Presione una tecla para terminar. ";
+                        Esperar Tecla;
+                        Limpiar Pantalla;
+                    4:
+                        Escribir "Sesión finalizada.";
+                    De Otro Modo:
+                        Escribir "Opción no valida";
+                        Esperar 2 Segundos;
+                        Limpiar Pantalla;
+                FinSegun
+    FinProceso
+                        </pre>
                     </div>
                 </div>
             </li>
@@ -238,6 +1407,201 @@
                             <img src="img/pseint.png">  
                             <i class="fa-solid fa-circle-chevron-up"></i>   
                         </a>
+                        <pre>
+    // Código correspondiente al punto 6 del taller 3 de ciclos organizado en funciones.
+    // Funición para verificar si el número de contacto ya esta almacenado.
+    SubProceso almacenar <- verificarTelefonoAlmacenado(telefonoTemporal, telefonos)
+        Definir almacenar Como Logico;
+        Definir i Como Entero;
+        Para i <- 0 Hasta 2 Con Paso 1 Hacer
+            Si telefonoTemporal = telefonos[i] Entonces
+                almacenar <- Verdadero;
+                i <- 3;
+            SiNo
+                almacenar <- Falso;
+            FinSi
+        FinPara
+    FinSubProceso
+
+    SubProceso dato <- solicitarDato(datoRequerido)
+        Definir dato Como Caracter;
+        Si datoRequerido = "Nombre" Entonces
+            Escribir "Ingrese el nombre del contacto: ";
+            Leer dato;
+        SiNo
+            Si datoRequerido = "Organizacion" Entonces
+                Escribir "Ingrese el nombre de la organización: ";
+                Leer dato;
+            FinSi
+        FinSi
+    FinSubProceso
+
+    SubProceso mostrarContactosAlmacenados(telefono, nombre, organizacion)
+        Definir i Como Entero;
+        Para i <- 0 Hasta 2 Hacer
+            Escribir "Registro ",i+1, ":";
+            Si telefono[i] <> "" Entonces
+                Escribir "Nombre del contacto: ", nombre[i];
+                Escribir "Número celular: ", telefono[i];
+                Escribir "Organización:", organizacion[i];
+                Escribir "";
+            SiNo
+                Escribir "Registro vacio.";
+                Escribir "";
+            FinSi
+        FinPara
+    FinSubProceso
+
+    SubProceso eliminarContacto(telefonoTemporal, telefono, nombre, organizacion)
+        Definir i Como Entero;
+        Si Longitud(telefonoTemporal) = 10 Entonces
+            Para i <- 0 Hasta 2 Con Paso 1 Hacer
+                Si telefono[i] = telefonoTemporal Entonces
+                    Si i <> 2 Entonces
+                        Si i = 0 Entonces
+                            Si telefono[i+1] <> "" Entonces
+                                telefono[i] <- telefono[i+1];
+                                nombre[i] <- nombre[i+1];
+                                organizacion[i] <- organizacion[i+1];
+                                Si telefono[i+2] <> "" Entonces
+                                    telefono[i+1] <- telefono[i+2];
+                                    nombre[i+1] <- nombre[i+2];
+                                    organizacion[i+1] <- organizacion[i+2];
+                                    telefono[i+2] <- "";
+                                    nombre[i+2] <- "";
+                                    organizacion[i+2] <- "";
+                                SiNo
+                                    telefono[i+1] <- "";
+                                    nombre[i+1] <- "";
+                                    organizacion[i+1] <- "";
+                                FinSi
+                            SiNo
+                                telefono[i] <- "";
+                                nombre[i] <- "";
+                                organizacion[i] <- "";	
+                            FinSi
+                        SiNo
+                            Si telefono[i+1] <> "" Entonces
+                                telefono[i] <- telefono[i+1];
+                                nombre[i] <- nombre[i+1];
+                                organizacion[i] <- organizacion[i+1];
+                                telefono[i+1] <- "";
+                                nombre[i+1] <- "";
+                                organizacion[i+1] <- "";
+                            SiNo
+                                telefono[i] <- "";
+                                nombre[i] <- "";
+                                organizacion[i] <- "";
+                            FinSi
+                        FinSi
+                    SiNo
+                        telefono[i] <- "";
+                        nombre[i] <- "";
+                        organizacion[i] <- "";
+                    FinSi
+                    Escribir "Contacto eliminado con éxito";
+                    i <- 3;
+                SiNo
+                    Si i = 2 Entonces
+                        Escribir "El número ingresado no se encuentra en la base de datos";
+                        Esperar 2 Segundos;
+                    FinSi
+                FinSi
+            FinPara
+        SiNo
+            Escribir "El número de telefono debe tener diez digitos";
+        FinSi
+    FinSubProceso
+
+    // Inicializar arreglo vacio.
+    SubProceso inicializarArreglo(arreglo, tamanio)
+        Definir i Como Entero;
+        Para i <- 0 Hasta tamanio - 1 Con Paso 1 Hacer
+            arreglo[i] <- "";
+        FinPara
+    FinSubProceso
+
+    //Proceso principal.
+    Proceso AlmacenarContactos
+        
+        Definir nombre, telefono, organizacion, telefonoTemporal Como Caracter;
+        Dimension nombre[3],telefono[3], organizacion[3];
+        Definir opc,i Como Entero;
+        Definir confirmacion Como Logico;
+        inicializarArreglo(nombre, 3);
+        inicializarArreglo(telefono, 3);
+        inicializarArreglo(organizacion, 3);
+        
+        Repetir
+            Escribir "Menú principal";
+            Escribir "1.Añadir nuevo contacto";
+            Escribir "2.Ver contactos almacenados";
+            Escribir "3.Eliminar contacto";
+            Escribir "4.Salir";
+            Leer opc;
+            Segun opc Hacer
+                1:// Añadir nuevo contacto
+                    Si telefono[2] <> "" Entonces
+                        Escribir "Agenda llena, debe eliminar un contacto para guardar uno nuevo.";
+                        telefonoTemporal <- "";
+                    SiNo
+                        Escribir "Ingrese el número de teléfono: ";
+                        Leer telefonoTemporal;
+                        Si telefonoTemporal <> "" Y Longitud(telefonoTemporal) = 10 Entonces
+                            confirmacion <- verificarTelefonoAlmacenado(telefonoTemporal, telefono);
+                            Si confirmacion Entonces
+                                Escribir "Ya existe un contacto con ese número de teléfono";
+                                Escribir "Oprima enter para volver al menú principal.";
+                                Esperar Tecla;
+                                Limpiar Pantalla;
+                            SiNo
+                                // Ciclo para guardar datos del contacto
+                                Para i <- 0 Hasta 2 Con Paso 1 Hacer
+                                    Si telefono[i] = "" Entonces
+                                        telefono[i] <- telefonoTemporal;
+                                        nombre[i] <- solicitarDato("Nombre");
+                                        organizacion[i] <- solicitarDato("Organizacion");
+                                        Limpiar Pantalla;
+                                        Escribir "Contacto guardado con éxito";
+                                        Escribir "Datos almacenados:";
+                                        Escribir "Nombre: ", nombre[i], " Teléfono: ", telefono[i], 
+                                        " Organizacón: ", organizacion[i];
+                                        Escribir "Oprima enter para volver al menú principal.";
+                                        Esperar Tecla;
+                                        Limpiar Pantalla;
+                                        i<-3;
+                                    FinSi
+                                FinPara
+                            FinSi
+                        SiNo
+                            Escribir "Debe ingresar un número de contacto válido de diez dígitos.";
+                            Esperar 3 Segundos;
+                            Limpiar Pantalla;
+                        FinSi
+                    FinSi
+                2:// Ver contactos almacenados 
+                    mostrarContactosAlmacenados(telefono, nombre, organizacion);
+                    Escribir "Oprima enter para volver al menú principal.";
+                    Esperar Tecla;
+                    Limpiar Pantalla;
+                3:// Eliminar un contacto
+                    Escribir "Ingrese el número de teléfono: ";
+                    Leer telefonoTemporal;
+                    eliminarContacto(telefonoTemporal, telefono, nombre, organizacion);
+                    Escribir "Oprima enter para volver al menú principal";
+                    Esperar Tecla;
+                    Limpiar Pantalla;
+                4:// Salir de la aplicación
+                    Limpiar Pantalla;
+                    Escribir "Ha salido del sistema";
+                De Otro Modo:
+                    Escribir "Escoja una opción válida";
+                    Esperar 2 Segundos;
+                    Limpiar Pantalla;
+            FinSegun
+        Hasta Que opc = 4 
+    FinProceso
+                        </pre>
                     </div>
                 </div>
             </li>
@@ -258,6 +1622,189 @@
                             <img src="img/pseint.png">  
                             <i class="fa-solid fa-circle-chevron-up"></i>   
                         </a>
+                        <pre>
+    // Código correspondiente al punto 7 del taller 3 de ciclos organizado en funciones.
+
+    SubProceso inicializarArreglos(arreglo1, arreglo2, arreglo3, arreglo4, tamanio)
+        Definir i Como Entero;
+        Para i<- 0 Hasta (tamanio - 1) Hacer
+            arreglo1[i] <- "";
+            arreglo2[i] <- "";
+            arreglo3[i] <- "";
+            arreglo4[i] <- "";
+        FinPara
+    FinSubProceso
+
+    // Función para verificar que la placa del vehiculo no este registrada, y agregarla en caso 
+    de que no lo este.
+    SubProceso agregarVehiculo(placaTemporal, placas, marcas, nombres, telefonos)
+        Definir i Como Entero;
+        Para i <- 0 Hasta 4 Con Paso 1 Hacer
+            Si placas[i] = placaTemporal Entonces
+                Escribir "Ya se encuentra registado un vehículo con la placa ", placaTemporal;
+                Escribir "Datos del vehículo:";
+                Escribir "Placa: ", placas[i];
+                Escribir "Marca: ", marcas[i];
+                Escribir "Nombre del propietario: ", nombres[i];
+                Escribir "Teléfono: ", telefonos[i];
+                Escribir "";
+                i <- 4;
+            SiNo
+                Si placas[i] = "" Entonces
+                    placas[i] <- placaTemporal;
+                    Escribir "Ingrese la marca del vehículo: ";
+                    Leer marcas[i];
+                    Escribir "Ingrese el nombre del propietario: ";
+                    Leer nombres[i];
+                    Escribir "Ingrese número de teléfono";
+                    Leer telefonos[i];
+                    Escribir "Vehiculo ingresado con éxito";
+                    i <- 4;
+                FinSi
+            FinSi
+        FinPara
+    FinSubProceso
+
+    SubProceso buscarVehiculo(placaTemporal, placas, nombres, marcas, telefonos)
+        Definir i Como Entero;
+        Para i <- 0 Hasta 4 Con Paso 1 Hacer
+            Si placaTemporal = placas[i] Entonces
+                Escribir "Datos del vehiculo con placa ", placas[i],":";
+                Escribir "Marca: ", marcas[i];
+                Escribir "Nombre del propietario:", nombres[i];
+                Escribir "Telefono: ", telefonos[i];
+                Escribir "Número de estacionamiento: ", i;
+                Escribir "";
+                i <- 4;
+            SiNo
+                Si i = 4 O placas[i] = "" Entonces
+                    Escribir "No se encuentra ningun veh�culo en el estacionamiento con la placa ", 
+                    placaTemporal;
+                    i <- 4; 
+                FinSi
+            FinSi
+        FinPara
+    FinSubProceso
+
+    SubProceso retirarVehiculo(placaTemporal, placas, marcas, nombres, telefonos)
+        Definir i, j Como Entero;
+        Para i <- 0 Hasta 4 Con Paso 1 Hacer
+            Si placaTemporal = placas[i] Entonces
+                Si i = 4 Entonces
+                    placas[i] <- "";
+                    marcas[i] <- "";
+                    nombres[i] <- "";
+                    telefonos[i] <- "";
+                SiNo
+                    j <- i;
+                    Mientras j < 4 Hacer
+                        Si placas[j+1] <> "" Entonces
+                            placas[j] <- placas[j+1];
+                            nombres[j] <- nombres[j+1];
+                            marcas[j] <- marcas[j+1];
+                            telefonos[j] <- telefonos[j+1];
+                            Si j = 3 Entonces
+                                placas[4] <- "";
+                                marcas[4] <- "";
+                                nombres[4] <- "";
+                                telefonos[4] <- "";
+                            FinSi
+                        SiNo
+                            placas[j] <- "";
+                            marcas[j] <- "";
+                            nombres[j] <- "";
+                            telefonos[j] <- "";
+                            j <- 4;
+                        FinSi
+                        j <- j + 1;
+                    FinMientras
+                    i <- 4;
+                    Limpiar Pantalla;
+                    Escribir "El vehículo de placa ", placaTemporal, " ha salido del parqueadero.";
+                FinSi
+            SiNo
+                Si i=4 Entonces
+                    Escribir "No hay ningun vehículo con la placa ", placaTemporal;
+                FinSi
+            FinSi
+            
+        FinPara
+    FinSubProceso
+
+    Proceso Parqueadero
+        Definir placas, marcas, nombres, telefonos, placaTemporal Como Caracter;
+        Definir opc Como Entero;
+        Dimension placas[5], marcas[5], nombres[5], telefonos[5];
+        
+        inicializarArreglos(placas, marcas, nombres, telefonos, 5);
+        
+        // Ciclo Repetir para controlar la ejecución del programa.
+        Repetir
+            Escribir "Bienvenido al parqueadero El guardián";
+            Escribir "";
+            Escribir "Seleccione una de las opciones a continuación: ";
+            Escribir "1. Ingresar vehículo.";
+            Escribir "2. Buscar vehículo.";
+            Escribir "3. Retirar vehículo del parqueadero.";
+            Escribir "4. Salir del sistema";
+            Leer opc;
+            Segun opc Hacer
+                1:// Ingresar vehiculo al parqueadero
+                    Si placas[4] <> "" Entonces
+                        Escribir "No hay lugares disponibles en el parqueadero.";
+                        placaTemporal <- "";
+                    SiNo
+                        Escribir "Ingrese la placa de vehículo";
+                        Leer placaTemporal;
+                        Si Longitud(placaTemporal) = 6 O Longitud(placaTemporal) = 7 Entonces
+                            agregarVehiculo(placaTemporal, placas, marcas, nombres, telefonos);
+                            Escribir "Oprima enter para volver al menú principal";
+                            Esperar Tecla;
+                            Limpiar Pantalla;
+                            
+                        Sino
+                            Escribir "La placa debe ser de seis o siete caracteres.";
+                            Esperar 2 Segundos;
+                            Limpiar Pantalla;
+                        FinSi
+                    FinSi
+                2:// Buscar vehiculo en el parqueadero
+                    Escribir "Ingrese la placa del vehículo";
+                    Leer placaTemporal;
+                    Si Longitud(placaTemporal) = 6 O Longitud(placaTemporal) = 7 Entonces
+                        buscarVehiculo(placaTemporal, placas, nombres, marcas, telefonos);
+                        Escribir "Oprima enter para volver al men� principal.";
+                        Esperar Tecla;
+                        Limpiar Pantalla;
+                    SiNo
+                        Escribir "La placa debe ser de seis o siete caracteres.";
+                        Esperar 2 Segundos;
+                        Limpiar Pantalla;
+                    FinSi
+                3:// Retirar vehiculo del parqueadero
+                    Escribir "Ingrese la placa del vehículo";
+                    Leer placaTemporal;
+                    Si Longitud(placaTemporal) = 6 O Longitud(placaTemporal) = 7 Entonces
+                        retirarVehiculo(placaTemporal, placas, marcas, nombres, telefonos);
+                        Escribir "Oprima enter para volver al menú principal";
+                        Esperar Tecla;
+                    SiNo
+                        Escribir "La placa debe ser de seis o siete caracteres.";
+                        Esperar 2 Segundos;
+                        Limpiar Pantalla;
+                    FinSi
+                4:// Salir del sistema
+                    Limpiar Pantalla;
+                    Escribir "Ha salido del programa";
+                De Otro Modo:
+                    Escribir "Ingrese una opción válida";
+                    Esperar 2 Segundos;
+                    Limpiar Pantalla;
+            FinSegun
+            
+        Hasta Que opc = 4 
+    FinProceso
+                        </pre>
                     </div>
                 </div>
             </li>
@@ -277,6 +1824,161 @@
                             <img src="img/pseint.png">  
                             <i class="fa-solid fa-circle-chevron-up"></i>   
                         </a>
+                        <pre>
+    // Código correspondiente al punto 8 del taller 3 de ciclos, organizado en funciones.
+
+    // Función para inicializar valores de arreglos.
+    SubProceso inicializarArreglos(ids, nombres, notas, aprobados, tamanio)
+        Definir i Como Entero;
+        Para i <- 0 Hasta tamanio - 1 Con Paso 1 Hacer
+            ids[i] <- "";
+            nombres[i] <- "";
+            notas[i] <- -1;
+            aprobados[i] <- Falso;
+        FinPara
+    FinSubProceso
+    // Función para registrar usuarios verificando si hay cupo disponible y que no se 
+    ha registrado previamente.
+    SubProceso registrarUsuario(idTemporal, ids, nombres, tamanio)
+        Definir i Como Entero;
+        Para i <- 0 Hasta tamanio -1 Con Paso 1 Hacer
+            Si ids[i] <> "" Entonces
+                Si ids[i] = idTemporal Entonces
+                    Escribir "Ya se encuentra un usuario registrado con número de identificación: 
+                    ", idTemporal;
+                    i <- 8;
+                SiNo
+                    Si i = 7 Entonces
+                        Escribir "No hay cupos disponibles para nuevos usuarios.";
+                    FinSi
+                FinSi
+            SiNo
+                ids[i] <- idTemporal;
+                Escribir "Ingrese el nombre completo: ";
+                Leer nombres[i];
+                i <- 8;
+                Escribir "Nuevo usuario registrado con éxito";
+            FinSi
+        FinPara
+    FinSubProceso
+    // Función para verificar si el usuario ya puede comenzar el trámite de su licencia
+    SubProceso verificarEstado(idTemporal, ids, nombres, notas, aprobados, tamanio)
+        Definir i Como Entero;
+        Para i <- 0 Hasta tamanio - 1 Con Paso 1 Hacer
+            Si idTemporal = ids[i] Entonces
+                Limpiar Pantalla;
+                Escribir "Identificación: ", ids[i];
+                Escribir "Nombre: ", nombres[i];
+                Escribir Sin Saltar"Nota de la prueba(%): ";
+                Si notas[i] > -1 Entonces
+                    Escribir notas[i];
+                SiNo
+                    Escribir "No se ha presentado";
+                FinSi
+                Escribir "Aprobado: ", aprobados[i];
+                Escribir Sin Saltar "Observaciones: ";
+                Si aprobados[i] Entonces
+                    Escribir "El usuario puede trámitar su licencia de conducción.";
+                SiNo
+                    Escribir "El usuario no cumple los requisitos para trámitar su licencia de conducción.";
+                FinSi
+                i <- 8;
+            Sino
+                Si i = 7 Entonces
+                    Escribir "No hay ningún usuario con número de identificación ", idTemporal;
+                FinSi
+            FinSi
+        FinPara
+    FinSubProceso
+    // Función para ingresar la nota del examen y definir si aprobo o no.
+    Subproceso ingresarNota(idTemporal, ids, notas, aprobados, tamanio)
+        Definir i Como Entero;
+        Para i <- 0 Hasta tamanio - 1 Con Paso 1 Hacer
+            Si ids[i] = idTemporal Entonces
+                Escribir "Ingrese la nota del usuario en porcentaje(1-100): ";
+                Leer notas[i];
+                Si notas[i] >= 80 Entonces
+                    aprobados[i] <- Verdadero;
+                SiNo
+                    aprobados[i] <- Falso;
+                FinSi
+                i <- 8;
+                Escribir "Nota registrada.";
+            SiNo
+                Si i = 7 O (ids[i] = "") Entonces
+                    Escribir "El número de identificación ingresado no se encuentra registrado.";
+                    i <- 8;
+                FinSi
+            FinSi
+        FinPara
+    FinSubProceso
+    // Proceso principal.
+    Proceso EscuelaAutomovilistica
+        Definir ids, nombres, idTemporal Como Caracter;
+        Definir notas Como Real;
+        Definir aprobados Como Logico;
+        Dimension ids[8], nombres[8], notas[8], aprobados[8];
+        Definir opc Como Entero;
+        inicializarArreglos(ids, nombres, notas, aprobados, 8);
+        
+        // Ciclo para controlar la ejecución del programa.
+        Repetir
+            Escribir "Seleccione el número de la opción que quiere realizar:";
+            Escribir "1. Registrar nuevo usuario.";
+            Escribir "2. Verificar estado del usuario.";
+            Escribir "3. Ingresar nota de un usuario.";
+            Escribir "4. Salir del sistema.";
+            Leer opc;
+            Segun opc Hacer
+                1:// Opción para registrar un nuevo estudiante.
+                    Escribir "Ingrese el número de identificación";
+                    Leer idTemporal;
+                    Si idTemporal <> "" Entonces
+                        registrarUsuario(idTemporal, ids, nombres, 8);
+                        Escribir "Oprima enter para volver al menú principal";
+                        Esperar Tecla;
+                        Limpiar Pantalla;
+                    SiNo
+                        Escribir "Debe ingresar el número de identificación.";
+                        Esperar 2 Segundos;
+                        Limpiar Pantalla;
+                    FinSi
+                2:// Opci�n para verificar si ya se puede tramitar la licencia.
+                    Escribir "Ingrese el número de identificación: ";
+                    Leer idTemporal;
+                    Si idTemporal <> "" Entonces
+                        verificarEstado(idTemporal, ids, nombres, notas, aprobados, 8);
+                        Escribir "Oprima enter para volver al menú principal.";
+                        Esperar Tecla;
+                        Limpiar Pantalla;
+                    SiNo
+                        Escribir "Debe ingresar un número de identificación.";
+                        Esperar 2 Segundos;
+                        Limpiar Pantalla;
+                    FinSi
+                3:// Opción para ingresar la nota del examen y definir si aprobo o no.
+                    Escribir "Ingrese el número de identificación del usuario: ";
+                    Leer idTemporal;
+                    Si idTemporal <> "" Entonces
+                        ingresarNota(idTemporal, ids, notas, aprobados, 8);
+                        Escribir "Oprima enter para volver al menú principal";
+                        Esperar Tecla;
+                    SiNo
+                        Escribir "Debe ingresar un número de identificación.";
+                        Esperar 2 Segundos;
+                        Limpiar Pantalla;
+                    FinSi
+                4:// Opción para salir.
+                    Limpiar Pantalla;
+                    Escribir "Ha salido del sistema.";
+                De Otro Modo:
+                    Escribir "Seleccione una opción válida.";
+                    Esperar 2 Segundos;
+                    Limpiar Pantalla;
+            FinSegun
+        Hasta Que opc = 4 
+    FinProceso
+                        </pre>
                     </div>
                 </div>
             </li>
@@ -299,6 +2001,32 @@
                             <img src="img/pseint.png">  
                             <i class="fa-solid fa-circle-chevron-up"></i>   
                         </a>
+                        <pre>
+    // Código correspondiente al punto 1 del taller 4 de arreglos.
+    // Función para ingresar valores al arreglo.
+    SubProceso llenarArreglo(vector)
+        Definir i Como Entero;
+        Para i <- 0 Hasta 4 Con Paso 1 Hacer
+            Escribir "Escriba el número para la posicion ", i;
+            Leer vector[i];
+        FinPara
+    FinSubProceso
+    // Función para imprimir contenido del arreglo.
+    SubProceso imprimir(vector)
+        Definir i Como Entero;
+        Para i<- 0 Hasta 4 Con Paso 1 Hacer
+            Escribir "[",i,"] = ", vector[i];
+        FinPara
+    FinSubProceso
+    // Proceso principal.
+    Proceso Arreglos1
+        Definir vector Como Entero;
+        Dimension vector[5];
+        llenarArreglo(vector);
+        Limpiar Pantalla;
+        imprimir(vector);
+    FinProceso
+                        </pre>
                     </div>
 
                 </div>
@@ -321,6 +2049,56 @@
                             <img src="img/pseint.png">  
                             <i class="fa-solid fa-circle-chevron-up"></i>   
                         </a>
+                        <pre>
+    // 	Código correspondiente al punto 2 del taller 4 de arreglos.
+    // Función para llenar arreglo con numeros aleatorios de 1 a 100. 
+    SubProceso llenarArreglo(nums)
+        Definir i Como Entero;
+        Para i <- 0 Hasta 19 Con Paso 1 Hacer
+            nums[i] <- Azar(100)+1;
+        FinPara
+    FinSubProceso
+    //Función para imprimir números pares
+    SubProceso j <- imprimirPares(num, j)
+        Si  num % 2 = 0 Entonces
+            Si j Entonces
+                Escribir Sin Saltar ", ";
+            FinSi
+            Escribir Sin Saltar num;
+            j <- Verdadero;
+        FinSi
+    FinSubProceso
+    // Función para imprimir números impares.
+    SubProceso j <- imprimirImpares(num, j)
+        Si  num % 2 <> 0 Entonces
+            Si j Entonces
+                Escribir Sin Saltar ", ";
+            FinSi
+            Escribir Sin Saltar num;
+            j <- Verdadero;
+        FinSi
+    FinSubProceso
+    // Proceso principal
+    Proceso Arreglos2
+        Definir nums, i Como Entero;
+        Definir j Como Logico;
+        Escribir Sin Saltar "Números pares:";
+        Dimension nums[20];
+        j <- Falso;
+        llenarArreglo(nums);
+        Para i <- 0 Hasta 19 Con Paso 1 Hacer
+            j <- imprimirPares(nums[i],j);
+            Si i = 19 Entonces
+                Escribir "";
+                j <- Falso;
+            FinSi
+        FinPara
+        Escribir Sin Saltar "Números impares:";
+        Para i <- 0 Hasta 19 Con Paso 1 Hacer
+            j <- imprimirImpares(nums[i],j);
+        FinPara
+    FinProceso
+                        </pre>
                     </div>
 
                 </div>
@@ -339,6 +2117,66 @@
                                 <img src="img/pseint.png">  
                                 <i class="fa-solid fa-circle-chevron-up"></i>   
                             </a>
+                            <pre>
+    //Código correspondiente al punto 3 del taller de arreglos.
+    // Función para verificar si el número es primo.
+    SubProceso esPrimo <- verificarNumero(num)
+        Definir esPrimo Como Logico;
+        Definir j Como Entero;
+        j <- 2;
+        Mientras j <= num Hacer
+            Si num % j = 0 Entonces
+                Si num = j Entonces
+                    esPrimo <- Verdadero;
+                SiNo
+                    esPrimo <- Falso;
+                    j <- num + 1;
+                FinSi
+            FinSi
+            j <- j + 1;
+        FinMientras	
+    FinSubProceso
+    //Funci�n para imprimir los números primos almacenados en el arreglo.
+    SubProceso imprimir(primos)
+        Definir i, finFila Como Entero;
+        finFila <- 23;
+        Para i <- 0 Hasta 167 Con Paso 1 Hacer
+            Si i % finFila = 0 Y i <> 0 Entonces
+                Si primos[i] < 100 Entonces
+                    Escribir "| ", primos[i], "|";
+                SiNo
+                    Escribir "|", primos[i], "|";
+                FinSi
+                finFila <- finFila + 24;
+            SiNo
+                Si primos[i] < 100 Entonces
+                    Si primos[i] < 10 Entonces
+                        Escribir Sin Saltar"| ", primos[i], " |";
+                    SiNo
+                        Escribir Sin Saltar"| ", primos[i], "|";
+                    FinSi
+                SiNo
+                    Escribir Sin Saltar"|", primos[i], "|";
+                FinSi
+            FinSi
+        FinPara
+    FinSubProceso
+
+    Proceso Arreglos3
+        Definir primos, i, posicion Como Entero;
+        Dimension primos[168]; // Tamaño del arreglo para guardar números primos en el 
+        rango de 1 - 1000
+        posicion <- 0;
+        Para i <- 2 Hasta 1000 Con Paso 1 Hacer
+            Si verificarNumero(i) Entonces
+                primos[posicion] <- i;
+                posicion <- posicion + 1;
+            FinSi
+        FinPara
+        Escribir "**** Números primos entre 1 y 1000 ****";
+        imprimir(primos);
+    FinProceso
+                            </pre>
                         </div>
                     </div>
             </li>
@@ -365,6 +2203,90 @@
                                 <img src="img/pseint.png">  
                                 <i class="fa-solid fa-circle-chevron-up"></i>   
                         </a>
+                        <pre>
+    // Código correspondiente al punto 4 del taller de arreglos
+    // Función Para imprimir la matriz de forma ordenada.
+    SubProceso numR <- llenarMatriz(Fila, matriz, num)
+        Definir columna, numR Como Entero;
+        numR <- num;
+        Para columna <- 0 Hasta 4 Con Paso 1 Hacer
+            matriz[Fila, columna] <- numR; // Almacenar número en el arreglo.
+            Si columna <> 4 Entonces
+                Si matriz[fila, columna] < 10 Entonces
+                    Escribir Sin Saltar "0", matriz[fila, columna], " ";
+                SiNo
+                    Escribir Sin Saltar matriz[fila, columna], " ";
+                FinSi
+            SiNo
+                Si matriz[fila, columna] >= 10 Entonces
+                    Escribir matriz[fila, columna];
+                SiNo
+                    Escribir "0", matriz[fila, columna];
+                FinSi
+            FinSi
+            numR <- numR + 1;
+        FinPara
+    FinSubProceso
+    //Funciones para imprimir contenido de la matriz ordenado
+    Subproceso imprimirOrdenado(fila, matriz)
+        Definir columna Como Entero;
+        Para columna <- 0 Hasta 4 Con Paso 1 Hacer
+            Si columna <> 4 Entonces
+                Si matriz[fila, columna] < 10 Entonces
+                    Escribir Sin Saltar "0",matriz[fila, columna], " ";
+                SiNo
+                    Escribir Sin Saltar matriz[fila, columna], " ";
+                FinSi
+            SiNo
+                Si matriz[fila, columna] < 10 Entonces
+                    Escribir "0",matriz[fila, columna], " ";
+                SiNo
+                    Escribir matriz[fila, columna];
+                FinSi
+            FinSi
+        FinPara
+    FinSubProceso
+    // Imprimir contenido de la matriz con orden invertido.
+    SubProceso imprimirInvertido(fila, matriz)
+        Definir columna Como Entero;
+        Para columna <- 4 Hasta 0 Con Paso -1 Hacer
+            Si columna <> 0 Entonces
+                Si matriz[fila, columna] < 10 Entonces
+                    Escribir Sin Saltar "0",matriz[fila, columna], " ";
+                SiNo
+                    Escribir Sin Saltar matriz[fila, columna], " ";
+                FinSi
+            SiNo
+                Si matriz[fila, columna] < 10 Entonces
+                    Escribir "0",matriz[fila, columna], " ";
+                SiNo
+                    Escribir matriz[fila, columna];
+                FinSi
+            FinSi
+        FinPara
+    FinSubProceso
+    // Función principal
+    Proceso Arreglos4
+        Definir matriz, fila, num Como Entero;
+        Dimension matriz[4,5];
+        num <- 1;
+        Escribir "Matriz dada: ";
+        Para fila <- 0 Hasta 3 Con Paso 1 Hacer
+            num <- llenarMatriz(Fila, matriz, num);
+        FinPara
+        Escribir "";
+        Escribir "Matriz solicitada:";
+        // Ciclo para imprimir matriz solicitada
+        Para fila <- 0 Hasta 3 Con Paso 1 Hacer
+            Si fila % 2 = 0 Entonces
+                imprimirOrdenado(fila, matriz);
+            SiNo
+                imprimirInvertido(fila, matriz);
+            FinSi
+        FinPara
+        
+    FinProceso
+                        </pre>
                     </div>
                 </div>
             </li>
@@ -387,6 +2309,71 @@
                         <img src="img/pseint.png">  
                         <i class="fa-solid fa-circle-chevron-up"></i>   
                         </a>
+                        <pre>
+    //Código correspondiente al punto 5 del taller de arreglos.
+    SubProceso imprimirTabla()
+        Escribir "      |                                              COLUMNAS                
+                                     |";
+        Escribir " __ __|    0    |    1    |    2    |    3    |    4    |    5    |    6    |
+            7    |    8    |    9    |";
+        Escribir "|  |0 |   1x1   |   2x1   |   3x1   |   4x1   |   5x1   |   6x1   |   7x1   |
+           8x1   |   9x1   |  10x1   |";
+        Escribir "|  |1 |   1x2   |   2x2   |   3x2   |   4x2   |   5x2   |   6x2   |   7x2   |
+           8x2   |   9x2   |  10x2   |";
+        Escribir "|  |2 |   1x3   |   2x3   |   3x3   |   4x3   |   5x3   |   6x3   |   7x3   |
+           8x3   |   9x3   |  10x3   |";
+        Escribir "| F|3 |   1x4   |   2x4   |   3x4   |   4x4   |   5x4   |   6x4   |   7x4   |
+           8x4   |   9x4   |  10x4   |";
+        Escribir "| I|4 |   1x5   |   2x5   |   3x5   |   4x5   |   5x5   |   6x5   |   7x5   |
+           8x5   |   9x5   |  10x5   |";
+        Escribir "| L|5 |   1x6   |   2x6   |   3x6   |   4x6   |   5x6   |   6x6   |   7x6   |
+           8x6   |   9x6   |  10x6   |";
+        Escribir "| A|6 |   1x7   |   2x7   |   3x7   |   4x7   |   5x7   |   6x7   |   7x7   |
+           8x7   |   9x7   |  10x7   |";
+        Escribir "| S|7 |   1x8   |   2x8   |   3x8   |   4x8   |   5x8   |   6x8   |   7x8   |
+           8x8   |   9x8   |  10x8   |";
+        Escribir "|  |8 |   1x9   |   2x9   |   3x9   |   4x9   |   5x9   |   6x9   |   7x9   |
+           8x9   |   9x9   |  10x9   |";
+        Escribir "|  |9 |   1x10  |   2x10  |   3x10  |   4x10  |   5x10  |   6x10  |   7x10  |
+           8x10  |   9x10  |  10x10  |";
+        Escribir "";
+    FinSubProceso
+    // Función para calcular los resultados de la tabla.
+    SubProceso calcularResultados(fila, resultados)
+        Definir columna Como Entero;
+        Para columna <- 0 Hasta 9 Con Paso 1 Hacer
+            resultados[fila, columna] <- (fila + 1) * (columna + 1);
+        FinPara
+    FinSubProceso
+    // Función para mostrar el resultado solicitado por el usuario.
+    SubProceso mostrarResultado(fila, columna, resultados)
+        Si (fila  > -1 Y fila < 10) Y (columna > -1 Y columna < 10) Entonces
+            Escribir "El resultado en la posicion (",fila,",", columna,") es: ", resultados[fila,columna];
+        SiNo
+            Escribir "Los valores para la fila y la columna deben estar entre 0 y 9";
+        FinSi
+    FinSubProceso
+    // Función principal
+    Proceso Arreglos5
+        Definir resultados, fila, columna, opc Como Entero;
+        Dimension resultados[10,10];
+        // Llenar arreglo con los resultados
+        Para fila <- 0 Hasta 9 Con Paso 1 Hacer
+            calcularResultados(fila, resultados);
+        FinPara
+        Repetir
+            imprimirTabla();
+            Escribir "Ingrese la fila: ";
+            Leer fila;
+            Escribir "Ingrese la columna: ";
+            Leer columna;
+            mostrarResultado(fila, columna, resultados);
+            Escribir "Para salir digite 2, para continuar con otra opción oprime enter";
+            Leer opc;
+        Hasta Que opc = 2 
+        
+    FinProceso
+                        </pre>
                     </div>
             
                 </div>
